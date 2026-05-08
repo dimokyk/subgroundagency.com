@@ -59,9 +59,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-content{position:relative;z-index:1;text-align:center;padding:0 24px;max-width:900px}
 .hero-tag{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:6px;text-transform:uppercase;color:var(--red);margin-bottom:32px;opacity:0;animation:fadeUp .8s .2s forwards}
 
-/* ── HERO LOGO (PNG) ─── */
-.hero-logo-svg{width:min(100%,200px);max-width:200px;margin:0 auto 24px;opacity:0;animation:fadeUp .8s .1s forwards;display:flex;justify-content:center;align-items:center}
-.hero-logo-svg img{width:100%;height:auto;display:block}
+/* ── HERO LOGO (PNG; fondo negro del PNG → funde con el hero vía lighten) ─── */
+.hero-logo-svg{width:min(100%,200px);max-width:200px;margin:0 auto 24px;opacity:0;animation:fadeUp .8s .1s forwards;display:flex;justify-content:center;align-items:center;background:transparent}
+.hero-logo-svg img{width:100%;height:auto;display:block;mix-blend-mode:lighten}
 
 .hero-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(56px,10vw,120px);line-height:.9;letter-spacing:-1px;text-transform:uppercase;margin-bottom:8px;opacity:0;animation:fadeUp .8s .3s forwards}
 .hero-title .agency{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -131,8 +131,20 @@ section{padding:120px 48px}
 #roster{background:var(--card);position:relative}
 #roster::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:var(--grad)}
 .roster-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px}
+.roster-filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;align-items:center}
+.roster-filter{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:10px 18px;background:var(--panel);border:1px solid var(--card);color:var(--gray);cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+.roster-filter:hover{color:var(--bone);border-color:var(--bgray)}
+.roster-filter.active{color:var(--bone)}
+.roster-filter[data-filter="all"].active{border-color:var(--bone);background:rgba(241,239,232,.06)}
+.roster-filter[data-filter="hard-techno"].active{color:#C0392B;border-color:rgba(192,57,43,.55);background:rgba(192,57,43,.1)}
+.roster-filter[data-filter="techno"].active{color:#C2185B;border-color:rgba(194,24,91,.55);background:rgba(194,24,91,.1)}
+.roster-filter[data-filter="house"].active{color:#8E24AA;border-color:rgba(142,36,170,.55);background:rgba(142,36,170,.1)}
+.roster-filter[data-filter="urbano"].active{color:#5C35CC;border-color:rgba(92,53,204,.55);background:rgba(92,53,204,.1)}
+.roster-empty{width:100%;text-align:center;font-size:14px;color:var(--gray);padding:48px 24px;display:none;border:1px dashed var(--card);margin-bottom:8px}
+.roster-empty.is-visible{display:block}
 .roster-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
 .dj-card{background:var(--panel);padding:40px 32px;position:relative;overflow:hidden;transition:transform .3s}
+.dj-card.dj-card-hidden{display:none!important}
 .dj-card:hover{transform:translateY(-4px)}
 .dj-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .4s}
 .dj-card:hover::after{transform:scaleX(1)}
@@ -309,7 +321,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
   </div>
   <div class="hero-content">
     <div class="hero-logo-svg">
-      <img src="/images/subground-logo.png?v=1" width="819" height="1024" alt="Subground Agency" decoding="async"/>
+      <img src="/images/subground-logo.png?v=2" width="819" height="1024" alt="Subground Agency" decoding="async"/>
     </div>
     <div class="hero-tag" data-es="Booking Agency · Spain" data-en="Booking Agency · Spain">Booking Agency · Spain</div>
     <h1 class="hero-title">SUBGROUND<br><span class="agency">AGENCY</span></h1>
@@ -454,9 +466,17 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
       </div>
       <p class="section-sub" data-es="Contacta para riders, caches y disponibilidad detallada." data-en="Contact us for riders, fees and availability.">Contacta para riders, caches y disponibilidad detallada.</p>
     </div>
-    <div class="roster-grid">
+    <div class="roster-filters reveal" id="rosterFilters" role="tablist" aria-label="Filtrar roster por género">
+      <button type="button" class="roster-filter active" role="tab" aria-selected="true" data-filter="all" data-es="Todos" data-en="All">Todos</button>
+      <button type="button" class="roster-filter" role="tab" aria-selected="false" data-filter="hard-techno" data-es="Hard Techno" data-en="Hard Techno">Hard Techno</button>
+      <button type="button" class="roster-filter" role="tab" aria-selected="false" data-filter="techno" data-es="Techno" data-en="Techno">Techno</button>
+      <button type="button" class="roster-filter" role="tab" aria-selected="false" data-filter="house" data-es="House" data-en="House">House</button>
+      <button type="button" class="roster-filter" role="tab" aria-selected="false" data-filter="urbano" data-es="Urbano" data-en="Urban">Urbano</button>
+    </div>
+    <p class="roster-empty" id="rosterEmpty" data-es="No hay artistas en esta categoría por ahora." data-en="No artists in this category yet.">No hay artistas en esta categoría por ahora.</p>
+    <div class="roster-grid" id="rosterGrid">
       <!-- DJ A -->
-      <div class="dj-card reveal">
+      <div class="dj-card reveal" data-genres="urbano">
         <div class="dj-avatar">
           <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs><linearGradient id="dg1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#C0392B"/><stop offset="33.33%" stop-color="#C2185B"/><stop offset="66.66%" stop-color="#8E24AA"/><stop offset="100%" stop-color="#5C35CC"/></linearGradient></defs>
@@ -478,7 +498,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         </div>
       </div>
       <!-- DJ B -->
-      <div class="dj-card reveal reveal-delay-1">
+      <div class="dj-card reveal reveal-delay-1" data-genres="house techno">
         <div class="dj-avatar">
           <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs><linearGradient id="dg2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#C0392B"/><stop offset="33.33%" stop-color="#C2185B"/><stop offset="66.66%" stop-color="#8E24AA"/><stop offset="100%" stop-color="#5C35CC"/></linearGradient></defs>
@@ -500,7 +520,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         </div>
       </div>
       <!-- DJ C -->
-      <div class="dj-card reveal reveal-delay-2">
+      <div class="dj-card reveal reveal-delay-2" data-genres="hard-techno">
         <div class="dj-avatar">
           <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs><linearGradient id="dg3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#C0392B"/><stop offset="33.33%" stop-color="#C2185B"/><stop offset="66.66%" stop-color="#8E24AA"/><stop offset="100%" stop-color="#5C35CC"/></linearGradient></defs>
@@ -689,6 +709,32 @@ function toggleLang(){
     if(txt)el.innerHTML=txt;
   });
 }
+
+// ── ROSTER FILTER ────────────────────────────────────
+(function(){
+  const grid=document.getElementById('rosterGrid');
+  const emptyEl=document.getElementById('rosterEmpty');
+  const filterBtns=document.querySelectorAll('.roster-filter');
+  if(!grid||!filterBtns.length)return;
+  function applyRosterFilter(key){
+    let n=0;
+    grid.querySelectorAll('.dj-card').forEach(card=>{
+      const genres=(card.getAttribute('data-genres')||'').trim().split(/\s+/).filter(Boolean);
+      const show=key==='all'||genres.includes(key);
+      card.classList.toggle('dj-card-hidden',!show);
+      if(show)n++;
+    });
+    if(emptyEl)emptyEl.classList.toggle('is-visible',n===0);
+    filterBtns.forEach(btn=>{
+      const on=btn.getAttribute('data-filter')===key;
+      btn.classList.toggle('active',on);
+      btn.setAttribute('aria-selected',on?'true':'false');
+    });
+  }
+  filterBtns.forEach(btn=>{
+    btn.addEventListener('click',()=>applyRosterFilter(btn.getAttribute('data-filter')||'all'));
+  });
+})();
 
 // ── FORM SUBMIT (FormSubmit AJAX → sin redireccion; correo booking@…) ─────────────────────────
 const CONTACT_FORM_ENDPOINT='https://formsubmit.co/ajax/booking@subgroundagency.com';
