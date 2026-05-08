@@ -1,41 +1,37 @@
-# Subground Agency — MVC Web App
+# Subground Agency — Web
 
 Booking agency · España. We don't book DJs. We build nights. Techno · House · Hard Techno · Urbano · booking@subgroundagency.com
 
-Base del proyecto reorganizada para trabajar con arquitectura MVC profesional en Node.js + Express.
+## Qué tienes aquí
 
-## Estructura
+- **`index.html`**, **`f3ly.html`** y **`favicon.ico` en la raíz del repo**: es lo que muestra **GitHub Pages** (sitio público igual que antes, estático).
+- **Express + `npm run dev`**: si quieres previsualizar en local con servidor propio sirve los mismos HTML de la raíz (no ejecuta SMTP).
+- **Formulario de contacto**: envío con **FormSubmit** al correo `booking@subgroundagency.com` (no hace falta Node en GitHub).
 
-- `app/controllers`: controladores HTTP
-- `app/models`: modelos de dominio/datos
-- `app/routes`: definicion de rutas
-- `app/views/pages`: vistas HTML actuales
-- `public`: recursos publicos (favicon, assets, etc.)
-- `server.js`: punto de arranque
+### Primera vez con FormSubmit
 
-## Arranque local
+La primera vez que alguien envía el formulario, puede llegar un **correo de activación** a `booking@subgroundagency.com`; hay que confirmarlo para activar los envíos.
 
-1. Instalar dependencias:
+Para cambiar la web de vuelta tras enviar:
 
-   ```bash
-   npm install
-   ```
+- El formulario lleva **`_next`** apuntando a `https://subgroundagency.com/#contact`. Si usas otro dominio o subdominio, edita ese valor dentro de **`index.html`**.
 
-2. Iniciar en desarrollo:
+### GitHub Pages + dominio (Squarespace)
 
-   ```bash
-   npm run dev
-   ```
+1. Repo → **Settings** → **Pages** → Source **main** branch, carpeta **`/` (root)**.
+2. El archivo **`CNAME`** debe contener `subgroundagency.com` (ya está en el repo si lo subiste así).
+3. En **DNS de Squarespace** (o donde gestiones el dominio), apunta a GitHub Pages según [la ayuda oficial de dominios personalizados](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site).
 
-3. Iniciar en produccion:
+### Arranque local (opcional)
 
-   ```bash
-   npm start
-   ```
+```bash
+npm install
+npm run dev
+```
 
-Copia `.env.example` a `.env` y configura SMTP para el formulario de contacto.
+Abre http://localhost:3000 El formulario igual hará POST a FormSubmit desde local (debe estar activado en FormSubmit).
 
-## Rutas iniciales
+## Estructura de carpetas útil
 
-- `/` → home
-- `/artists/f3ly` → perfil del artista F3LY
+- `app/controllers`, `app/routes`, `server.js`: servidor Express opcional para desarrollo/preview.
+- `public`: recursos estáticos opcionales (Express los sirve bajo `/`).

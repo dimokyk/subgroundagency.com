@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Subground Agency — We don't book DJs. We build nights.</title>
 <meta name="description" content="Agencia de booking y creación de eventos. Techno · House · Hard Techno · Urbano. Spain."/>
-<link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
@@ -509,7 +509,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         <div class="dj-tags"><span class="dj-tag">Urban</span><span class="dj-tag">Reggaeton</span><span class="dj-tag">Dembow</span></div>
         <div class="dj-actions">
           <a class="dj-cta" href="#contact" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
-          <a class="btn-profile" href="/artists/f3ly" data-es="Ver perfil completo →" data-en="Full profile →">Ver perfil completo →</a>
+          <a class="btn-profile" href="f3ly.html" data-es="Ver perfil completo →" data-en="Full profile →">Ver perfil completo →</a>
         </div>
       </div>
       <!-- DJ B -->
@@ -591,7 +591,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
           </div>
         </div>
       </div>
-      <form class="contact-form reveal" id="contactForm">
+      <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/booking@subgroundagency.com" method="POST">
+        <input type="hidden" name="_subject" value="Subground Agency — Formulario web"/>
+        <input type="hidden" name="_next" value="https://subgroundagency.com/#contact"/>
+        <input type="text" name="_gotcha" style="position:absolute;left:-9999px;width:1px;height:1px" tabindex="-1" autocomplete="off" aria-hidden="true"/>
         <div class="form-group">
           <label class="form-label" data-es="Tu nombre" data-en="Your name">Tu nombre</label>
           <input class="form-input" type="text" name="name" required placeholder="—"/>
@@ -723,55 +726,12 @@ function toggleLang(){
   });
 }
 
-// ── FORM SUBMIT ──────────────────────────────────────
+// ── FORM SUBMIT (FormSubmit → llega al correo booking@…) ──────────────────────────────────────
 const contactForm=document.getElementById('contactForm');
 const contactSubmitBtn=contactForm.querySelector('.form-submit');
-contactForm.addEventListener('submit',async(e)=>{
-  e.preventDefault();
-  const originalText=lang==='es'?'Enviar solicitud':'Send request';
-  const sendingText=lang==='es'?'Enviando...':'Sending...';
+contactForm.addEventListener('submit',function(){
   contactSubmitBtn.disabled=true;
-  contactSubmitBtn.textContent=sendingText;
-  contactSubmitBtn.style.opacity='.85';
-
-  try{
-    const fd=new FormData(contactForm);
-    const payload={
-      name:(fd.get('name')||'').toString().trim(),
-      company:(fd.get('company')||'').toString().trim(),
-      email:(fd.get('email')||'').toString().trim(),
-      requestType:(fd.get('requestType')||'').toString().trim(),
-      message:(fd.get('message')||'').toString().trim()
-    };
-
-    const resp=await fetch('/contact',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(payload)
-    });
-    const data=await resp.json();
-
-    if(!resp.ok||!data.ok){
-      throw new Error('submit_failed');
-    }
-
-    contactSubmitBtn.textContent='✓ Enviado';
-    contactSubmitBtn.style.background='#1D9E75';
-    contactSubmitBtn.style.color='#E1F5EE';
-    contactForm.reset();
-  }catch(_err){
-    contactSubmitBtn.textContent=lang==='es'?'No se pudo enviar':'Send failed';
-    contactSubmitBtn.style.background='#922E2E';
-    contactSubmitBtn.style.color='#FBEAEA';
-  }finally{
-    setTimeout(()=>{
-      contactSubmitBtn.disabled=false;
-      contactSubmitBtn.textContent=lang==='es'?'Enviar solicitud':'Send request';
-      contactSubmitBtn.style.background='';
-      contactSubmitBtn.style.color='';
-      contactSubmitBtn.style.opacity='';
-    },3000);
-  }
+  contactSubmitBtn.textContent=lang==='es'?'Enviando...':'Sending...';
 });
 </script>
 </body>
