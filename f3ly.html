@@ -44,12 +44,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 @media (min-width:901px){
   .hero-photo img{object-fit:contain;object-position:center bottom}
 }
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,#0d0d0c 0%,rgba(13,13,12,.93) 32%,rgba(13,13,12,.72) 50%,rgba(13,13,12,.38) 70%,transparent 100%);z-index:1}
-.hero-grain{position:absolute;inset:0;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;z-index:2}
+.hero-watermark{position:absolute;inset:0;z-index:1;pointer-events:none;display:flex;justify-content:center;align-items:flex-start;padding:calc(52px + env(safe-area-inset-top,0)) max(16px,env(safe-area-inset-right,0)) 0 max(16px,env(safe-area-inset-left,0));opacity:.18}
+.hero-watermark img{width:min(62vw,280px);max-width:100%;height:auto;display:block;object-fit:contain;filter:opacity(.95)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,#0d0d0c 0%,rgba(13,13,12,.93) 32%,rgba(13,13,12,.72) 50%,rgba(13,13,12,.38) 70%,transparent 100%);z-index:2}
+.hero-grain{position:absolute;inset:0;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;z-index:3}
 .hero-content{position:relative;z-index:5;padding:0 48px 64px;width:100%;max-width:1200px;margin:0 auto;padding-bottom:max(64px,calc(24px + env(safe-area-inset-bottom,0)));isolation:isolate}
 .hero-tag{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:5px;color:var(--ht);text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeUp .6s .1s forwards}
-.hero-name{display:block;margin:0 0 10px;line-height:0;font-size:0;opacity:0;animation:fadeUp .8s .2s forwards}
-.hero-logo-img{display:block;width:clamp(140px,min(38vw,100%),320px);max-width:92%;height:auto;object-fit:contain;object-position:left center;filter:drop-shadow(0 4px 26px rgba(0,0,0,.8))}
+.hero-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(58px,13.5vmin,200px);line-height:.85;letter-spacing:-3px;text-transform:uppercase;margin:0 0 12px;color:var(--bone);word-break:break-word;opacity:0;animation:fadeUp .8s .2s forwards;text-shadow:0 8px 52px rgba(0,0,0,.95),0 2px 18px rgba(0,0,0,.88)}
 .hero-real{font-family:'Barlow',sans-serif;font-size:18px;color:var(--gray);letter-spacing:2px;margin-bottom:24px;opacity:0;animation:fadeUp .6s .35s forwards}
 .hero-genres{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 14px;margin-bottom:36px;opacity:0;animation:fadeUp .6s .45s forwards}
 .hg{font-family:'Barlow Condensed',sans-serif;font-size:clamp(11px,3.1vw,13px);font-weight:900;letter-spacing:.2em;line-height:1.25;color:var(--bone);padding:11px 20px;text-transform:uppercase;border:none;border-top:3px solid;display:inline-flex;align-items:center;min-height:44px;box-sizing:border-box;background:rgba(13,13,12,.58);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:3px;box-shadow:0 6px 24px rgba(0,0,0,.52);text-shadow:0 1px 4px rgba(0,0,0,.92)}
@@ -204,7 +205,9 @@ section{padding:100px 48px}
   section{padding:70px max(24px,env(safe-area-inset-left,0)) 70px max(24px,env(safe-area-inset-right,0))}
   #hero{min-height:100svh;min-height:100dvh;height:auto;padding-top:calc(56px + env(safe-area-inset-top,0))}
   .hero-content{padding:0 max(24px,env(safe-area-inset-left,0)) max(48px,env(safe-area-inset-bottom,0)) max(24px,env(safe-area-inset-right,0))}
-  .hero-logo-img{width:clamp(130px,min(44vw,100%),268px);max-width:90%}
+  .hero-name{font-size:clamp(50px,17vw,118px);letter-spacing:-2px}
+  .hero-watermark{opacity:.22;padding-top:calc(50px + env(safe-area-inset-top,0))}
+  .hero-watermark img{width:min(58vw,260px)}
   .hero-real{font-size:14px;letter-spacing:1px;line-height:1.5}
   .hero-genres{flex-direction:column;align-items:stretch;gap:10px}
   .hero-genres .hg{width:100%}
@@ -234,7 +237,9 @@ section{padding:100px 48px}
   section{padding:58px max(16px,env(safe-area-inset-left,0)) 58px max(16px,env(safe-area-inset-right,0))}
   .hero-content{padding:0 max(16px,env(safe-area-inset-left,0)) max(32px,env(safe-area-inset-bottom,0)) max(16px,env(safe-area-inset-right,0))}
   #hero{padding-top:calc(52px + env(safe-area-inset-top,0))}
-  .hero-logo-img{width:clamp(118px,min(50vw,100%),220px);max-width:88%}
+  .hero-name{font-size:clamp(42px,14.5vw,98px)}
+  .hero-watermark{opacity:.24}
+  .hero-watermark img{width:min(52vw,228px)}
   .hero-stats{grid-template-columns:1fr;gap:20px;padding:18px 16px;border-radius:14px}
   .hstat-n{font-size:32px}
   .stats-grid{grid-template-columns:1fr}
@@ -268,6 +273,10 @@ section{padding:100px 48px}
   #hero{min-height:clamp(420px,min(83svh,83dvh),720px)}
   .hero-photo img{object-fit:cover;object-position:center 58%}
 }
+@media (min-width:901px){
+  .hero-watermark{opacity:.11;padding-top:calc(72px + env(safe-area-inset-top,0))}
+  .hero-watermark img{width:min(30vw,360px)}
+}
 </style>
 </head>
 <body>
@@ -288,13 +297,14 @@ section{padding:100px 48px}
 <!-- HERO -->
 <section id="hero">
   <div class="hero-photo">
-    <img src="/images/f3ly-photo.png" width="683" height="1024" decoding="async" alt="F3LY retrato oficial"/>
+    <img src="/images/f3ly-photo.png?v=2" width="683" height="1024" decoding="async" alt="F3LY retrato oficial"/>
   </div>
+  <div class="hero-watermark" aria-hidden="true"><img src="/images/f3ly-logo-transparent.png?v=2" width="1024" height="529" decoding="async" alt=""/></div>
   <div class="hero-overlay"></div>
   <div class="hero-grain"></div>
   <div class="hero-content">
     <div class="hero-tag">Subground Agency · Artista</div>
-    <h1 class="hero-name"><img class="hero-logo-img" src="/images/f3ly-logo-blanco.png" width="1024" height="529" decoding="async" alt="F3LY"/></h1>
+    <h1 class="hero-name">F3LY</h1>
     <p class="hero-real">Félix Ibáñez Gambín · Murcia, España</p>
     <div class="hero-genres">
       <span class="hg hg-urban">Urbano</span>
