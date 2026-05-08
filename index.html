@@ -59,8 +59,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-content{position:relative;z-index:1;text-align:center;padding:0 24px;max-width:900px}
 .hero-tag{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:6px;text-transform:uppercase;color:var(--red);margin-bottom:32px;opacity:0;animation:fadeUp .8s .2s forwards}
 
-/* ── S LOGO SVG (inline, scalable) ─── */
-.hero-logo-svg{width:220px;height:180px;margin:0 auto 24px;opacity:0;animation:fadeUp .8s .1s forwards}
+/* ── HERO LOGO (PNG) ─── */
+.hero-logo-svg{width:min(100%,200px);max-width:200px;margin:0 auto 24px;opacity:0;animation:fadeUp .8s .1s forwards;display:flex;justify-content:center;align-items:center}
+.hero-logo-svg img{width:100%;height:auto;display:block}
 
 .hero-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(56px,10vw,120px);line-height:.9;letter-spacing:-1px;text-transform:uppercase;margin-bottom:8px;opacity:0;animation:fadeUp .8s .3s forwards}
 .hero-title .agency{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -227,7 +228,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
   .roster-header{flex-direction:column;align-items:flex-start;gap:20px}
   .footer-bottom{flex-direction:column;gap:12px;text-align:center}
   .about-visual{display:none}
-  .hero-logo-svg{width:160px;height:130px}
+  .hero-logo-svg{max-width:160px}
 }
 
 .btn-presskit{display:inline-flex;align-items:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:10px 22px;border:1px solid var(--bgray);color:var(--bone);text-decoration:none;transition:all .2s;}
@@ -307,49 +308,8 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
     <div class="hero-noise"></div>
   </div>
   <div class="hero-content">
-    <!-- S Logo SVG inline -->
     <div class="hero-logo-svg">
-      <svg viewBox="0 0 420 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#C0392B"/>
-            <stop offset="33.33%" stop-color="#C2185B"/>
-            <stop offset="66.66%" stop-color="#8E24AA"/>
-            <stop offset="100%" stop-color="#5C35CC"/>
-          </linearGradient>
-        </defs>
-        <path d="M 175 48 Q 140 48 128 68 Q 116 88 130 104 L 200 138 Q 222 148 226 164 Q 232 186 214 198 Q 196 210 168 210 Q 140 210 126 196 Q 116 186 118 172" stroke="#F1EFE8" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <path d="M 245 152 Q 258 168 250 190 Q 240 216 216 228 Q 190 242 160 242 Q 126 242 108 220 Q 94 202 100 180" stroke="#F1EFE8" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <rect x="60"  y="168" width="4" height="10" rx="2" fill="url(#hg)" opacity="0.5"/>
-        <rect x="67"  y="162" width="4" height="16" rx="2" fill="url(#hg)" opacity="0.6"/>
-        <rect x="74"  y="156" width="4" height="22" rx="2" fill="url(#hg)" opacity="0.7"/>
-        <rect x="81"  y="150" width="4" height="28" rx="2" fill="url(#hg)" opacity="0.8"/>
-        <rect x="88"  y="158" width="4" height="20" rx="2" fill="url(#hg)" opacity="0.7"/>
-        <rect x="95"  y="165" width="4" height="13" rx="2" fill="url(#hg)" opacity="0.5"/>
-        <rect x="102" y="169" width="4" height="9"  rx="2" fill="url(#hg)" opacity="0.4"/>
-        <rect x="136" y="152" width="5" height="26" rx="2" fill="url(#hg)" opacity="0.6"/>
-        <rect x="144" y="142" width="5" height="36" rx="2" fill="url(#hg)" opacity="0.8"/>
-        <rect x="152" y="134" width="5" height="44" rx="2" fill="url(#hg)"/>
-        <rect x="160" y="128" width="5" height="50" rx="2" fill="url(#hg)"/>
-        <rect x="168" y="134" width="5" height="44" rx="2" fill="url(#hg)"/>
-        <rect x="176" y="140" width="5" height="38" rx="2" fill="url(#hg)" opacity="0.9"/>
-        <rect x="184" y="148" width="5" height="30" rx="2" fill="url(#hg)" opacity="0.75"/>
-        <rect x="192" y="155" width="5" height="23" rx="2" fill="url(#hg)" opacity="0.6"/>
-        <rect x="200" y="160" width="5" height="18" rx="2" fill="url(#hg)" opacity="0.5"/>
-        <rect x="208" y="154" width="5" height="24" rx="2" fill="url(#hg)" opacity="0.65"/>
-        <rect x="216" y="146" width="5" height="32" rx="2" fill="url(#hg)" opacity="0.8"/>
-        <rect x="224" y="138" width="5" height="42" rx="2" fill="url(#hg)" opacity="0.9"/>
-        <rect x="232" y="144" width="5" height="36" rx="2" fill="url(#hg)" opacity="0.8"/>
-        <rect x="240" y="152" width="5" height="26" rx="2" fill="url(#hg)" opacity="0.65"/>
-        <rect x="248" y="159" width="5" height="19" rx="2" fill="url(#hg)" opacity="0.5"/>
-        <rect x="272" y="169" width="4" height="9"  rx="2" fill="url(#hg)" opacity="0.4"/>
-        <rect x="279" y="164" width="4" height="14" rx="2" fill="url(#hg)" opacity="0.55"/>
-        <rect x="286" y="157" width="4" height="21" rx="2" fill="url(#hg)" opacity="0.7"/>
-        <rect x="293" y="150" width="4" height="28" rx="2" fill="url(#hg)" opacity="0.8"/>
-        <rect x="300" y="157" width="4" height="21" rx="2" fill="url(#hg)" opacity="0.65"/>
-        <rect x="307" y="163" width="4" height="15" rx="2" fill="url(#hg)" opacity="0.5"/>
-        <rect x="314" y="168" width="4" height="10" rx="2" fill="url(#hg)" opacity="0.4"/>
-      </svg>
+      <img src="/images/subground-logo.png?v=1" width="819" height="1024" alt="Subground Agency" decoding="async"/>
     </div>
     <div class="hero-tag" data-es="Booking Agency · Spain" data-en="Booking Agency · Spain">Booking Agency · Spain</div>
     <h1 class="hero-title">SUBGROUND<br><span class="agency">AGENCY</span></h1>
@@ -670,11 +630,11 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         <h4 data-es="Contacto" data-en="Contact">Contacto</h4>
         <a href="mailto:booking@subgroundagency.com">booking@subgroundagency.com</a>
         <a href="https://instagram.com/subgroundagency" target="_blank">@subgroundagency</a>
-        <a href="#">España · 2025</a>
+        <a href="#">España · 2026</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">© 2025 Subground Agency. All rights reserved.</p>
+      <p class="footer-copy">© 2026 Subground Agency. All rights reserved.</p>
       <p class="footer-motto"><span class="r">WE DON'T BOOK DJs.</span> <span class="m">WE BUILD NIGHTS.</span></p>
     </div>
   </div>
