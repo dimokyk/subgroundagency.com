@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Subground Agency — We don't book DJs. We build nights.</title>
-<meta name="description" content="Agencia de booking y creación de eventos. Techno · House · Hard Techno · Urbano. Spain."/>
+<meta name="description" content="Agencia de booking y creación de eventos. Hard Techno · Techno · House · Urbano. Spain."/>
 <link rel="icon" href="/favicon.ico?v=4" type="image/x-icon" sizes="any"/>
 <link rel="shortcut icon" href="/favicon.ico?v=4"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -18,15 +18,15 @@ body{background:#0D0D0C;color:#F1EFE8;font-family:'Barlow',sans-serif;font-weigh
 
 /* ── CSS VARS ───────────────────────────────────────── */
 :root{
-  --red:#E24B4A;--mid:#C87DBB;--pur:#7F77DD;
+  --red:#C0392B;--mid:#C2185B;--pur:#8E24AA;--urb:#5C35CC;
   --bone:#F1EFE8;--gray:#888780;--bgray:#5F5E5A;
   --panel:#1A1A19;--card:#222221;--blk:#0D0D0C;
-  --grad:linear-gradient(90deg,#E24B4A 0%,#C87DBB 50%,#7F77DD 100%);
+  --grad:linear-gradient(90deg,#C0392B 0%,#C2185B 33.33%,#8E24AA 66.66%,#5C35CC 100%);
 }
 
 /* ── CUSTOM CURSOR ──────────────────────────────────── */
 .cursor{position:fixed;width:8px;height:8px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transition:transform .15s,opacity .15s;transform:translate(-50%,-50%)}
-.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(226,75,74,.4);border-radius:50%;pointer-events:none;z-index:9998;transition:transform .08s,opacity .15s;transform:translate(-50%,-50%)}
+.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(192,57,43,.4);border-radius:50%;pointer-events:none;z-index:9998;transition:transform .08s,opacity .15s;transform:translate(-50%,-50%)}
 body:hover .cursor{opacity:1}
 
 /* ── GRADIENT LINE ──────────────────────────────────── */
@@ -37,7 +37,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none}
 .nav-logo svg{width:36px;height:36px}
 .nav-wordmark{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:3px;color:var(--bone);line-height:1}
-.nav-wordmark span{display:block;font-size:9px;font-weight:400;letter-spacing:6px;color:var(--mid);margin-top:1px}
+.nav-wordmark span{display:block;font-size:9px;font-weight:400;letter-spacing:6px;margin-top:1px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-links{display:flex;align-items:center;gap:36px}
 .nav-links a{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .2s}
 .nav-links a:hover{color:var(--bone)}
@@ -69,11 +69,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-tagline strong{color:var(--bone)}
 .hero-genres{display:flex;align-items:center;justify-content:center;gap:0;margin-top:32px;opacity:0;animation:fadeUp .6s .7s forwards}
 .hero-genres .genre{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:4px;text-transform:uppercase;padding:6px 16px;border-top:1px solid transparent;transition:color .2s;display:inline-flex;align-items:center;line-height:1;white-space:nowrap}
-.hero-genres .genre.g-red{color:var(--red);border-color:var(--red)}
-.hero-genres .genre.g-mid{color:var(--mid);border-color:var(--mid)}
-.hero-genres .genre.g-pur{color:var(--pur);border-color:var(--pur)}
 .hero-genres .genre.g-ht{color:#C0392B;border-color:#C0392B}
-.hero-genres .genre.g-pur2{color:#9B8FE8;border-color:#9B8FE8}
+.hero-genres .genre.g-techno{color:#C2185B;border-color:#C2185B}
+.hero-genres .genre.g-house{color:#8E24AA;border-color:#8E24AA}
+.hero-genres .genre.g-urbano{color:#5C35CC;border-color:#5C35CC}
 .hero-genres .sep{color:var(--bgray);font-size:10px;padding:0 4px}
 .hero-cta{display:flex;gap:16px;justify-content:center;margin-top:40px;opacity:0;animation:fadeUp .6s .8s forwards}
 .btn-primary{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:4px;text-transform:uppercase;padding:14px 32px;background:var(--red);color:var(--blk);text-decoration:none;transition:opacity .2s,transform .1s}
@@ -108,8 +107,8 @@ section{padding:120px 48px}
 .about-visual{position:relative;display:flex;align-items:center;justify-content:center}
 .about-s-wrap{position:relative;width:300px;height:300px;display:flex;align-items:center;justify-content:center}
 .about-s-wrap svg{width:100%;height:100%}
-.about-ring{position:absolute;width:320px;height:320px;border:1px solid rgba(226,75,74,.12);border-radius:50%;animation:spin 20s linear infinite}
-.about-ring2{position:absolute;width:260px;height:260px;border:1px solid rgba(127,119,221,.08);border-radius:50%;animation:spin 30s linear infinite reverse}
+.about-ring{position:absolute;width:320px;height:320px;border:1px solid rgba(192,57,43,.12);border-radius:50%;animation:spin 20s linear infinite}
+.about-ring2{position:absolute;width:260px;height:260px;border:1px solid rgba(92,53,204,.08);border-radius:50%;animation:spin 30s linear infinite reverse}
 
 /* ── SERVICES ───────────────────────────────────────── */
 #services{position:relative}
@@ -143,12 +142,13 @@ section{padding:120px 48px}
 .dj-genre.red{color:var(--red)}
 .dj-genre.mid{color:var(--mid)}
 .dj-genre.pur{color:var(--pur)}
+.dj-genre.urb{color:var(--urb)}
 .dj-city{font-size:11px;color:var(--bgray);letter-spacing:2px;margin-bottom:20px}
 .dj-bio{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:24px}
 .dj-tags{display:flex;flex-wrap:wrap;gap:6px}
 .dj-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;background:var(--card);color:var(--bgray)}
 .dj-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);text-decoration:none;margin-top:0;transition:all .2s;border-bottom:1px solid transparent;padding-bottom:2px;}
-.dj-cta:hover{gap:12px;color:#E85D5C;border-color:var(--red);}
+.dj-cta:hover{gap:12px;color:#D94A43;border-color:var(--red);}
 .roster-note{text-align:center;margin-top:48px;font-size:13px;color:var(--bgray);letter-spacing:2px}
 .roster-note strong{color:var(--gray)}
 
@@ -185,9 +185,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
 .footer-tagline strong{color:var(--bone)}
 .footer-genres{display:flex;flex-wrap:wrap;gap:6px}
 .footer-genre{font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:4px 10px}
-.footer-genre.r{color:var(--red);border:1px solid rgba(226,75,74,.3)}
-.footer-genre.m{color:var(--mid);border:1px solid rgba(200,125,187,.3)}
-.footer-genre.p{color:var(--pur);border:1px solid rgba(127,119,221,.3)}
+.footer-genre.fg-ht{color:#C0392B;border:1px solid rgba(192,57,43,.35)}
+.footer-genre.fg-techno{color:#C2185B;border:1px solid rgba(194,24,91,.35)}
+.footer-genre.fg-house{color:#8E24AA;border:1px solid rgba(142,36,170,.35)}
+.footer-genre.fg-urbano{color:#5C35CC;border:1px solid rgba(92,53,204,.35)}
 .footer-col h4{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--bone);margin-bottom:24px}
 .footer-col a{display:block;font-size:13px;color:var(--gray);text-decoration:none;margin-bottom:12px;transition:color .2s}
 .footer-col a:hover{color:var(--bone)}
@@ -261,9 +262,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
     <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#E24B4A"/>
-          <stop offset="50%" stop-color="#C87DBB"/>
-          <stop offset="100%" stop-color="#7F77DD"/>
+          <stop offset="0%" stop-color="#C0392B"/>
+          <stop offset="33.33%" stop-color="#C2185B"/>
+          <stop offset="66.66%" stop-color="#8E24AA"/>
+          <stop offset="100%" stop-color="#5C35CC"/>
         </linearGradient>
       </defs>
       <path d="M 38 10 Q 24 10 20 20 Q 16 30 22 37 L 38 44 Q 44 47 44 54 Q 44 60 36 62 Q 28 64 20 58" stroke="#F1EFE8" stroke-width="6" stroke-linecap="round" fill="none"/>
@@ -310,9 +312,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
       <svg viewBox="0 0 420 280" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#E24B4A"/>
-            <stop offset="50%" stop-color="#C87DBB"/>
-            <stop offset="100%" stop-color="#7F77DD"/>
+            <stop offset="0%" stop-color="#C0392B"/>
+            <stop offset="33.33%" stop-color="#C2185B"/>
+            <stop offset="66.66%" stop-color="#8E24AA"/>
+            <stop offset="100%" stop-color="#5C35CC"/>
           </linearGradient>
         </defs>
         <path d="M 175 48 Q 140 48 128 68 Q 116 88 130 104 L 200 138 Q 222 148 226 164 Q 232 186 214 198 Q 196 210 168 210 Q 140 210 126 196 Q 116 186 118 172" stroke="#F1EFE8" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
@@ -353,13 +356,13 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
     <div class="hero-divider"></div>
     <p class="hero-tagline" data-es="<strong>We don't book DJs.</strong><br>We build nights." data-en="<strong>We don't book DJs.</strong><br>We build nights."><strong>We don't book DJs.</strong><br>We build nights.</p>
     <div class="hero-genres">
-      <span class="genre g-red">Techno</span>
-      <span class="sep">·</span>
-      <span class="genre g-mid">House</span>
-      <span class="sep">·</span>
       <span class="genre g-ht">Hard Techno</span>
       <span class="sep">·</span>
-      <span class="genre g-pur2">Urbano</span>
+      <span class="genre g-techno">Techno</span>
+      <span class="sep">·</span>
+      <span class="genre g-house">House</span>
+      <span class="sep">·</span>
+      <span class="genre g-urbano">Urbano</span>
     </div>
     <div class="hero-cta">
       <a class="btn-primary" href="#contact" data-es="Contactar para booking" data-en="Get in touch">Contactar para booking</a>
@@ -381,7 +384,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         <h2 class="section-title reveal" data-es="La agencia<br>que construye<br>noches." data-en="The agency<br>that builds<br>nights.">La agencia<br>que construye<br>noches.</h2>
         <div class="grad-line reveal" style="width:60px;margin:24px 0"></div>
 
-        <p class="reveal" data-es="<strong>Subground no es underground puro. No es mainstream puro.</strong> Es el punto donde Techno, House, Hard Techno y Urbano funcionan juntos cuando el lineup está bien construido." data-en="<strong>Subground isn't pure underground. It's not pure mainstream.</strong> It's the point where Techno, House, Hard Techno and Urban work together when the lineup is built right."><strong>Subground no es underground puro. No es mainstream puro.</strong> Es el punto donde Techno, House, Hard Techno y Urbano funcionan juntos cuando el lineup está bien construido.</p>
+        <p class="reveal" data-es="<strong>Subground no es underground puro. No es mainstream puro.</strong> Es el punto donde Hard Techno, Techno, House y Urbano funcionan juntos cuando el lineup está bien construido." data-en="<strong>Subground isn't pure underground. It's not pure mainstream.</strong> It's the point where Hard Techno, Techno, House and Urban work together when the lineup is built right."><strong>Subground no es underground puro. No es mainstream puro.</strong> Es el punto donde Hard Techno, Techno, House y Urbano funcionan juntos cuando el lineup está bien construido.</p>
         <p class="reveal reveal-delay-1" data-es="Trabajamos con artistas emergentes y consolidados enfocados en pista, creando lineups que funcionan y experiencias que conectan con el público." data-en="We work with emerging and established floor-focused artists, building lineups that work and experiences that connect with the crowd.">Trabajamos con artistas emergentes y consolidados enfocados en pista, creando lineups que funcionan y experiencias que conectan con el público.</p>
         <p class="reveal reveal-delay-2" data-es="No hacemos listas al azar. Cada nombre que ponemos en un cartel tiene una razón: el sonido encaja, el momento es el correcto y el público lo va a sentir." data-en="We don't make random lists. Every name we put on a lineup has a reason: the sound fits, the moment is right, and the crowd will feel it.">No hacemos listas al azar. Cada nombre que ponemos en un cartel tiene una razón: el sonido encaja, el momento es el correcto y el público lo va a sentir.</p>
         <div class="about-stats reveal reveal-delay-3">
@@ -398,9 +401,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
           <svg viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="ag2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#E24B4A"/>
-                <stop offset="50%" stop-color="#C87DBB"/>
-                <stop offset="100%" stop-color="#7F77DD"/>
+                <stop offset="0%" stop-color="#C0392B"/>
+                <stop offset="33.33%" stop-color="#C2185B"/>
+                <stop offset="66.66%" stop-color="#8E24AA"/>
+                <stop offset="100%" stop-color="#5C35CC"/>
               </linearGradient>
             </defs>
             <path d="M 175 48 Q 140 48 128 68 Q 116 88 130 104 L 200 138 Q 222 148 226 164 Q 232 186 214 198 Q 196 210 168 210 Q 140 210 126 196 Q 116 186 118 172" stroke="#F1EFE8" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
@@ -495,7 +499,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
       <div class="dj-card reveal">
         <div class="dj-avatar">
           <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="dg1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#E24B4A"/><stop offset="100%" stop-color="#7F77DD"/></linearGradient></defs>
+            <defs><linearGradient id="dg1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#C0392B"/><stop offset="33.33%" stop-color="#C2185B"/><stop offset="66.66%" stop-color="#8E24AA"/><stop offset="100%" stop-color="#5C35CC"/></linearGradient></defs>
             <path d="M 32 8 Q 20 8 16 16 Q 12 24 18 30 L 30 36 Q 36 39 36 44 Q 36 50 28 52" stroke="#F1EFE8" stroke-width="5" stroke-linecap="round" fill="none"/>
             <path d="M 38 34 Q 42 40 39 46 Q 36 52 28 54 Q 20 56 14 50" stroke="#F1EFE8" stroke-width="5" stroke-linecap="round" fill="none"/>
             <rect x="6"  y="28" width="3" height="8"  rx="1.5" fill="url(#dg1)" opacity="0.7"/>
@@ -504,7 +508,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
           </svg>
         </div>
         <div class="dj-name">F3LY</div>
-        <div class="dj-genre mid" data-es="Techno / Industrial" data-en="Techno / Industrial">Urban</div>
+        <div class="dj-genre urb" data-es="Techno / Industrial" data-en="Techno / Industrial">Urban</div>
         <div class="dj-city">Murcia · Spain</div>
         <p class="dj-bio" data-es="DJ y productor internacional. Conocido mundialmente por sus mashups y edits virales. Más de 116.000 seguidores en redes. Giras anuales por Italia y Latinoamérica." data-en="International DJ and producer. Known worldwide for his mashups and viral edits. Over 116,000 followers on social media. Annual tours in Italy and Latin America.">DJ y productor internacional. Conocido mundialmente por sus mashups y edits virales. Más de 116.000 seguidores en redes. Giras anuales por Italia y Latinoamérica.</p>
         <div class="dj-tags"><span class="dj-tag">Urban</span><span class="dj-tag">Reggaeton</span><span class="dj-tag">Dembow</span></div>
@@ -517,7 +521,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
       <div class="dj-card reveal reveal-delay-1">
         <div class="dj-avatar">
           <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="dg2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#E24B4A"/><stop offset="100%" stop-color="#7F77DD"/></linearGradient></defs>
+            <defs><linearGradient id="dg2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#C0392B"/><stop offset="33.33%" stop-color="#C2185B"/><stop offset="66.66%" stop-color="#8E24AA"/><stop offset="100%" stop-color="#5C35CC"/></linearGradient></defs>
             <path d="M 32 8 Q 20 8 16 16 Q 12 24 18 30 L 30 36 Q 36 39 36 44 Q 36 50 28 52" stroke="#F1EFE8" stroke-width="5" stroke-linecap="round" fill="none"/>
             <path d="M 38 34 Q 42 40 39 46 Q 36 52 28 54 Q 20 56 14 50" stroke="#F1EFE8" stroke-width="5" stroke-linecap="round" fill="none"/>
             <rect x="6"  y="28" width="3" height="8"  rx="1.5" fill="url(#dg2)" opacity="0.7"/>
@@ -526,7 +530,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
           </svg>
         </div>
         <div class="dj-name">DJ B</div>
-        <div class="dj-genre red" data-es="Tech House / House" data-en="Tech House / House">Tech House / House</div>
+        <div class="dj-genre pur" data-es="Tech House / House" data-en="Tech House / House">Tech House / House</div>
         <div class="dj-city">Barcelona · Spain</div>
         <p class="dj-bio" data-es="Groove profundo y selección meticulosa. Versatilidad total para adaptar el set desde warm-up hasta cierre." data-en="Deep groove and meticulous selection. Full versatility from warm-up to closing set.">Groove profundo y selección meticulosa. Versatilidad total para adaptar el set desde warm-up hasta cierre.</p>
         <div class="dj-tags"><span class="dj-tag">Tech House</span><span class="dj-tag">Deep</span><span class="dj-tag">Minimal</span></div>
@@ -539,7 +543,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
       <div class="dj-card reveal reveal-delay-2">
         <div class="dj-avatar">
           <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="dg3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#E24B4A"/><stop offset="100%" stop-color="#7F77DD"/></linearGradient></defs>
+            <defs><linearGradient id="dg3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#C0392B"/><stop offset="33.33%" stop-color="#C2185B"/><stop offset="66.66%" stop-color="#8E24AA"/><stop offset="100%" stop-color="#5C35CC"/></linearGradient></defs>
             <path d="M 32 8 Q 20 8 16 16 Q 12 24 18 30 L 30 36 Q 36 39 36 44 Q 36 50 28 52" stroke="#F1EFE8" stroke-width="5" stroke-linecap="round" fill="none"/>
             <path d="M 38 34 Q 42 40 39 46 Q 36 52 28 54 Q 20 56 14 50" stroke="#F1EFE8" stroke-width="5" stroke-linecap="round" fill="none"/>
             <rect x="6"  y="28" width="3" height="8"  rx="1.5" fill="url(#dg3)" opacity="0.7"/>
@@ -548,7 +552,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
           </svg>
         </div>
         <div class="dj-name">DJ C</div>
-        <div class="dj-genre" style="color:#C0392B;" data-es="Hard Techno" data-en="Hard Techno">Hard Techno</div>
+        <div class="dj-genre red" data-es="Hard Techno" data-en="Hard Techno">Hard Techno</div>
         <div class="dj-city">Valencia · Spain</div>
         <p class="dj-bio" data-es="Hard Techno con influencias industriales y de peak time. Sets de alta energía pensados para pistas que no paran." data-en="Hard Techno with industrial and peak time influences. High-energy sets built for floors that don't stop.">Hard Techno con influencias industriales y de peak time. Sets de alta energía pensados para pistas que no paran.</p>
         <div class="dj-tags"><span class="dj-tag">Hard Techno</span><span class="dj-tag">Industrial</span><span class="dj-tag">Peak Time</span></div>
@@ -636,7 +640,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
       <div class="footer-brand">
         <div class="footer-logo">
           <svg width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#E24B4A"/><stop offset="50%" stop-color="#C87DBB"/><stop offset="100%" stop-color="#7F77DD"/></linearGradient></defs>
+            <defs><linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#C0392B"/><stop offset="33.33%" stop-color="#C2185B"/><stop offset="66.66%" stop-color="#8E24AA"/><stop offset="100%" stop-color="#5C35CC"/></linearGradient></defs>
             <path d="M 38 10 Q 24 10 20 20 Q 16 30 22 37 L 38 44 Q 44 47 44 54 Q 44 60 36 62 Q 28 64 20 58" stroke="#F1EFE8" stroke-width="6" stroke-linecap="round" fill="none"/>
             <path d="M 46 42 Q 52 50 48 58 Q 44 66 36 68 Q 28 70 20 64" stroke="#F1EFE8" stroke-width="6" stroke-linecap="round" fill="none"/>
             <rect x="8"  y="34" width="3" height="6"  rx="1.5" fill="url(#fg)" opacity="0.5"/>
@@ -649,10 +653,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         </div>
         <p class="footer-tagline" data-es="<strong>We don't book DJs.</strong><br>We build nights." data-en="<strong>We don't book DJs.</strong><br>We build nights."><strong>We don't book DJs.</strong><br>We build nights.</p>
         <div class="footer-genres">
-          <span class="footer-genre r">Techno</span>
-          <span class="footer-genre m">House</span>
-          <span class="footer-genre" style="color:#C0392B;border:1px solid rgba(192,57,43,.3);">Hard Techno</span>
-          <span class="footer-genre p">Urbano</span>
+          <span class="footer-genre fg-ht">Hard Techno</span>
+          <span class="footer-genre fg-techno">Techno</span>
+          <span class="footer-genre fg-house">House</span>
+          <span class="footer-genre fg-urbano">Urbano</span>
         </div>
       </div>
       <div class="footer-col">
