@@ -70,6 +70,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-genres .genre.g-red{color:var(--red);border-color:var(--red)}
 .hero-genres .genre.g-mid{color:var(--mid);border-color:var(--mid)}
 .hero-genres .genre.g-pur{color:var(--pur);border-color:var(--pur)}
+.hero-genres .genre.g-ht{color:#C0392B;border-color:#C0392B}
 .hero-genres .genre.g-pur2{color:#9B8FE8;border-color:#9B8FE8}
 .hero-genres .sep{color:var(--bgray);font-size:10px;padding:0 4px}
 .hero-cta{display:flex;gap:16px;justify-content:center;margin-top:40px;opacity:0;animation:fadeUp .6s .8s forwards}
@@ -89,13 +90,13 @@ section{padding:120px 48px}
 .container{max-width:1200px;margin:0 auto}
 
 /* ── ABOUT ──────────────────────────────────────────── */
-#about{background:var(--panel);position:relative;overflow:hidden}
+#about{background:var(--card);position:relative;overflow:hidden}
 #about::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:var(--grad)}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
 .about-text p{font-size:16px;color:var(--gray);line-height:1.8;margin-bottom:20px}
 .about-text p strong{color:var(--bone)}
 .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:40px}
-.stat{background:var(--card);padding:28px 24px;position:relative;overflow:hidden}
+.stat{background:var(--panel);padding:28px 24px;position:relative;overflow:hidden}
 .stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
 .stat-num{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:48px;line-height:1;margin-bottom:8px}
 .stat-num.red{color:var(--red)}
@@ -112,10 +113,10 @@ section{padding:120px 48px}
 #services{position:relative}
 .services-header{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:64px}
 .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px}
-.service-card{background:var(--panel);padding:48px 40px;position:relative;overflow:hidden;transition:background .3s}
+.service-card{background:var(--card);padding:48px 40px;position:relative;overflow:hidden;transition:background .3s}
 .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
 .service-card:hover::before{transform:scaleX(1)}
-.service-card:hover{background:var(--card)}
+.service-card:hover{background:var(--panel)}
 .service-num{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:48px;color:var(--card);margin-bottom:24px;line-height:1;transition:color .3s}
 .service-card:hover .service-num{color:var(--panel)}
 .service-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:28px;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;color:var(--bone)}
@@ -125,15 +126,15 @@ section{padding:120px 48px}
 .service-card:hover .service-tag{border-color:var(--bgray);color:var(--gray)}
 
 /* ── ROSTER ─────────────────────────────────────────── */
-#roster{background:var(--panel);position:relative}
+#roster{background:var(--card);position:relative}
 #roster::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:var(--grad)}
 .roster-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:64px}
 .roster-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.dj-card{background:var(--card);padding:40px 32px;position:relative;overflow:hidden;transition:transform .3s}
+.dj-card{background:var(--panel);padding:40px 32px;position:relative;overflow:hidden;transition:transform .3s}
 .dj-card:hover{transform:translateY(-4px)}
 .dj-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .4s}
 .dj-card:hover::after{transform:scaleX(1)}
-.dj-avatar{width:72px;height:72px;background:var(--panel);border-radius:50%;margin-bottom:24px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.dj-avatar{width:72px;height:72px;background:var(--card);border-radius:50%;margin-bottom:24px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
 .dj-avatar svg{width:52px;height:52px}
 .dj-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
 .dj-genre{font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px}
@@ -143,7 +144,7 @@ section{padding:120px 48px}
 .dj-city{font-size:11px;color:var(--bgray);letter-spacing:2px;margin-bottom:20px}
 .dj-bio{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:24px}
 .dj-tags{display:flex;flex-wrap:wrap;gap:6px}
-.dj-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;background:var(--panel);color:var(--bgray)}
+.dj-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;background:var(--card);color:var(--bgray)}
 .dj-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);text-decoration:none;margin-top:24px;transition:gap .2s}
 .dj-cta:hover{gap:12px}
 .roster-note{text-align:center;margin-top:48px;font-size:13px;color:var(--bgray);letter-spacing:2px}
@@ -160,11 +161,11 @@ section{padding:120px 48px}
 .contact-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--red)}
 .contact-val{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:600;color:var(--bone);letter-spacing:1px;text-decoration:none;transition:color .2s}
 .contact-val:hover{color:var(--mid)}
-.contact-form{background:var(--panel);padding:48px;position:relative}
+.contact-form{background:var(--card);padding:48px;position:relative}
 .contact-form::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
 .form-group{margin-bottom:24px}
 .form-label{display:block;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gray);margin-bottom:10px}
-.form-input,.form-textarea,.form-select{width:100%;background:var(--card);border:1px solid var(--card);color:var(--bone);padding:14px 16px;font-family:'Barlow',sans-serif;font-size:14px;transition:border-color .2s;outline:none;appearance:none}
+.form-input,.form-textarea,.form-select{width:100%;background:var(--panel);border:1px solid var(--panel);color:var(--bone);padding:14px 16px;font-family:'Barlow',sans-serif;font-size:14px;transition:border-color .2s;outline:none;appearance:none}
 .form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--red)}
 .form-textarea{min-height:120px;resize:vertical}
 .form-select option{background:var(--card)}
@@ -342,7 +343,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
       <span class="sep">·</span>
       <span class="genre g-mid">House</span>
       <span class="sep">·</span>
-      <span class="genre g-pur">Hard Techno</span>
+      <span class="genre g-ht">Hard Techno</span>
       <span class="sep">·</span>
       <span class="genre g-pur2">Urbano</span>
     </div>
@@ -526,7 +527,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
           </svg>
         </div>
         <div class="dj-name">DJ C</div>
-        <div class="dj-genre pur" data-es="Hard Techno" data-en="Hard Techno">Hard Techno</div>
+        <div class="dj-genre" style="color:#C0392B;" data-es="Hard Techno" data-en="Hard Techno">Hard Techno</div>
         <div class="dj-city">Valencia · Spain</div>
         <p class="dj-bio" data-es="Hard Techno con influencias industriales y de peak time. Sets de alta energía pensados para pistas que no paran." data-en="Hard Techno with industrial and peak time influences. High-energy sets built for floors that don't stop.">Hard Techno con influencias industriales y de peak time. Sets de alta energía pensados para pistas que no paran.</p>
         <div class="dj-tags"><span class="dj-tag">Hard Techno</span><span class="dj-tag">Industrial</span><span class="dj-tag">Peak Time</span></div>
@@ -617,7 +618,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         <div class="footer-genres">
           <span class="footer-genre r">Techno</span>
           <span class="footer-genre m">House</span>
-          <span class="footer-genre p">Hard Techno</span>
+          <span class="footer-genre" style="color:#C0392B;border:1px solid rgba(192,57,43,.3);">Hard Techno</span>
           <span class="footer-genre p">Urbano</span>
         </div>
       </div>
