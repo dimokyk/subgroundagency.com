@@ -1,4 +1,6 @@
-# Subground Agency - MVC Web App
+# Subground Agency — MVC Web App
+
+Booking agency · España. We don't book DJs. We build nights. Techno · House · Hard Techno · Urbano · booking@subgroundagency.com
 
 Base del proyecto reorganizada para trabajar con arquitectura MVC profesional en Node.js + Express.
 
@@ -14,13 +16,26 @@ Base del proyecto reorganizada para trabajar con arquitectura MVC profesional en
 ## Arranque local
 
 1. Instalar dependencias:
-   - `npm install`
+
+   ```bash
+   npm install
+   ```
+
 2. Iniciar en desarrollo:
-   - `npm run dev`
+
+   ```bash
+   npm run dev
+   ```
+
 3. Iniciar en produccion:
-   - `npm start`
+
+   ```bash
+   npm start
+   ```
+
+Copia `.env.example` a `.env` y configura SMTP para el formulario de contacto.
 
 ## Rutas iniciales
 
-- `/` -> home
-- `/artists/f3ly` -> perfil del artista F3LY
+- `/` → home
+- `/artists/f3ly` → perfil del artista F3LY
