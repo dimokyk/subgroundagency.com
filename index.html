@@ -591,9 +591,8 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
           </div>
         </div>
       </div>
-      <form class="contact-form reveal" id="contactForm" action="https://formsubmit.co/booking@subgroundagency.com" method="POST">
+      <form class="contact-form reveal" id="contactForm" action="#" method="post">
         <input type="hidden" name="_subject" value="Subground Agency — Formulario web"/>
-        <input type="hidden" name="_next" value="https://subgroundagency.com/#contact"/>
         <input type="text" name="_gotcha" style="position:absolute;left:-9999px;width:1px;height:1px" tabindex="-1" autocomplete="off" aria-hidden="true"/>
         <div class="form-group">
           <label class="form-label" data-es="Tu nombre" data-en="Your name">Tu nombre</label>
@@ -605,7 +604,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         </div>
         <div class="form-group">
           <label class="form-label">Email</label>
-          <input class="form-input" type="email" name="email" required placeholder="—"/>
+          <input class="form-input" id="contactEmail" type="email" name="email" required placeholder="—"/>
         </div>
         <div class="form-group">
           <label class="form-label" data-es="Tipo de solicitud" data-en="Request type">Tipo de solicitud</label>
@@ -726,12 +725,55 @@ function toggleLang(){
   });
 }
 
-// ── FORM SUBMIT (FormSubmit → llega al correo booking@…) ──────────────────────────────────────
+// ── FORM SUBMIT (FormSubmit AJAX → sin redireccion; correo booking@…) ─────────────────────────
+const CONTACT_FORM_ENDPOINT='https://formsubmit.co/ajax/booking@subgroundagency.com';
 const contactForm=document.getElementById('contactForm');
 const contactSubmitBtn=contactForm.querySelector('.form-submit');
-contactForm.addEventListener('submit',function(){
+const contactEmailInput=document.getElementById('contactEmail');
+contactForm.addEventListener('submit',async function(e){
+  e.preventDefault();
+  const sending=lang==='es'?'Enviando...':'Sending...';
+  const okText=lang==='es'?'✓ Enviado':'✓ Sent';
+  const failText=lang==='es'?'No se pudo enviar':'Send failed';
+  const btnIdle=lang==='es'?'Enviar solicitud':'Send request';
   contactSubmitBtn.disabled=true;
-  contactSubmitBtn.textContent=lang==='es'?'Enviando...':'Sending...';
+  contactSubmitBtn.textContent=sending;
+  contactSubmitBtn.style.opacity='0.85';
+  try{
+    const fd=new FormData(contactForm);
+    fd.set('_replyto',contactEmailInput.value.trim());
+    const res=await fetch(CONTACT_FORM_ENDPOINT,{
+      method:'POST',
+      body:fd,
+      headers:{Accept:'application/json'}
+    });
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok)throw new Error(data.message||data.error||String(res.status));
+    const ok=data.success===true||data.success==='true'||typeof data.success==='undefined';
+    if(!ok)throw new Error(data.message||data.error||'FormSubmit declined');
+    contactSubmitBtn.textContent=okText;
+    contactSubmitBtn.style.background='#1D9E75';
+    contactSubmitBtn.style.color='#E1F5EE';
+    contactForm.reset();
+    setTimeout(()=>{
+      contactSubmitBtn.disabled=false;
+      contactSubmitBtn.textContent=btnIdle;
+      contactSubmitBtn.style.background='';
+      contactSubmitBtn.style.color='';
+      contactSubmitBtn.style.opacity='';
+    },3500);
+  }catch(_err){
+    contactSubmitBtn.textContent=failText;
+    contactSubmitBtn.style.background='#922E2E';
+    contactSubmitBtn.style.color='#FBEAEA';
+    setTimeout(()=>{
+      contactSubmitBtn.disabled=false;
+      contactSubmitBtn.textContent=btnIdle;
+      contactSubmitBtn.style.background='';
+      contactSubmitBtn.style.color='';
+      contactSubmitBtn.style.opacity='';
+    },4500);
+  }
 });
 </script>
 </body>

@@ -6,15 +6,13 @@ Booking agency · España. We don't book DJs. We build nights. Techno · House �
 
 - **`index.html`**, **`f3ly.html`** y **`favicon.ico` en la raíz del repo**: es lo que muestra **GitHub Pages** (sitio público igual que antes, estático).
 - **Express + `npm run dev`**: si quieres previsualizar en local con servidor propio sirve los mismos HTML de la raíz (no ejecuta SMTP).
-- **Formulario de contacto**: envío con **FormSubmit** al correo `booking@subgroundagency.com` (no hace falta Node en GitHub).
+- **Formulario de contacto**: envío con **FormSubmit (AJAX)** al correo `booking@subgroundagency.com`; el botón muestra estado **enviado** sin salir de la página.
 
 ### Primera vez con FormSubmit
 
 La primera vez que alguien envía el formulario, puede llegar un **correo de activación** a `booking@subgroundagency.com`; hay que confirmarlo para activar los envíos.
 
-Para cambiar la web de vuelta tras enviar:
-
-- El formulario lleva **`_next`** apuntando a `https://subgroundagency.com/#contact`. Si usas otro dominio o subdominio, edita ese valor dentro de **`index.html`**.
+El endpoint está en **`index.html`** como `CONTACT_FORM_ENDPOINT` (`formsubmit.co/ajax/...`). El formulario **no debe abrirse como `file://`**: úsalo en GitHub Pages o en `npm run dev`.
 
 ### GitHub Pages + dominio (Squarespace)
 
