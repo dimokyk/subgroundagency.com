@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <title>F3LY — Subground Agency</title>
-<meta name="description" content="F3LY — DJ y productor internacional. Urbano · Hard Techno. Booking via Subground Agency."/>
+<meta name="description" content="F3LY — DJ y productor internacional. Urbano · Reggaetón · Dembow. Booking via Subground Agency."/>
 <link rel="icon" href="/favicon.ico?v=4" type="image/x-icon" sizes="any"/>
 <link rel="shortcut icon" href="/favicon.ico?v=4"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -115,8 +115,9 @@ section{padding:100px 48px}
 /* TRACKS */
 #tracks{background:var(--panel);position:relative}
 #tracks::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:var(--grad)}
-.tracks-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;margin-top:48px}
-.track-card{background:var(--card);padding:24px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;transition:transform .2s}
+.tracks-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px;margin-top:48px;align-items:stretch}
+.track-card{background:var(--card);padding:24px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;transition:transform .2s;height:100%;min-height:100%}
+.track-viral{margin-top:auto;padding-top:4px}
 .track-card:hover{transform:translateY(-3px)}
 .track-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .4s}
 .track-card:hover::after{transform:scaleX(1)}
@@ -429,8 +430,7 @@ section{padding:100px 48px}
         <div class="detail-row"><span class="detail-label">Nombre real</span><span class="detail-val">Félix Ibáñez Gambín</span></div>
         <div class="detail-row"><span class="detail-label">Nacimiento</span><span class="detail-val">10/02/1997</span></div>
         <div class="detail-row"><span class="detail-label">Residencia</span><span class="detail-val">Murcia, España</span></div>
-        <div class="detail-row"><span class="detail-label">Género principal</span><span class="detail-val" style="color:var(--ht)">Urbano</span></div>
-        <div class="detail-row"><span class="detail-label">Subgéneros</span><span class="detail-val" style="color:var(--bgray);font-size:14px;">Reggaetón · Dembow · Hard Techno</span></div>
+        <div class="detail-row"><span class="detail-label">Géneros</span><span class="detail-val" style="color:var(--bone);letter-spacing:.5px">Urbano · Reggaetón · Dembow</span></div>
         <div class="detail-row"><span class="detail-label">En cabina desde</span><span class="detail-val">2017 · 7+ años</span></div>
         <div class="detail-row"><span class="detail-label">Giras</span><span class="detail-val">España + Italia + Latinoamérica</span></div>
 
@@ -453,8 +453,8 @@ section{padding:100px 48px}
             <div style="background:var(--panel);padding:16px 20px;">
               <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;color:var(--mid);margin-bottom:10px;">INTERNACIONAL</div>
               <div style="display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--gray);">
-                <span>Guatemala · Prive Club</span>
-                <span>Malta · Move It</span>
+                <span>Prive Club · Guatemala</span>
+                <span>Move It · Malta</span>
                 <span style="margin-top:8px;color:var(--bgray);font-size:12px;">2 giras anuales internacionales</span>
               </div>
             </div>
@@ -496,7 +496,7 @@ section{padding:100px 48px}
         <span class="track-num">04</span>
         <div class="track-artists">F3LY</div>
         <div class="track-title">Si Tu Marido<br>No Te Quiere</div>
-        <span class="track-type" style="color:var(--ht);border-color:rgba(192,57,43,.4)">Hard Techno Mix</span>
+        <span class="track-type" style="color:var(--ht);border-color:rgba(192,57,43,.4)">F3LY Mashup</span>
         <div class="track-viral">Cruce de géneros</div>
       </div>
     </div>
@@ -512,7 +512,7 @@ section{padding:100px 48px}
       <figure class="g-item reveal"><img src="/images/gallery/f3ly-gallery-01.jpg?v=2" loading="lazy" decoding="async" width="386" height="304" alt="F3LY en cabina"/></figure>
       <figure class="g-item reveal reveal-delay-1"><img src="/images/gallery/f3ly-gallery-02.jpg?v=2" loading="lazy" decoding="async" width="449" height="304" alt="F3LY directo ante el público"/></figure>
       <figure class="g-item g-wide reveal"><img src="/images/gallery/f3ly-gallery-03.jpg?v=2" loading="lazy" decoding="async" width="860" height="322" alt="F3LY festival"/></figure>
-      <figure class="g-item reveal"><img src="/images/gallery/f3ly-gallery-04.jpg?v=1" loading="lazy" decoding="async" width="445" height="298" alt="Escenario F3LY"/></figure>
+      <figure class="g-item reveal"><img src="/images/gallery/f3ly-gallery-04.jpg?v=2" loading="lazy" decoding="async" width="445" height="298" alt="Escenario F3LY"/></figure>
       <figure class="g-item reveal reveal-delay-1"><img src="/images/gallery/f3ly-gallery-05.jpg?v=2" loading="lazy" decoding="async" width="381" height="298" alt="F3LY en vivo"/></figure>
     </div>
   </div>
@@ -585,7 +585,7 @@ section{padding:100px 48px}
         <p style="font-size:15px;color:var(--gray);line-height:1.7;">Suficiente agua durante la actuación.</p>
         <div style="margin-top:32px;padding-top:32px;border-top:1px solid var(--card);">
           <div class="rider-title" style="margin-bottom:16px;">Contacto directo</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;color:var(--bone);margin-bottom:8px;">+34 622 00 32 77</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;color:var(--bone);margin-bottom:8px;"><a href="tel:+34662644586" style="color:inherit;text-decoration:none;">+34 662 644 586</a></div>
           <div style="font-size:13px;color:var(--gray);">Para consultas de rider o condiciones especiales</div>
         </div>
         <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--card);">
