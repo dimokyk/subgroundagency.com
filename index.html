@@ -117,8 +117,8 @@ section{padding:120px 48px}
 .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
 .service-card:hover::before{transform:scaleX(1)}
 .service-card:hover{background:var(--panel)}
-.service-num{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:48px;color:var(--card);margin-bottom:24px;line-height:1;transition:color .3s}
-.service-card:hover .service-num{color:var(--panel)}
+.service-num{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:48px;color:#2C2C2A;margin-bottom:24px;line-height:1;transition:color .3s}
+.service-card:hover .service-num{color:#444441}
 .service-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:28px;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;color:var(--bone)}
 .service-desc{font-size:14px;color:var(--gray);line-height:1.7;margin-bottom:24px}
 .service-tags{display:flex;flex-wrap:wrap;gap:8px}
@@ -226,6 +226,17 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
   .about-visual{display:none}
   .hero-logo-svg{width:160px;height:130px}
 }
+
+.btn-presskit{display:inline-flex;align-items:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:10px 22px;border:1px solid var(--bgray);color:var(--bone);text-decoration:none;transition:all .2s;}
+.btn-presskit:hover{border-color:var(--bone);background:rgba(241,239,232,.06);}
+.btn-presskit svg{width:14px;height:14px;stroke:currentColor;fill:none;flex-shrink:0;}
+.btn-profile{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gray);text-decoration:none;margin-top:16px;transition:all .2s;border-bottom:1px solid transparent;padding-bottom:2px;}
+.btn-profile:hover{color:var(--bone);border-color:var(--bone);}
+.dj-actions{display:flex;align-items:center;justify-content:space-between;margin-top:20px;flex-wrap:wrap;gap:8px;}
+.presskit-box{background:var(--card);border-radius:var(--border-radius,6px);padding:24px 32px;margin-top:32px;display:flex;align-items:center;justify-content:space-between;gap:24px;border:1px solid var(--bgray);flex-wrap:wrap;}
+.presskit-box-text{display:flex;flex-direction:column;gap:4px;}
+.presskit-box-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;}
+.presskit-box-desc{font-size:13px;color:var(--gray);}
 </style>
 </head>
 <body>
@@ -275,6 +286,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
     <a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a>
   </div>
   <div style="display:flex;align-items:center;gap:16px">
+    <a class="btn-presskit" href="Subground_Agency_Presskit_v3.pdf" download style="padding:6px 14px;font-size:11px;" data-es="Presskit" data-en="Presskit"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>Presskit</a>
     <div class="nav-lang" id="langToggle" onclick="toggleLang()">EN</div>
     <a class="nav-cta" href="#contact" data-es="Booking" data-en="Booking">Booking</a>
     <div class="hamburger" id="hamburger" onclick="toggleMobile()">
@@ -366,7 +378,8 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         <p class="section-tag reveal" data-es="01 — Sobre nosotros" data-en="01 — About us">01 — Sobre nosotros</p>
         <h2 class="section-title reveal" data-es="La agencia<br>que construye<br>noches." data-en="The agency<br>that builds<br>nights.">La agencia<br>que construye<br>noches.</h2>
         <div class="grad-line reveal" style="width:60px;margin:24px 0"></div>
-        <p class="reveal" data-es="<strong>Subground no es underground puro. No es hard techno puro.</strong> Es el punto donde Techno, House, Hard Techno y Urbano funcionan juntos cuando el lineup está bien construido." data-en="<strong>Subground isn't pure underground. It's not pure hard techno.</strong> It's the point where Techno, House, Hard Techno and Urban work together when the lineup is built right."><strong>Subground no es underground puro. No es hard techno puro.</strong> Es el punto donde Techno, House, Hard Techno y Urbano funcionan juntos cuando el lineup está bien construido.</p>
+
+        <p class="reveal" data-es="<strong>Subground no es underground puro. No es mainstream puro.</strong> Es el punto donde Techno, House, Hard Techno y Urbano funcionan juntos cuando el lineup está bien construido." data-en="<strong>Subground isn't pure underground. It's not pure mainstream.</strong> It's the point where Techno, House, Hard Techno and Urban work together when the lineup is built right."><strong>Subground no es underground puro. No es mainstream puro.</strong> Es el punto donde Techno, House, Hard Techno y Urbano funcionan juntos cuando el lineup está bien construido.</p>
         <p class="reveal reveal-delay-1" data-es="Trabajamos con artistas emergentes y consolidados enfocados en pista, creando lineups que funcionan y experiencias que conectan con el público." data-en="We work with emerging and established floor-focused artists, building lineups that work and experiences that connect with the crowd.">Trabajamos con artistas emergentes y consolidados enfocados en pista, creando lineups que funcionan y experiencias que conectan con el público.</p>
         <p class="reveal reveal-delay-2" data-es="No hacemos listas al azar. Cada nombre que ponemos en un cartel tiene una razón: el sonido encaja, el momento es el correcto y el público lo va a sentir." data-en="We don't make random lists. Every name we put on a lineup has a reason: the sound fits, the moment is right, and the crowd will feel it.">No hacemos listas al azar. Cada nombre que ponemos en un cartel tiene una razón: el sonido encaja, el momento es el correcto y el público lo va a sentir.</p>
         <div class="about-stats reveal reveal-delay-3">
@@ -493,7 +506,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         <div class="dj-city">Madrid · Spain</div>
         <p class="dj-bio" data-es="Sonido oscuro y percusivo con influencias del techno berlinés. Sets de alta energía para late night." data-en="Dark, percussive sound with Berlin techno influences. High-energy sets built for late night.">Sonido oscuro y percusivo con influencias del techno berlinés. Sets de alta energía para late night.</p>
         <div class="dj-tags"><span class="dj-tag">Techno</span><span class="dj-tag">Industrial</span><span class="dj-tag">Dark</span></div>
-        <a class="dj-cta" href="#contact" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
+        <div class="dj-actions">
+          <a class="dj-cta" href="#contact" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
+          <a class="btn-profile" href="#contact" data-es="Ver perfil completo →" data-en="Full profile →">Ver perfil completo →</a>
+        </div>
       </div>
       <!-- DJ B -->
       <div class="dj-card reveal reveal-delay-1">
@@ -512,7 +528,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         <div class="dj-city">Barcelona · Spain</div>
         <p class="dj-bio" data-es="Groove profundo y selección meticulosa. Versatilidad total para adaptar el set desde warm-up hasta cierre." data-en="Deep groove and meticulous selection. Full versatility from warm-up to closing set.">Groove profundo y selección meticulosa. Versatilidad total para adaptar el set desde warm-up hasta cierre.</p>
         <div class="dj-tags"><span class="dj-tag">Tech House</span><span class="dj-tag">Deep</span><span class="dj-tag">Minimal</span></div>
-        <a class="dj-cta" href="#contact" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
+        <div class="dj-actions">
+          <a class="dj-cta" href="#contact" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
+          <a class="btn-profile" href="#contact" data-es="Ver perfil completo →" data-en="Full profile →">Ver perfil completo →</a>
+        </div>
       </div>
       <!-- DJ C -->
       <div class="dj-card reveal reveal-delay-2">
@@ -531,7 +550,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         <div class="dj-city">Valencia · Spain</div>
         <p class="dj-bio" data-es="Hard Techno con influencias industriales y de peak time. Sets de alta energía pensados para pistas que no paran." data-en="Hard Techno with industrial and peak time influences. High-energy sets built for floors that don't stop.">Hard Techno con influencias industriales y de peak time. Sets de alta energía pensados para pistas que no paran.</p>
         <div class="dj-tags"><span class="dj-tag">Hard Techno</span><span class="dj-tag">Industrial</span><span class="dj-tag">Peak Time</span></div>
-        <a class="dj-cta" href="#contact" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
+        <div class="dj-actions">
+          <a class="dj-cta" href="#contact" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
+          <a class="btn-profile" href="#contact" data-es="Ver perfil completo →" data-en="Full profile →">Ver perfil completo →</a>
+        </div>
       </div>
     </div>
     <p class="roster-note reveal" data-es="¿Eres DJ y quieres formar parte del roster? <strong>Escríbenos.</strong>" data-en="Are you a DJ and want to join the roster? <strong>Write to us.</strong>">¿Eres DJ y quieres formar parte del roster? <strong>Escríbenos.</strong></p>
@@ -546,6 +568,13 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         <p class="section-tag reveal" data-es="04 — Contacto" data-en="04 — Contact">04 — Contacto</p>
         <h2 class="contact-tagline reveal" data-es='¿Hablamos?<br><span class="accent">Cuéntanos</span><br>qué necesitas.' data-en='Let\'s<br><span class="accent">talk.</span><br>Tell us what you need.'>¿Hablamos?<br><span class="accent">Cuéntanos</span><br>qué necesitas.</h2>
         <div class="grad-line reveal" style="width:60px;margin:24px 0"></div>
+        <div class="presskit-box reveal">
+          <div class="presskit-box-text">
+            <span class="presskit-box-label" data-es="¿Quieres revisar el presskit primero?" data-en="Want to review the presskit first?">¿Quieres revisar el presskit primero?</span>
+            <span class="presskit-box-desc" data-es="Descarga el presskit completo de Subground Agency con todos los DJs, servicios y rider." data-en="Download the full Subground Agency presskit with all artists, services and rider.">Descarga el presskit completo de Subground Agency con todos los DJs, servicios y rider.</span>
+          </div>
+          <a class="btn-presskit" href="Subground_Agency_Presskit_v3.pdf" download data-es="Descargar Presskit" data-en="Download Presskit"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>Descargar Presskit</a>
+        </div>
         <div class="contact-info">
           <div class="contact-item reveal">
             <span class="contact-label">Booking</span>
