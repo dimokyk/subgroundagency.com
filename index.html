@@ -95,7 +95,27 @@ section{padding:120px 48px}
 /* ── ABOUT ──────────────────────────────────────────── */
 #about{background:var(--card);position:relative;overflow:hidden}
 #about::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:var(--grad)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;margin-top:60px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:60px}
+.about-visual-col{display:flex;flex-direction:column;align-items:center;gap:48px;width:100%}
+@media(min-width:901px){
+  .about-visual-col{grid-column:1;grid-row:1}
+  .about-text{grid-column:2;grid-row:1}
+}
+@media(max-width:900px){
+  .about-text,.about-visual-col{grid-column:auto;grid-row:auto}
+}
+.about-sound-block{width:100%}
+.about-sound-block .sound-intro{margin-bottom:0;max-width:none}
+.about-sound-block .sound-intro .section-tag{margin-bottom:14px}
+.about-sound-block .sound-intro .section-title{margin-bottom:12px;font-size:clamp(32px,4.2vw,56px)}
+.about-sound-block .sonido-grad-line{margin:16px 0 0}
+.about-sound-block .sound-grid{margin-top:28px}
+@media(min-width:901px){
+  .about-sound-block .sound-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(min-width:1600px){
+  .about-sound-block .sound-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
 .about-text p{font-size:16px;color:var(--gray);line-height:1.8;margin-bottom:20px}
 .about-text p strong{color:var(--bone)}
 .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:40px}
@@ -112,9 +132,7 @@ section{padding:120px 48px}
 .about-ring{position:absolute;width:320px;height:320px;border:1px solid rgba(192,57,43,.12);border-radius:50%;animation:spin 20s linear infinite}
 .about-ring2{position:absolute;width:260px;height:260px;border:1px solid rgba(92,53,204,.08);border-radius:50%;animation:spin 30s linear infinite reverse}
 
-/* ── SONIDO ─────────────────────────────────────────── */
-#sonido{background:var(--card);position:relative;overflow:hidden}
-#sonido::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:var(--grad)}
+/* ── SONIDO (integrado en #about; mismas tarjetas) ──── */
 .sound-intro{max-width:720px;margin-bottom:8px}
 .sound-intro .section-sub{max-width:520px;line-height:1.75;margin-top:16px}
 .sonido-grad-line{width:80px;height:1.5px;background:var(--grad);margin:28px 0 0;border:none}
@@ -292,6 +310,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
   .section-title{font-size:clamp(48px,6vw,110px)}
   .contact-tagline{font-size:clamp(40px,5vw,84px)}
   .about-grid{gap:96px}
+  .about-visual-col{gap:56px}
   .services-header{gap:72px}
   .contact-wrap{gap:96px}
   .footer-top{gap:72px}
@@ -318,6 +337,8 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
   .roster-header{flex-direction:column;align-items:flex-start;gap:20px}
   .footer-bottom{flex-direction:column;gap:12px;text-align:center}
   .about-visual{display:none}
+  .about-visual-col{align-items:stretch}
+  .about-sound-block .sound-intro .section-title{font-size:clamp(28px,8vw,48px)}
   .hero-logo-svg{max-width:160px}
 }
 @media(min-width:640px) and (max-width:900px){
@@ -353,7 +374,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about" onclick="closeMobile()" data-es="Nosotros" data-en="About">Nosotros</a>
   <a href="#services" onclick="closeMobile()" data-es="Servicios" data-en="Services">Servicios</a>
-  <a href="#sonido" onclick="closeMobile()" data-es="Sonido" data-en="Sound">Sonido</a>
   <a href="#roster" onclick="closeMobile()" data-es="Roster" data-en="Roster">Roster</a>
   <a href="#contact" onclick="closeMobile()" data-es="Contacto" data-en="Contact">Contacto</a>
 </div>
@@ -388,7 +408,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
   <div class="nav-links">
     <a href="#about" data-es="Nosotros" data-en="About">Nosotros</a>
     <a href="#services" data-es="Servicios" data-en="Services">Servicios</a>
-    <a href="#sonido" data-es="Sonido" data-en="Sound">Sonido</a>
     <a href="#roster" data-es="Roster" data-en="Roster">Roster</a>
     <a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a>
   </div>
@@ -456,34 +475,79 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
           <div class="stat"><div class="stat-num red">∞</div><div class="stat-label" data-es="Noches construidas" data-en="Nights built">Noches construidas</div></div>
         </div>
       </div>
-      <div class="about-visual reveal">
-        <div class="about-ring"></div>
-        <div class="about-ring2"></div>
-        <div class="about-s-wrap">
-          <svg viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="ag2" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#C0392B"/>
-                <stop offset="33.33%" stop-color="#C2185B"/>
-                <stop offset="66.66%" stop-color="#8E24AA"/>
-                <stop offset="100%" stop-color="#5C35CC"/>
-              </linearGradient>
-            </defs>
-            <path d="M 175 48 Q 140 48 128 68 Q 116 88 130 104 L 200 138 Q 222 148 226 164 Q 232 186 214 198 Q 196 210 168 210 Q 140 210 126 196 Q 116 186 118 172" stroke="#F1EFE8" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
-            <path d="M 245 152 Q 258 168 250 190 Q 240 216 216 228 Q 190 242 160 242 Q 126 242 108 220 Q 94 202 100 180" stroke="#F1EFE8" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
-            <rect x="136" y="152" width="5" height="26" rx="2" fill="url(#ag2)" opacity="0.6"/>
-            <rect x="144" y="142" width="5" height="36" rx="2" fill="url(#ag2)" opacity="0.8"/>
-            <rect x="152" y="134" width="5" height="44" rx="2" fill="url(#ag2)"/>
-            <rect x="160" y="128" width="5" height="50" rx="2" fill="url(#ag2)"/>
-            <rect x="168" y="134" width="5" height="44" rx="2" fill="url(#ag2)"/>
-            <rect x="176" y="140" width="5" height="38" rx="2" fill="url(#ag2)" opacity="0.9"/>
-            <rect x="184" y="148" width="5" height="30" rx="2" fill="url(#ag2)" opacity="0.75"/>
-            <rect x="192" y="155" width="5" height="23" rx="2" fill="url(#ag2)" opacity="0.6"/>
-            <rect x="200" y="160" width="5" height="18" rx="2" fill="url(#ag2)" opacity="0.5"/>
-            <rect x="208" y="154" width="5" height="24" rx="2" fill="url(#ag2)" opacity="0.65"/>
-            <rect x="216" y="146" width="5" height="32" rx="2" fill="url(#ag2)" opacity="0.8"/>
-            <rect x="224" y="138" width="5" height="42" rx="2" fill="url(#ag2)" opacity="0.9"/>
-          </svg>
+      <div class="about-visual-col reveal">
+        <div class="about-visual">
+          <div class="about-ring"></div>
+          <div class="about-ring2"></div>
+          <div class="about-s-wrap">
+            <svg viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="ag2" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#C0392B"/>
+                  <stop offset="33.33%" stop-color="#C2185B"/>
+                  <stop offset="66.66%" stop-color="#8E24AA"/>
+                  <stop offset="100%" stop-color="#5C35CC"/>
+                </linearGradient>
+              </defs>
+              <path d="M 175 48 Q 140 48 128 68 Q 116 88 130 104 L 200 138 Q 222 148 226 164 Q 232 186 214 198 Q 196 210 168 210 Q 140 210 126 196 Q 116 186 118 172" stroke="#F1EFE8" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
+              <path d="M 245 152 Q 258 168 250 190 Q 240 216 216 228 Q 190 242 160 242 Q 126 242 108 220 Q 94 202 100 180" stroke="#F1EFE8" stroke-width="28" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.9"/>
+              <rect x="136" y="152" width="5" height="26" rx="2" fill="url(#ag2)" opacity="0.6"/>
+              <rect x="144" y="142" width="5" height="36" rx="2" fill="url(#ag2)" opacity="0.8"/>
+              <rect x="152" y="134" width="5" height="44" rx="2" fill="url(#ag2)"/>
+              <rect x="160" y="128" width="5" height="50" rx="2" fill="url(#ag2)"/>
+              <rect x="168" y="134" width="5" height="44" rx="2" fill="url(#ag2)"/>
+              <rect x="176" y="140" width="5" height="38" rx="2" fill="url(#ag2)" opacity="0.9"/>
+              <rect x="184" y="148" width="5" height="30" rx="2" fill="url(#ag2)" opacity="0.75"/>
+              <rect x="192" y="155" width="5" height="23" rx="2" fill="url(#ag2)" opacity="0.6"/>
+              <rect x="200" y="160" width="5" height="18" rx="2" fill="url(#ag2)" opacity="0.5"/>
+              <rect x="208" y="154" width="5" height="24" rx="2" fill="url(#ag2)" opacity="0.65"/>
+              <rect x="216" y="146" width="5" height="32" rx="2" fill="url(#ag2)" opacity="0.8"/>
+              <rect x="224" y="138" width="5" height="42" rx="2" fill="url(#ag2)" opacity="0.9"/>
+            </svg>
+          </div>
+        </div>
+        <div class="about-sound-block">
+          <div class="sound-intro">
+            <p class="section-tag reveal" data-es="Nuestro sonido" data-en="Our sound">Nuestro sonido</p>
+            <h3 class="section-title reveal reveal-delay-1" data-es="El sonido<br>que representamos." data-en="The sound<br>we stand for.">El sonido<br>que representamos.</h3>
+            <div class="grad-line sonido-grad-line reveal reveal-delay-2" aria-hidden="true"></div>
+          </div>
+          <div class="sound-grid">
+            <article class="sound-col sound-col--ht reveal reveal-delay-3">
+              <h4 class="sound-col-head" data-es="Hard Techno" data-en="Hard Techno">Hard Techno</h4>
+              <div class="sound-col-rule" aria-hidden="true"></div>
+              <div class="sound-col-list">
+                <p class="sound-col-sub" data-es="Hard Bounce" data-en="Hard Bounce">Hard Bounce</p>
+                <p class="sound-col-sub" data-es="Hard Groove" data-en="Hard Groove">Hard Groove</p>
+              </div>
+            </article>
+            <article class="sound-col sound-col--techno reveal reveal-delay-4">
+              <h4 class="sound-col-head" data-es="Techno" data-en="Techno">Techno</h4>
+              <div class="sound-col-rule" aria-hidden="true"></div>
+              <div class="sound-col-list">
+                <p class="sound-col-sub" data-es="Melodic Techno" data-en="Melodic Techno">Melodic Techno</p>
+                <p class="sound-col-sub" data-es="Minimal Techno" data-en="Minimal Techno">Minimal Techno</p>
+              </div>
+            </article>
+            <article class="sound-col sound-col--house reveal reveal-delay-5">
+              <h4 class="sound-col-head" data-es="House" data-en="House">House</h4>
+              <div class="sound-col-rule" aria-hidden="true"></div>
+              <div class="sound-col-list">
+                <p class="sound-col-sub" data-es="Tech House" data-en="Tech House">Tech House</p>
+                <p class="sound-col-sub" data-es="Latin Tech" data-en="Latin Tech">Latin Tech</p>
+                <p class="sound-col-sub" data-es="Afro House" data-en="Afro House">Afro House</p>
+              </div>
+            </article>
+            <article class="sound-col sound-col--urbano reveal reveal-delay-6">
+              <h4 class="sound-col-head" data-es="Urbano" data-en="Urban">Urbano</h4>
+              <div class="sound-col-rule" aria-hidden="true"></div>
+              <div class="sound-col-list">
+                <p class="sound-col-sub" data-es="Reggaetón" data-en="Reggaeton">Reggaetón</p>
+                <p class="sound-col-sub" data-es="Dembow" data-en="Dembow">Dembow</p>
+                <p class="sound-col-sub" data-es="Latin" data-en="Latin">Latin</p>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
     </div>
@@ -546,59 +610,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
   </div>
 </section>
 
-<!-- SONIDO -->
-<section id="sonido">
-  <div class="container">
-    <div class="sound-intro">
-      <p class="section-tag reveal" data-es="03 — Nuestro sonido" data-en="03 — Our sound">03 — Nuestro sonido</p>
-      <h2 class="section-title reveal reveal-delay-1" data-es="El sonido<br>que representamos." data-en="The sound<br>we stand for.">El sonido<br>que representamos.</h2>
-      <div class="grad-line sonido-grad-line reveal reveal-delay-2" aria-hidden="true"></div>
-    </div>
-    <div class="sound-grid">
-      <article class="sound-col sound-col--ht reveal reveal-delay-3">
-        <h3 class="sound-col-head" data-es="Hard Techno" data-en="Hard Techno">Hard Techno</h3>
-        <div class="sound-col-rule" aria-hidden="true"></div>
-        <div class="sound-col-list">
-          <p class="sound-col-sub" data-es="Hard Bounce" data-en="Hard Bounce">Hard Bounce</p>
-          <p class="sound-col-sub" data-es="Hard Groove" data-en="Hard Groove">Hard Groove</p>
-        </div>
-      </article>
-      <article class="sound-col sound-col--techno reveal reveal-delay-4">
-        <h3 class="sound-col-head" data-es="Techno" data-en="Techno">Techno</h3>
-        <div class="sound-col-rule" aria-hidden="true"></div>
-        <div class="sound-col-list">
-          <p class="sound-col-sub" data-es="Melodic Techno" data-en="Melodic Techno">Melodic Techno</p>
-          <p class="sound-col-sub" data-es="Minimal Techno" data-en="Minimal Techno">Minimal Techno</p>
-        </div>
-      </article>
-      <article class="sound-col sound-col--house reveal reveal-delay-5">
-        <h3 class="sound-col-head" data-es="House" data-en="House">House</h3>
-        <div class="sound-col-rule" aria-hidden="true"></div>
-        <div class="sound-col-list">
-          <p class="sound-col-sub" data-es="Tech House" data-en="Tech House">Tech House</p>
-          <p class="sound-col-sub" data-es="Latin Tech" data-en="Latin Tech">Latin Tech</p>
-          <p class="sound-col-sub" data-es="Afro House" data-en="Afro House">Afro House</p>
-        </div>
-      </article>
-      <article class="sound-col sound-col--urbano reveal reveal-delay-6">
-        <h3 class="sound-col-head" data-es="Urbano" data-en="Urban">Urbano</h3>
-        <div class="sound-col-rule" aria-hidden="true"></div>
-        <div class="sound-col-list">
-          <p class="sound-col-sub" data-es="Reggaetón" data-en="Reggaeton">Reggaetón</p>
-          <p class="sound-col-sub" data-es="Dembow" data-en="Dembow">Dembow</p>
-          <p class="sound-col-sub" data-es="Latin" data-en="Latin">Latin</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
 <!-- ROSTER -->
 <section id="roster">
   <div class="container">
     <div class="roster-header reveal">
       <div>
-        <p class="section-tag" data-es="04 — Roster" data-en="04 — Roster">04 — Roster</p>
+        <p class="section-tag" data-es="03 — Roster" data-en="03 — Roster">03 — Roster</p>
         <h2 class="section-title" data-es="Nuestros<br>artistas." data-en="Our<br>artists.">Nuestros<br>artistas.</h2>
       </div>
       <p class="section-sub" data-es="Contacta para riders, caches y disponibilidad detallada." data-en="Contact us for riders, fees and availability.">Contacta para riders, caches y disponibilidad detallada.</p>
@@ -681,7 +698,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
   <div class="container">
     <div class="contact-wrap">
       <div>
-        <p class="section-tag reveal" data-es="05 — Contacto" data-en="05 — Contact">05 — Contacto</p>
+        <p class="section-tag reveal" data-es="04 — Contacto" data-en="04 — Contact">04 — Contacto</p>
         <h2 class="contact-tagline reveal" data-es='¿Hablamos?<br><span class="accent">Cuéntanos</span><br>qué necesitas.' data-en='Let\'s<br><span class="accent">talk.</span><br>Tell us what you need.'>¿Hablamos?<br><span class="accent">Cuéntanos</span><br>qué necesitas.</h2>
         <div class="grad-line reveal" style="width:60px;margin:24px 0"></div>
         <div class="presskit-box reveal">
@@ -773,7 +790,6 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         <h4 data-es="Navegación" data-en="Navigation">Navegación</h4>
         <a href="#about" data-es="Nosotros" data-en="About">Nosotros</a>
         <a href="#services" data-es="Servicios" data-en="Services">Servicios</a>
-        <a href="#sonido" data-es="Sonido" data-en="Sound">Sonido</a>
         <a href="#roster" data-es="Roster" data-en="Roster">Roster</a>
         <a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a>
       </div>
