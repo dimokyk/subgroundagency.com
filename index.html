@@ -210,6 +210,9 @@ section{padding:120px 48px}
 .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 .contact-tagline{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,5vw,64px);text-transform:uppercase;line-height:.95;margin-bottom:24px}
 .contact-tagline .accent{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.contact-heading-bilingual{display:flex;flex-direction:column;align-items:flex-start;gap:.08em;line-height:.98}
+.contact-heading-bilingual>span{display:block;width:100%;color:var(--bone)}
+.contact-heading-bilingual>span.accent{color:unset}
 .contact-info{margin-top:40px;display:flex;flex-direction:column;gap:20px}
 .contact-item{display:flex;flex-direction:column;gap:4px}
 .contact-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--red)}
@@ -692,7 +695,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
     <div class="contact-wrap">
       <div>
         <p class="section-tag reveal" data-es="04 — Contacto" data-en="04 — Contact">04 — Contacto</p>
-        <h2 class="contact-tagline reveal" data-es='¿Hablamos?<br><span class="accent">Cuéntanos</span><br>qué necesitas.' data-en='Let\'s<br><span class="accent">talk.</span><br>Tell us what you need.'>¿Hablamos?<br><span class="accent">Cuéntanos</span><br>qué necesitas.</h2>
+        <h2 class="contact-tagline reveal contact-heading-bilingual" lang="mix" aria-label="Talk. Tell us what you need. ¿Hablamos? Cuéntanos qué necesitas."><span class="accent">Talk.</span><span>Tell us what you</span><span>Need.'>¿Hablamos?</span><span class="accent">Cuéntanos</span><span>Qué necesitas.</span></h2>
         <div class="grad-line reveal" style="width:60px;margin:24px 0"></div>
         <div class="presskit-box reveal">
           <div class="presskit-box-text">
