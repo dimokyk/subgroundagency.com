@@ -191,6 +191,9 @@ section{padding:120px 48px}
 .dj-avatar.ring-urbano{border:2px solid var(--urb);box-sizing:border-box}
 .dj-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
 .dj-genre{font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px}
+.dj-genres-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-bottom:4px}
+.dj-genres-row .dj-genre{margin-bottom:0}
+.dj-genres-sep{color:var(--bgray);font-size:11px;font-weight:600;user-select:none}
 .dj-genre.red{color:var(--red)}
 .dj-genre.mid{color:var(--mid)}
 .dj-genre.pur{color:var(--pur)}
@@ -638,7 +641,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
           <img src="/images/f3ly-roster.png?v=2" width="400" height="400" alt="F3LY" decoding="async"/>
         </div>
         <div class="dj-name">F3LY</div>
-        <div class="dj-genre urb" data-es="Techno / Industrial" data-en="Techno / Industrial">Urban</div>
+        <div class="dj-genre urb" data-es="Urbano" data-en="Urban">Urbano</div>
         <div class="dj-city">Murcia · Spain</div>
         <p class="dj-bio" data-es="DJ y productor internacional. Conocido mundialmente por sus mashups y edits virales. Más de 116.000 seguidores en redes. Giras anuales por Italia y Latinoamérica." data-en="International DJ and producer. Known worldwide for his mashups and viral edits. Over 116,000 followers on social media. Annual tours in Italy and Latin America.">DJ y productor internacional. Conocido mundialmente por sus mashups y edits virales. Más de 116.000 seguidores en redes. Giras anuales por Italia y Latinoamérica.</p>
         <div class="dj-tags"><span class="dj-tag">Urban</span><span class="dj-tag">Reggaeton</span><span class="dj-tag">Dembow</span></div>
@@ -653,10 +656,14 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
           <img src="/images/mediokilo-roster.png?v=1" width="400" height="400" alt="MEDIOKILO" decoding="async"/>
         </div>
         <div class="dj-name">MEDIOKILO</div>
-        <div class="dj-genre pur" data-es="Tech House / House" data-en="Tech House / House">Tech House / House</div>
-        <div class="dj-city">Barcelona · Spain</div>
-        <p class="dj-bio" data-es="Groove profundo y selección meticulosa. Versatilidad total para adaptar el set desde warm-up hasta cierre." data-en="Deep groove and meticulous selection. Full versatility from warm-up to closing set.">Groove profundo y selección meticulosa. Versatilidad total para adaptar el set desde warm-up hasta cierre.</p>
-        <div class="dj-tags"><span class="dj-tag">Tech House</span><span class="dj-tag">Deep</span><span class="dj-tag">Minimal</span></div>
+        <div class="dj-genres-row" aria-label="Género">
+          <span class="dj-genre mid" data-es="Techno" data-en="Techno">Techno</span>
+          <span class="dj-genres-sep" aria-hidden="true">·</span>
+          <span class="dj-genre pur" data-es="House" data-en="House">House</span>
+        </div>
+        <div class="dj-city">Murcia · Spain</div>
+        <p class="dj-bio" data-es="DJ y productor de mezclas. Melodic Techno como base. Sets construidos para hacer bailar." data-en="DJ and mix producer. Melodic Techno as the foundation. Sets built to fill the dancefloor.">DJ y productor de mezclas. Melodic Techno como base. Sets construidos para hacer bailar.</p>
+        <div class="dj-tags"><span class="dj-tag">Techno</span><span class="dj-tag">House</span><span class="dj-tag">Melodic Techno</span></div>
         <div class="dj-actions">
           <a class="dj-cta" href="#contact" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
           <a class="btn-profile" href="mediokilo.html" data-es="Ver perfil completo →" data-en="Full profile →">Ver perfil completo →</a>
