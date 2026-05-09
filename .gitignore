@@ -20,3 +20,8 @@ Thumbs.db
 
 # Editor / IDE (optional clutter)
 .idea/
+
+# Video assets (large; deploy via hosting or CDN)
+public/videos/*.mp4
+public/videos/*.mov
+public/videos/*.webm
