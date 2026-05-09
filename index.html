@@ -45,6 +45,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .nav-lang:hover{color:var(--bone);border-color:var(--bone)}
 .nav-cta{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#fff;background:var(--red);padding:8px 20px;text-decoration:none;transition:opacity .2s}
 .nav-cta:hover{opacity:.85}
+.nav-actions{display:flex;align-items:center;gap:16px;flex-shrink:0}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
 .hamburger span{width:22px;height:1.5px;background:var(--bone);transition:all .3s}
 
@@ -282,7 +283,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
 /* ── RESPONSIVE ─────────────────────────────────────── */
 @media(max-width:900px){
   nav{padding:0 24px}
-  .nav-links,.nav-lang,.nav-cta{display:none}
+  .nav-links,.nav-cta{display:none}
+  .nav-actions{gap:8px}
+  .nav-lang{padding:4px 8px;font-size:10px;letter-spacing:1px}
   .hamburger{display:flex}
   section{padding:80px 24px}
   .about-grid,.contact-wrap,.footer-top,.services-header{grid-template-columns:1fr;gap:40px}
@@ -295,6 +298,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
 
 .btn-presskit{display:inline-flex;align-items:center;gap:10px;font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:10px 22px;border:1px solid var(--bgray);color:var(--bone);text-decoration:none;transition:all .2s;}
 .btn-presskit:hover{border-color:var(--bone);background:rgba(241,239,232,.06);}
+.btn-presskit.nav-presskit{padding:6px 14px;font-size:11px}
 .btn-presskit svg{width:14px;height:14px;stroke:currentColor;fill:none;flex-shrink:0;}
 .btn-profile{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gray);text-decoration:none;margin-top:0;transition:all .2s;border-bottom:1px solid transparent;padding-bottom:2px;}
 .btn-profile:hover{color:var(--bone);border-color:var(--bone);}
@@ -303,6 +307,9 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
 .presskit-box-text{display:flex;flex-direction:column;gap:4px;}
 .presskit-box-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;}
 .presskit-box-desc{font-size:13px;color:var(--gray);}
+@media(max-width:900px){
+  .btn-presskit.nav-presskit{padding:6px 10px;font-size:10px}
+}
 </style>
 </head>
 <body>
@@ -352,8 +359,8 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
     <a href="#roster" data-es="Roster" data-en="Roster">Roster</a>
     <a href="#contact" data-es="Contacto" data-en="Contact">Contacto</a>
   </div>
-  <div style="display:flex;align-items:center;gap:16px">
-    <a class="btn-presskit" href="Subground_Agency_Presskit_v3.pdf" download style="padding:6px 14px;font-size:11px;" data-es="Presskit" data-en="Presskit"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>Presskit</a>
+  <div class="nav-actions">
+    <a class="btn-presskit nav-presskit" href="Subground_Agency_Presskit_v3.pdf" download data-es="Presskit" data-en="Presskit"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>Presskit</a>
     <div class="nav-lang" id="langToggle" onclick="toggleLang()">EN</div>
     <a class="nav-cta" href="#contact" data-es="Booking" data-en="Booking">Booking</a>
     <div class="hamburger" id="hamburger" onclick="toggleMobile()">
