@@ -51,6 +51,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-content{position:relative;z-index:5;padding:0 48px 64px;width:100%;max-width:1200px;margin:0 auto;padding-bottom:max(64px,calc(24px + env(safe-area-inset-bottom,0)));isolation:isolate}
 .hero-tag{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:5px;color:var(--ht);text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeUp .6s .1s forwards}
 .hero-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(58px,13.5vmin,200px);line-height:.85;letter-spacing:-3px;text-transform:uppercase;margin:0 0 12px;color:var(--bone);word-break:break-word;opacity:0;animation:fadeUp .8s .2s forwards;text-shadow:0 8px 52px rgba(0,0,0,.95),0 2px 18px rgba(0,0,0,.88)}
+.hero-name-split-page{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:.14em;letter-spacing:-0.02em}
 .hero-real{font-family:'Barlow',sans-serif;font-size:18px;color:var(--gray);letter-spacing:2px;margin-bottom:24px;opacity:0;animation:fadeUp .6s .35s forwards}
 .hero-genre-stack{display:flex;flex-direction:column;gap:12px;margin-bottom:36px;opacity:0;animation:fadeUp .6s .45s forwards}
 .hero-genres{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 14px;margin:0}
@@ -316,7 +317,7 @@ section{padding:100px 48px}
   <div class="hero-grain"></div>
   <div class="hero-content">
     <div class="hero-tag">Subground Agency · Artista</div>
-    <h1 class="hero-name">MEDIO KILO</h1>
+    <h1 class="hero-name hero-name-split-page"><span>MEDIO</span><span>KILO</span></h1>
     <p class="hero-real">DJ · Murcia, España</p>
     <div class="hero-genre-stack">
       <div class="hero-genres">

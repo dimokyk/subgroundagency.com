@@ -189,7 +189,9 @@ section{padding:120px 48px}
 .dj-avatar svg{width:52px;height:52px}
 .dj-avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .dj-avatar.ring-urbano{border:2px solid var(--urb);box-sizing:border-box}
+.dj-avatar.ring-duo{border:3px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,conic-gradient(from -90deg,var(--mid),var(--pur),var(--mid)) border-box;border-radius:50%;background-origin:padding-box,border-box;background-clip:padding-box,border-box;box-sizing:border-box}
 .dj-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+.dj-name-split{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:.28em}.dj-name-split span{letter-spacing:.04em}
 .dj-genre{font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px}
 .dj-genres-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin-bottom:4px}
 .dj-genres-row .dj-genre{margin-bottom:0}
@@ -199,7 +201,8 @@ section{padding:120px 48px}
 .dj-genre.pur{color:var(--pur)}
 .dj-genre.urb{color:var(--urb)}
 .dj-city{font-size:11px;color:var(--bgray);letter-spacing:2px;margin-bottom:20px}
-.dj-bio{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:24px;flex:1 1 auto}
+.dj-bio{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:0}
+.dj-card-foot{margin-top:auto;padding-top:24px;display:flex;flex-direction:column;gap:24px;width:100%}
 .dj-tags{display:flex;flex-wrap:wrap;gap:6px}
 .dj-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;background:var(--card);color:var(--bgray)}
 .dj-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);text-decoration:none;margin-top:0;transition:all .2s;border-bottom:1px solid transparent;padding-bottom:2px;}
@@ -357,7 +360,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
 .btn-presskit svg{width:15px;height:15px;stroke:currentColor;fill:none;flex-shrink:0}
 .btn-profile{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gray);text-decoration:none;margin-top:0;transition:all .2s;border-bottom:1px solid transparent;padding-bottom:2px;}
 .btn-profile:hover{color:var(--bone);border-color:var(--bone);}
-.dj-actions{display:flex;align-items:center;justify-content:space-between;margin-top:24px;flex-wrap:wrap;gap:12px;}
+.dj-actions{display:flex;align-items:center;justify-content:space-between;margin-top:0;flex-wrap:wrap;gap:12px;}
 .presskit-box{background:var(--panel);border-radius:6px;padding:28px 32px;margin-top:32px;display:flex;align-items:center;justify-content:space-between;gap:24px;border:1px solid rgba(241,239,232,.12);flex-wrap:wrap}
 .presskit-box-text{display:flex;flex-direction:column;gap:8px;flex:1;min-width:min(100%,220px)}
 .presskit-box-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;}
@@ -644,18 +647,20 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         <div class="dj-genre urb" data-es="Urbano" data-en="Urban">Urbano</div>
         <div class="dj-city">Murcia · Spain</div>
         <p class="dj-bio" data-es="DJ y productor internacional. Conocido mundialmente por sus mashups y edits virales. Más de 116.000 seguidores en redes. Giras anuales por Italia y Latinoamérica." data-en="International DJ and producer. Known worldwide for his mashups and viral edits. Over 116,000 followers on social media. Annual tours in Italy and Latin America.">DJ y productor internacional. Conocido mundialmente por sus mashups y edits virales. Más de 116.000 seguidores en redes. Giras anuales por Italia y Latinoamérica.</p>
+        <div class="dj-card-foot">
         <div class="dj-tags"><span class="dj-tag">Urban</span><span class="dj-tag">Reggaeton</span><span class="dj-tag">Dembow</span></div>
         <div class="dj-actions">
           <a class="dj-cta" href="#contact" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
           <a class="btn-profile" href="f3ly.html" data-es="Ver perfil completo →" data-en="Full profile →">Ver perfil completo →</a>
         </div>
+        </div>
       </div>
       <!-- MEDIO KILO -->
       <div class="dj-card reveal reveal-delay-1" data-genres="house techno">
-        <div class="dj-avatar">
+        <div class="dj-avatar ring-duo">
           <img src="/images/mediokilo-roster.png?v=1" width="400" height="400" alt="MEDIO KILO" decoding="async"/>
         </div>
-        <div class="dj-name">MEDIO KILO</div>
+        <div class="dj-name dj-name-split"><span>MEDIO</span><span>KILO</span></div>
         <div class="dj-genres-row" aria-label="Género">
           <span class="dj-genre mid" data-es="Techno" data-en="Techno">Techno</span>
           <span class="dj-genres-sep" aria-hidden="true">·</span>
@@ -663,10 +668,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         </div>
         <div class="dj-city">Murcia · Spain</div>
         <p class="dj-bio" data-es="DJ y productor de mezclas. Melodic Techno como base. Sets construidos para hacer bailar." data-en="DJ and mix producer. Melodic Techno as the foundation. Sets built to fill the dancefloor.">DJ y productor de mezclas. Melodic Techno como base. Sets construidos para hacer bailar.</p>
+        <div class="dj-card-foot">
         <div class="dj-tags"><span class="dj-tag">Melodic Techno</span><span class="dj-tag">Tech House</span></div>
         <div class="dj-actions">
           <a class="dj-cta" href="#contact" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
           <a class="btn-profile" href="mediokilo.html" data-es="Ver perfil completo →" data-en="Full profile →">Ver perfil completo →</a>
+        </div>
         </div>
       </div>
       <!-- DJ C -->
@@ -685,10 +692,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         <div class="dj-genre red" data-es="Hard Techno" data-en="Hard Techno">Hard Techno</div>
         <div class="dj-city">Valencia · Spain</div>
         <p class="dj-bio" data-es="Hard Techno con influencias industriales y de peak time. Sets de alta energía pensados para pistas que no paran." data-en="Hard Techno with industrial and peak time influences. High-energy sets built for floors that don't stop.">Hard Techno con influencias industriales y de peak time. Sets de alta energía pensados para pistas que no paran.</p>
+        <div class="dj-card-foot">
         <div class="dj-tags"><span class="dj-tag">Hard Techno</span><span class="dj-tag">Industrial</span><span class="dj-tag">Peak Time</span></div>
         <div class="dj-actions">
           <a class="dj-cta" href="#contact" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
           <a class="btn-profile" href="#contact" data-es="Ver perfil completo →" data-en="Full profile →">Ver perfil completo →</a>
+        </div>
         </div>
       </div>
     </div>
