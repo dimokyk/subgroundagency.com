@@ -116,8 +116,8 @@ section{padding:120px 48px}
 @media(min-width:1600px){
   .about-sound-block .sound-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
 }
-.about-text p{font-size:16px;color:var(--gray);line-height:1.8;margin-bottom:20px}
-.about-text p strong{color:var(--bone)}
+.about-text p:not(.section-tag){font-size:16px;color:var(--gray);line-height:1.8;margin-bottom:20px}
+.about-text p:not(.section-tag) strong{color:var(--bone)}
 .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:40px}
 .stat{background:var(--panel);padding:28px 24px;position:relative;overflow:hidden}
 .stat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
