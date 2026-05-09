@@ -229,6 +229,56 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
 .mobile-menu a:hover{color:var(--red)}
 .mobile-menu::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
 
+/* ── PANTALLAS GRANDES (desktop ancho / QHD / 4K) ───
+   En monitores grandes el contenido no debe quedar “en miniatura” en el centro. */
+@media(min-width:1440px){
+  nav{padding:0 56px;height:72px}
+  .nav-logo svg{width:40px;height:40px}
+  .nav-wordmark{font-size:20px}
+  .nav-wordmark span{font-size:10px}
+  .nav-links a{font-size:14px}
+  .nav-cta{font-size:13px;padding:10px 22px}
+  .hero-content{max-width:min(92vw,1040px)}
+  .hero-logo-svg{max-width:240px}
+  .hero-title{font-size:clamp(58px,11vw,150px)}
+  .hero-tagline{font-size:clamp(15px,2.2vw,22px)}
+  .hero-genres .genre{font-size:12px;padding:8px 18px}
+  .btn-primary,.btn-secondary{font-size:14px;padding:16px 36px}
+  .container{max-width:1320px}
+  section{padding:132px 56px}
+  .section-title{font-size:clamp(44px,6.5vw,92px)}
+  .section-sub{font-size:16px;max-width:620px}
+  .about-text p{font-size:17px}
+  .stat-num{font-size:52px}
+  .service-title{font-size:30px}
+  .service-desc{font-size:15px}
+  .dj-name{font-size:30px}
+  .dj-bio{font-size:14px}
+  .contact-tagline{font-size:clamp(38px,5.5vw,72px)}
+  .contact-val{font-size:19px}
+  .form-input,.form-textarea,.form-select{font-size:15px}
+}
+@media(min-width:1920px){
+  nav{padding:0 64px;height:76px}
+  .hero-content{max-width:min(88vw,1180px)}
+  .hero-logo-svg{max-width:280px}
+  .hero-title{font-size:clamp(64px,11vw,180px)}
+  .container{max-width:1480px}
+  section{padding:152px 72px}
+  .section-title{font-size:clamp(48px,6vw,110px)}
+  .contact-tagline{font-size:clamp(40px,5vw,84px)}
+  .about-grid{gap:96px}
+  .services-header{gap:72px}
+  .contact-wrap{gap:96px}
+  .footer-top{gap:72px}
+}
+@media(min-width:2560px){
+  .container{max-width:min(82vw,1680px)}
+  .hero-title{font-size:clamp(68px,9vw,200px)}
+  .section-title{font-size:clamp(52px,5vw,124px)}
+  section{padding:168px 80px}
+}
+
 /* ── RESPONSIVE ─────────────────────────────────────── */
 @media(max-width:900px){
   nav{padding:0 24px}
