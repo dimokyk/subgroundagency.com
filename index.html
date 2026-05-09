@@ -179,8 +179,8 @@ section{padding:120px 48px}
 .roster-filter[data-filter="urbano"].active{color:#5C35CC;border-color:rgba(92,53,204,.55);background:rgba(92,53,204,.1)}
 .roster-empty{width:100%;text-align:center;font-size:14px;color:var(--gray);padding:48px 24px;display:none;border:1px dashed var(--card);margin-bottom:8px}
 .roster-empty.is-visible{display:block}
-.roster-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.dj-card{background:var(--panel);padding:40px 32px;position:relative;overflow:hidden;transition:transform .3s}
+.roster-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;align-items:stretch}
+.dj-card{background:var(--panel);padding:40px 32px;position:relative;overflow:hidden;transition:transform .3s;display:flex;flex-direction:column;height:100%;min-height:0}
 .dj-card.dj-card-hidden{display:none!important}
 .dj-card:hover{transform:translateY(-4px)}
 .dj-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .4s}
@@ -199,7 +199,7 @@ section{padding:120px 48px}
 .dj-genre.pur{color:var(--pur)}
 .dj-genre.urb{color:var(--urb)}
 .dj-city{font-size:11px;color:var(--bgray);letter-spacing:2px;margin-bottom:20px}
-.dj-bio{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:24px}
+.dj-bio{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:24px;flex:1 1 auto}
 .dj-tags{display:flex;flex-wrap:wrap;gap:6px}
 .dj-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;background:var(--card);color:var(--bgray)}
 .dj-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);text-decoration:none;margin-top:0;transition:all .2s;border-bottom:1px solid transparent;padding-bottom:2px;}
@@ -650,12 +650,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
           <a class="btn-profile" href="f3ly.html" data-es="Ver perfil completo →" data-en="Full profile →">Ver perfil completo →</a>
         </div>
       </div>
-      <!-- MEDIOKILO -->
+      <!-- MEDIO KILO -->
       <div class="dj-card reveal reveal-delay-1" data-genres="house techno">
         <div class="dj-avatar">
-          <img src="/images/mediokilo-roster.png?v=1" width="400" height="400" alt="MEDIOKILO" decoding="async"/>
+          <img src="/images/mediokilo-roster.png?v=1" width="400" height="400" alt="MEDIO KILO" decoding="async"/>
         </div>
-        <div class="dj-name">MEDIOKILO</div>
+        <div class="dj-name">MEDIO KILO</div>
         <div class="dj-genres-row" aria-label="Género">
           <span class="dj-genre mid" data-es="Techno" data-en="Techno">Techno</span>
           <span class="dj-genres-sep" aria-hidden="true">·</span>
@@ -663,7 +663,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         </div>
         <div class="dj-city">Murcia · Spain</div>
         <p class="dj-bio" data-es="DJ y productor de mezclas. Melodic Techno como base. Sets construidos para hacer bailar." data-en="DJ and mix producer. Melodic Techno as the foundation. Sets built to fill the dancefloor.">DJ y productor de mezclas. Melodic Techno como base. Sets construidos para hacer bailar.</p>
-        <div class="dj-tags"><span class="dj-tag">Techno</span><span class="dj-tag">House</span><span class="dj-tag">Melodic Techno</span></div>
+        <div class="dj-tags"><span class="dj-tag">Melodic Techno</span><span class="dj-tag">Tech House</span></div>
         <div class="dj-actions">
           <a class="dj-cta" href="#contact" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
           <a class="btn-profile" href="mediokilo.html" data-es="Ver perfil completo →" data-en="Full profile →">Ver perfil completo →</a>

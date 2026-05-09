@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>MEDIOKILO — Subground Agency</title>
-<meta name="description" content="MEDIOKILO — Techno · House · Murcia. Melodic Techno. Booking via Subground Agency."/>
+<title>MEDIO KILO — Subground Agency</title>
+<meta name="description" content="MEDIO KILO — Techno · House · Murcia. Melodic Techno · Tech House. Booking via Subground Agency."/>
 <link rel="icon" href="/favicon.ico?v=4" type="image/x-icon" sizes="any"/>
 <link rel="shortcut icon" href="/favicon.ico?v=4"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -52,7 +52,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-tag{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:5px;color:var(--ht);text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeUp .6s .1s forwards}
 .hero-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(58px,13.5vmin,200px);line-height:.85;letter-spacing:-3px;text-transform:uppercase;margin:0 0 12px;color:var(--bone);word-break:break-word;opacity:0;animation:fadeUp .8s .2s forwards;text-shadow:0 8px 52px rgba(0,0,0,.95),0 2px 18px rgba(0,0,0,.88)}
 .hero-real{font-family:'Barlow',sans-serif;font-size:18px;color:var(--gray);letter-spacing:2px;margin-bottom:24px;opacity:0;animation:fadeUp .6s .35s forwards}
-.hero-genres{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 14px;margin-bottom:36px;opacity:0;animation:fadeUp .6s .45s forwards}
+.hero-genre-stack{display:flex;flex-direction:column;gap:12px;margin-bottom:36px;opacity:0;animation:fadeUp .6s .45s forwards}
+.hero-genres{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 14px;margin:0}
+.hero-subgenres{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 14px;margin:0}
+.hero-subgenres .hg{border-top-width:2px;min-height:36px;padding:8px 14px}
 .hg{font-family:'Barlow Condensed',sans-serif;font-size:clamp(11px,3.1vw,13px);font-weight:900;letter-spacing:.2em;line-height:1.25;color:var(--bone);padding:11px 20px;text-transform:uppercase;border:none;border-top:3px solid;display:inline-flex;align-items:center;min-height:44px;box-sizing:border-box;background:rgba(13,13,12,.58);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:3px;box-shadow:0 6px 24px rgba(0,0,0,.52);text-shadow:0 1px 4px rgba(0,0,0,.92)}
 .hg-urban{border-top-color:var(--urb)}
 .hg-sub{color:var(--bone);border-top-color:var(--pur);font-size:clamp(9.5px,2.65vw,11.5px);font-weight:800;letter-spacing:.16em;padding:9px 17px;min-height:38px;border-top-width:2px;line-height:1.25}
@@ -99,6 +102,10 @@ section{padding:100px 48px}
 .detail-row:hover::before{transform:scaleY(1)}
 .detail-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ht)}
 .detail-val{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;color:var(--bone);letter-spacing:1px}
+.detail-row-genres{align-items:flex-start}
+.detail-val-genres{display:flex;flex-direction:column;align-items:flex-end;gap:8px;line-height:1.25;text-align:right}
+.detail-genre-main{font-size:16px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.detail-genre-sub{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--bgray)}
 
 /* GROWTH TABLE */
 .growth-table{width:100%;border-collapse:collapse;margin-top:48px}
@@ -212,8 +219,9 @@ section{padding:100px 48px}
   .hero-watermark{opacity:.22;padding-top:calc(50px + env(safe-area-inset-top,0))}
   .hero-watermark img{width:min(58vw,260px)}
   .hero-real{font-size:14px;letter-spacing:1px;line-height:1.5}
-  .hero-genres{flex-direction:column;align-items:stretch;gap:10px}
-  .hero-genres .hg{width:100%}
+  .hero-genre-stack{gap:10px}
+  .hero-genres,.hero-subgenres{flex-direction:column;align-items:stretch;gap:10px}
+  .hero-genres .hg,.hero-subgenres .hg{width:100%}
   .hero-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
   .hstat{min-width:0}
   .hstat-n{font-size:30px}
@@ -221,6 +229,7 @@ section{padding:100px 48px}
   .about-grid,.social-grid,.rider-grid{grid-template-columns:1fr;gap:20px}
   .detail-row{flex-direction:column;align-items:flex-start;gap:6px}
   .detail-val{text-align:left}
+  .detail-val-genres{align-items:flex-start;text-align:left}
   .performances-grid{grid-template-columns:1fr !important}
   .rider-card{padding:28px 24px}
   .social-card{padding:24px 20px}
@@ -293,25 +302,30 @@ section{padding:100px 48px}
     <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
     Subground Agency
   </a>
-  <span class="nav-agency">MEDIOKILO <span>· Artista</span></span>
+  <span class="nav-agency">MEDIO KILO <span>· Artista</span></span>
   <a class="nav-book" href="/#contact">Booking</a>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-photo">
-    <img src="/images/mediokilo-photo.png?v=1" width="800" height="1200" decoding="async" alt="MEDIOKILO retrato oficial"/>
+    <img src="/images/mediokilo-photo.png?v=1" width="800" height="1200" decoding="async" alt="MEDIO KILO retrato oficial"/>
   </div>
   <div class="hero-watermark" aria-hidden="true"><img src="/images/mediokilo-logo.png?v=1" width="800" height="400" decoding="async" alt=""/></div>
   <div class="hero-overlay"></div>
   <div class="hero-grain"></div>
   <div class="hero-content">
     <div class="hero-tag">Subground Agency · Artista</div>
-    <h1 class="hero-name">MEDIOKILO</h1>
+    <h1 class="hero-name">MEDIO KILO</h1>
     <p class="hero-real">DJ · Murcia, España</p>
-    <div class="hero-genres">
-      <span class="hg hg-techno">Techno</span>
-      <span class="hg hg-house">House</span>
+    <div class="hero-genre-stack">
+      <div class="hero-genres">
+        <span class="hg hg-techno">Techno</span>
+        <span class="hg hg-house">House</span>
+      </div>
+      <div class="hero-subgenres">
+        <span class="hg hg-sub">Melodic Techno · Tech House</span>
+      </div>
     </div>
   </div>
   <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
@@ -325,18 +339,18 @@ section{padding:100px 48px}
         <div class="stag reveal">Biografía</div>
         <h2 class="stitle reveal">Groove<br>&amp; selección.</h2>
         <div class="grad-line reveal" style="width:60px;margin:20px 0 28px"></div>
-        <p class="reveal"><strong>DJ y productor de mezclas.</strong> Melodic Techno como base. Sets construidos para hacer bailar.</p>
+        <p class="reveal"><strong>MEDIO KILO — DJ y productor de mezclas.</strong> Melodic Techno como base. Sets construidos para hacer bailar.</p>
         <p class="reveal reveal-delay-1">En cabina arma recorridos donde el groove y las capas melódicas <strong>mueven la sala sin perder tensión ni identidad sonora.</strong></p>
         <p class="reveal reveal-delay-2">Techno y House como referentes, siempre para <strong>poner la pista y el público por delante</strong>.</p>
         <div class="about-quote reveal reveal-delay-3">
           <p>"La pista ya te dice lo que necesitas; el trabajo del DJ es escucharlo y empujarla al sitio justo."</p>
-          <cite>— MEDIOKILO</cite>
+          <cite>— MEDIO KILO</cite>
         </div>
       </div>
       <div class="about-details reveal">
-        <div class="detail-row"><span class="detail-label">Nombre artístico</span><span class="detail-val">MEDIOKILO</span></div>
+        <div class="detail-row"><span class="detail-label">Nombre artístico</span><span class="detail-val">MEDIO KILO</span></div>
         <div class="detail-row"><span class="detail-label">Ubicación</span><span class="detail-val">Murcia, España</span></div>
-        <div class="detail-row"><span class="detail-label">Géneros</span><span class="detail-val" style="letter-spacing:.5px"><span style="color:var(--mid)">Techno</span><span style="color:var(--bgray)"> · </span><span style="color:var(--pur)">House</span><span style="color:var(--bone)"> · Melodic Techno</span></span></div>
+        <div class="detail-row detail-row-genres"><span class="detail-label">Género</span><span class="detail-val detail-val-genres"><span class="detail-genre-main"><span style="color:var(--mid)">Techno</span><span style="color:var(--bgray)"> · </span><span style="color:var(--pur)">House</span></span><span class="detail-genre-sub">Melodic Techno · Tech House</span></span></div>
         <div class="detail-row"><span class="detail-label">Instagram</span><span class="detail-val"><a href="https://www.instagram.com/mediokilo_" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">@mediokilo_</a></span></div>
         <div class="detail-row"><span class="detail-label">SoundCloud</span><span class="detail-val"><a href="https://soundcloud.com/mediokiloo" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">soundcloud.com/mediokiloo</a></span></div>
         <div class="detail-row"><span class="detail-label">Management / Booking</span><span class="detail-val">Subground Agency</span></div>
@@ -368,7 +382,7 @@ section{padding:100px 48px}
           SoundCloud — @mediokiloo
         </div>
         <div class="sc-embed">
-          <iframe title="Reproductor SoundCloud MEDIOKILO" width="100%" height="460" scrolling="no" frameborder="no" loading="lazy" allow="autoplay"
+          <iframe title="Reproductor SoundCloud MEDIO KILO" width="100%" height="460" scrolling="no" frameborder="no" loading="lazy" allow="autoplay"
             src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fmediokiloo&color=%23C0392B&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true">
           </iframe>
           <div style="font-size:11px;color:var(--bgray);text-align:center;padding:8px 0;">
@@ -384,7 +398,7 @@ section{padding:100px 48px}
           Instagram — @mediokilo_
         </div>
         <div class="ig-frame-wrap">
-          <iframe class="ig-profile-embed" title="Perfil Instagram MEDIOKILO" src="https://www.instagram.com/mediokilo_/embed" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe class="ig-profile-embed" title="Perfil Instagram MEDIO KILO" src="https://www.instagram.com/mediokilo_/embed" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <p class="embed-fallback-msg">Si no ves el perfil embebido (bloqueo del navegador), abre <a href="https://www.instagram.com/mediokilo_/" target="_blank" rel="noopener noreferrer">instagram.com/mediokilo_</a>.</p>
         <a class="ig-follow-btn" href="https://www.instagram.com/mediokilo_/" target="_blank" rel="noopener">
@@ -440,7 +454,7 @@ section{padding:100px 48px}
 <section id="booking">
   <div class="booking-bg"></div>
   <div class="booking-content">
-    <h2 class="booking-title">¿Quieres<br>a <span class="accent">MEDIOKILO</span><br>en tu sala?</h2>
+    <h2 class="booking-title">¿Quieres<br>a <span class="accent">MEDIO KILO</span><br>en tu sala?</h2>
     <p class="booking-sub">Escríbenos y lo organizamos todo.</p>
     <div class="booking-actions">
       <a class="btn-book" href="/#contact">Contactar para booking</a>
