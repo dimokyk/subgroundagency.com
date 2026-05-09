@@ -52,9 +52,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-tag{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:5px;color:var(--ht);text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeUp .6s .1s forwards}
 .hero-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(58px,13.5vmin,200px);line-height:.85;letter-spacing:-3px;text-transform:uppercase;margin:0 0 12px;color:var(--bone);word-break:break-word;opacity:0;animation:fadeUp .8s .2s forwards;text-shadow:0 8px 52px rgba(0,0,0,.95),0 2px 18px rgba(0,0,0,.88)}
 .hero-real{font-family:'Barlow',sans-serif;font-size:18px;color:var(--gray);letter-spacing:2px;margin-bottom:24px;opacity:0;animation:fadeUp .6s .35s forwards}
-.hero-genres{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 14px;margin-bottom:36px;opacity:0;animation:fadeUp .6s .45s forwards}
+.hero-genre-stack{display:flex;flex-direction:column;gap:12px;margin-bottom:36px;opacity:0;animation:fadeUp .6s .45s forwards}
+.hero-genres{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 14px;margin:0}
+.hero-subgenres{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 14px;margin:0}
+.hero-subgenres .hg{min-height:36px;padding:8px 14px;border-top-width:2px}
 .hg{font-family:'Barlow Condensed',sans-serif;font-size:clamp(11px,3.1vw,13px);font-weight:900;letter-spacing:.2em;line-height:1.25;color:var(--bone);padding:11px 20px;text-transform:uppercase;border:none;border-top:3px solid;display:inline-flex;align-items:center;min-height:44px;box-sizing:border-box;background:rgba(13,13,12,.58);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:3px;box-shadow:0 6px 24px rgba(0,0,0,.52);text-shadow:0 1px 4px rgba(0,0,0,.92)}
 .hg-urban{border-top-color:var(--urb)}
+.hg-genre-main{font-size:clamp(14px,3.9vw,20px)!important;font-weight:900!important;letter-spacing:.24em!important;padding:14px 26px!important;min-height:52px!important;border-top-width:4px!important}
 .hg-sub{color:var(--bone);border-top-color:var(--pur);font-size:clamp(9.5px,2.65vw,11.5px);font-weight:800;letter-spacing:.16em;padding:9px 17px;min-height:38px;border-top-width:2px;line-height:1.25}
 .hero-stats{display:flex;flex-wrap:wrap;gap:clamp(28px,4vw,48px);row-gap:20px;opacity:0;animation:fadeUp .6s .55s forwards;padding:22px clamp(18px,3vw,28px);border-radius:16px;background:rgba(10,10,9,.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08);box-shadow:0 20px 50px rgba(0,0,0,.5);position:relative;z-index:2;margin-top:4px}
 .hstat{display:flex;flex-direction:column;gap:4px}
@@ -209,8 +213,9 @@ section{padding:100px 48px}
   .hero-watermark{opacity:.22;padding-top:calc(50px + env(safe-area-inset-top,0))}
   .hero-watermark img{width:min(58vw,260px)}
   .hero-real{font-size:14px;letter-spacing:1px;line-height:1.5}
-  .hero-genres{flex-direction:column;align-items:stretch;gap:10px}
-  .hero-genres .hg{width:100%}
+  .hero-genre-stack{gap:10px}
+  .hero-genres,.hero-subgenres{flex-direction:column;align-items:stretch;gap:10px}
+  .hero-genres .hg,.hero-subgenres .hg{width:100%}
   .hero-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
   .hstat{min-width:0}
   .hstat-n{font-size:30px}
@@ -306,9 +311,13 @@ section{padding:100px 48px}
     <div class="hero-tag">Subground Agency · Artista</div>
     <h1 class="hero-name">F3LY</h1>
     <p class="hero-real">Félix Ibáñez Gambín · Murcia, España</p>
-    <div class="hero-genres">
-      <span class="hg hg-urban">Urbano</span>
-      <span class="hg hg-sub">Reggaetón · Dembow</span>
+    <div class="hero-genre-stack">
+      <div class="hero-genres">
+        <span class="hg hg-urban hg-genre-main">Urban</span>
+      </div>
+      <div class="hero-subgenres">
+        <span class="hg hg-sub">Reggaetón · Dembow</span>
+      </div>
     </div>
     <div class="hero-stats">
       <div class="hstat"><span class="hstat-n" style="color:var(--ht)">116K</span><span class="hstat-l">Seguidores totales</span></div>
