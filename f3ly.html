@@ -101,6 +101,10 @@ section{padding:100px 48px}
 .detail-row:hover::before{transform:scaleY(1)}
 .detail-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ht)}
 .detail-val{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;color:var(--bone);letter-spacing:1px}
+.detail-row-genres{align-items:flex-start}
+.detail-val-genres{display:flex;flex-direction:column;align-items:flex-end;gap:8px;line-height:1.25;text-align:right}
+.detail-genre-main{font-size:17px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.detail-genre-sub{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--bgray)}
 
 /* GROWTH TABLE */
 .growth-table{width:100%;border-collapse:collapse;margin-top:48px}
@@ -223,6 +227,7 @@ section{padding:100px 48px}
   .about-grid,.social-grid,.rider-grid{grid-template-columns:1fr;gap:20px}
   .detail-row{flex-direction:column;align-items:flex-start;gap:6px}
   .detail-val{text-align:left}
+  .detail-val-genres{align-items:flex-start;text-align:left}
   .performances-grid{grid-template-columns:1fr !important}
   .rider-card{padding:28px 24px}
   .social-card{padding:24px 20px}
@@ -439,7 +444,7 @@ section{padding:100px 48px}
         <div class="detail-row"><span class="detail-label">Nombre real</span><span class="detail-val">Félix Ibáñez Gambín</span></div>
         <div class="detail-row"><span class="detail-label">Nacimiento</span><span class="detail-val">10/02/1997</span></div>
         <div class="detail-row"><span class="detail-label">Residencia</span><span class="detail-val">Murcia, España</span></div>
-        <div class="detail-row"><span class="detail-label">Géneros</span><span class="detail-val" style="color:var(--bone);letter-spacing:.5px">Urbano · Reggaetón · Dembow</span></div>
+        <div class="detail-row detail-row-genres"><span class="detail-label">Géneros</span><span class="detail-val detail-val-genres"><span class="detail-genre-main"><span style="color:var(--urb)">Urbano</span></span><span class="detail-genre-sub">Reggaetón · Dembow</span></span></div>
         <div class="detail-row"><span class="detail-label">En cabina desde</span><span class="detail-val">2017 · 7+ años</span></div>
         <div class="detail-row"><span class="detail-label">Giras</span><span class="detail-val">España + Italia + Latinoamérica</span></div>
 
