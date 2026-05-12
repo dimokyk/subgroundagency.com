@@ -138,7 +138,7 @@
             <div class="availability-card-title">${escapeHtml(
               state.artistLabel
             )}</div>
-            <p class="availability-card-copy">Solo se muestran tres estados: libre, pendiente u ocupado. Los cambios se actualizan desde Google Calendar.</p>
+            <p class="availability-card-copy">Consulta disponibilidad en tiempo real aqui.</p>
           </div>
           <div class="availability-legend">
             <span class="availability-pill is-free">Libre</span>
@@ -156,7 +156,6 @@
               )}</div>
               <button type="button" class="availability-nav-btn" data-shift="1" aria-label="Mes siguiente">›</button>
             </div>
-            <div class="availability-status-note">El DJ edita su Google Calendar y esta vista refleja el resultado en color.</div>
           </div>
           <div class="availability-grid-scroll">
             <div class="availability-grid">
@@ -166,9 +165,6 @@
           </div>
         </div>
         <div class="availability-card-foot">
-          <div class="availability-foot-copy">
-            Deja los días sin evento para que aparezcan como <strong>libres</strong>. Usa eventos con título <strong>Pendiente</strong> u <strong>Ocupado</strong> para cambiar el estado.
-          </div>
           <a class="availability-cta" href="${escapeHtml(
             state.bookingHref
           )}">Consultar Booking</a>
