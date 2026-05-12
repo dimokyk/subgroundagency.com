@@ -166,6 +166,17 @@
   line-height:1.5;
 }
 
+.availability-demo-note{
+  margin-bottom:18px;
+  padding:14px 16px;
+  border:1px solid rgba(255,159,28,.22);
+  border-radius:12px;
+  background:rgba(255,159,28,.08);
+  color:#FFD08A;
+  font-size:13px;
+  line-height:1.6;
+}
+
 .availability-grid-scroll{
   width:100%;
   overflow-x:auto;

@@ -75,6 +75,26 @@
     return emptyPrefix + dayCells;
   }
 
+  function createDemoData(month) {
+    const date = monthToDate(month);
+    const dayCount = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    const days = [];
+
+    for (let day = 1; day <= dayCount; day += 1) {
+      days.push({
+        date: `${month}-${pad(day)}`,
+        day,
+        status: "free",
+        label: "Libre",
+      });
+    }
+
+    return {
+      month,
+      days,
+    };
+  }
+
   function renderEmpty(root, state, title, message) {
     root.innerHTML = `
       <div class="availability-card">
@@ -101,10 +121,14 @@
     `;
   }
 
-  function renderCalendar(root, state, data) {
+  function renderCalendar(root, state, data, options = {}) {
     const weekdays = WEEKDAYS.map((day) => {
       return `<div class="availability-weekday">${day}</div>`;
     }).join("");
+
+    const demoNote = options.demoMessage
+      ? `<div class="availability-demo-note">${escapeHtml(options.demoMessage)}</div>`
+      : "";
 
     root.innerHTML = `
       <div class="availability-card">
@@ -123,6 +147,7 @@
           </div>
         </div>
         <div class="availability-card-body">
+          ${demoNote}
           <div class="availability-toolbar">
             <div class="availability-nav">
               <button type="button" class="availability-nav-btn" data-shift="-1" aria-label="Mes anterior">‹</button>
@@ -181,23 +206,19 @@
       const data = await fetchMonth(state.artist, month);
 
       if (!data.configured) {
-        renderEmpty(
-          root,
-          state,
-          "Calendario en configuración",
-          "Todavía no hay un Google Calendar conectado para este artista."
-        );
-        return;
+      renderCalendar(root, state, createDemoData(month), {
+        demoMessage:
+          "Vista previa del diseño. Cuando conectes Google Calendar, aquí aparecerán las fechas reales en libre, pendiente u ocupado.",
+      });
+      return;
       }
 
       renderCalendar(root, state, data);
     } catch (error) {
-      renderEmpty(
-        root,
-        state,
-        "No disponible ahora mismo",
-        error.message || "Ha habido un problema al cargar el calendario."
-      );
+      renderCalendar(root, state, createDemoData(month), {
+        demoMessage:
+          error.message || "No se pudo cargar la disponibilidad real en este momento.",
+      });
     }
   }
 
