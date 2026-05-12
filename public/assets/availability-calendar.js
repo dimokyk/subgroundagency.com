@@ -177,6 +177,11 @@
         loadMonth(root, state, shiftMonth(data.month, Number(button.dataset.shift)));
       });
     });
+
+    const revealContainer = root.closest(".availability-shell");
+    if (revealContainer) {
+      revealContainer.classList.add("visible");
+    }
   }
 
   async function fetchMonth(artist, month) {
@@ -228,6 +233,11 @@
     if (!state.artist) {
       renderEmpty(root, state, "Configuración incompleta", "Falta indicar qué artista debe cargar este calendario.");
       return;
+    }
+
+    const revealContainer = root.closest(".availability-shell");
+    if (revealContainer) {
+      revealContainer.classList.add("visible");
     }
 
     loadMonth(root, state, dateToMonth(new Date()));

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>ESEE — Subground Agency</title>
+<meta name="description" content="ESEE — DJ urbano de Murcia. Reggaetón como subgénero principal. Booking via Subground Agency."/>
+<link rel="icon" href="/favicon.ico?v=4" type="image/x-icon" sizes="any"/>
+<link rel="shortcut icon" href="/favicon.ico?v=4"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/availability-calendar.css?v=2"/>
+<script src="/assets/availability-calendar.js?v=2" defer></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#C0392B;--ht:#C0392B;--mid:#C2185B;--pur:#8E24AA;--urb:#5C35CC;
+  --bone:#F1EFE8;--gray:#888780;--bgray:#5F5E5A;
+  --blk:#0D0D0C;--panel:#1A1A19;--card:#222221;
+  --grad:linear-gradient(90deg,#C0392B 0%,#C2185B 33.33%,#8E24AA 66.66%,#5C35CC 100%);
+}
+html{scroll-behavior:smooth;overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{background:var(--blk);color:var(--bone);font-family:'Barlow',sans-serif;overflow-x:hidden;cursor:auto;-webkit-overflow-scrolling:touch}
+@media (hover:hover) and (pointer:fine){body{cursor:none}}
+.cursor{position:fixed;width:8px;height:8px;background:var(--ht);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .15s}
+.cursor-ring{position:fixed;width:32px;height:32px;border:1px solid rgba(192,57,43,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .08s,top .08s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;padding-top:env(safe-area-inset-top,0);padding-left:max(48px,env(safe-area-inset-left,0));padding-right:max(48px,env(safe-area-inset-right,0));min-height:calc(60px + env(safe-area-inset-top,0));background:rgba(13,13,12,.9);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.05)}
+.nav-back{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--bone);font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;transition:color .2s;max-width:min(260px,52vw)}
+.nav-back:hover{color:var(--urb)}
+.nav-back svg{width:18px;height:18px;stroke:currentColor;fill:none;flex-shrink:0}
+.nav-agency{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;letter-spacing:3px;color:var(--bone);text-shadow:0 1px 2px rgba(0,0,0,.4)}
+.nav-agency span{font-weight:400;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nav-book{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:7px 18px;background:var(--ht);color:var(--bone);text-decoration:none;transition:opacity .2s}
+.nav-book:hover{opacity:.85}
+#hero{position:relative;display:flex;align-items:flex-end;overflow:hidden;min-height:100vh;min-height:100svh;min-height:100dvh;min-height:-webkit-fill-available}
+.hero-photo{position:absolute;inset:0;z-index:0;background:#050505}
+.hero-photo img{width:100%;height:100%;max-width:100%;object-fit:contain;object-position:center bottom;filter:brightness(.94) contrast(1.04)}
+.hero-watermark{position:absolute;inset:0;z-index:1;pointer-events:none;display:flex;justify-content:center;align-items:flex-start;padding:calc(48px + env(safe-area-inset-top,0)) 16px 0;opacity:.18}
+.hero-watermark img{width:min(64vw,360px);max-width:100%;height:auto;display:block;object-fit:contain}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,#0d0d0c 0%,rgba(13,13,12,.9) 36%,rgba(13,13,12,.62) 58%,rgba(13,13,12,.24) 78%,transparent 100%);z-index:2}
+.hero-grain{position:absolute;inset:0;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;z-index:3}
+.hero-content{position:relative;z-index:5;padding:0 48px 64px;width:100%;max-width:1200px;margin:0 auto;padding-bottom:max(64px,calc(24px + env(safe-area-inset-bottom,0)));isolation:isolate}
+.hero-tag{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:5px;color:var(--ht);text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeUp .6s .1s forwards}
+.hero-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(58px,13.5vmin,200px);line-height:.85;letter-spacing:-3px;text-transform:uppercase;margin:0 0 12px;color:var(--bone);word-break:break-word;opacity:0;animation:fadeUp .8s .2s forwards;text-shadow:0 8px 52px rgba(0,0,0,.95),0 2px 18px rgba(0,0,0,.88)}
+.hero-real{font-family:'Barlow',sans-serif;font-size:18px;color:var(--gray);letter-spacing:2px;margin-bottom:24px;opacity:0;animation:fadeUp .6s .35s forwards}
+.hero-genre-stack{display:flex;flex-direction:column;gap:12px;margin-bottom:32px;opacity:0;animation:fadeUp .6s .45s forwards}
+.hero-genres,.hero-subgenres{display:flex;flex-wrap:wrap;gap:10px 14px}
+.hg{font-family:'Barlow Condensed',sans-serif;font-size:clamp(11px,3.1vw,13px);font-weight:900;letter-spacing:.2em;line-height:1.25;color:var(--bone);padding:11px 20px;text-transform:uppercase;border:none;border-top:3px solid;display:inline-flex;align-items:center;min-height:44px;background:rgba(13,13,12,.58);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:3px;box-shadow:0 6px 24px rgba(0,0,0,.52);text-shadow:0 1px 4px rgba(0,0,0,.92)}
+.hg-genre-main{font-size:clamp(14px,3.9vw,20px)!important;font-weight:900!important;letter-spacing:.24em!important;padding:14px 26px!important;min-height:52px!important;border-top-width:4px!important}
+.hg-urban{border-top-color:var(--urb)}
+.hg-sub{border-top-color:var(--mid);font-size:clamp(10px,2.7vw,12px);font-weight:800;letter-spacing:.16em;padding:9px 17px;min-height:38px;border-top-width:2px}
+.hero-copy{max-width:560px;font-size:15px;color:#c9c8c2;line-height:1.8;opacity:0;animation:fadeUp .6s .55s forwards}
+.hero-scroll{position:absolute;right:48px;bottom:64px;z-index:8;display:flex;flex-direction:column;align-items:center;gap:8px;opacity:.4}
+.hero-scroll span{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gray);writing-mode:vertical-rl}
+.scroll-line{width:1px;height:50px;background:var(--grad);animation:scrollAnim 2s infinite}
+section{padding:100px 48px}
+.container{max-width:1200px;margin:0 auto}
+.stag{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--ht);margin-bottom:16px}
+.stitle{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(40px,6vw,72px);line-height:.95;text-transform:uppercase;margin-bottom:8px}
+#about{background:var(--blk)}
+.about-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:48px;align-items:start;margin-top:56px}
+.about-text p{font-size:16px;color:var(--gray);line-height:1.8;margin-bottom:20px}
+.about-text p strong{color:var(--bone)}
+.about-side{display:flex;flex-direction:column;gap:20px}
+.about-details{display:flex;flex-direction:column;gap:2px}
+.detail-row{background:var(--panel);padding:20px 24px;display:flex;justify-content:space-between;align-items:center;position:relative;overflow:hidden;transition:background .2s}
+.detail-row:hover{background:var(--card)}
+.detail-row::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--ht);transform:scaleY(0);transform-origin:bottom;transition:transform .3s}
+.detail-row:hover::before{transform:scaleY(1)}
+.detail-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ht)}
+.detail-val{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:600;color:var(--bone);letter-spacing:1px}
+.dossier-card{background:var(--panel);padding:24px;position:relative;overflow:hidden}
+.dossier-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
+.dossier-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:4px;text-transform:uppercase;color:var(--ht);margin-bottom:18px}
+.dossier-preview{width:100%;height:auto;display:block;border-radius:8px;border:1px solid rgba(255,255,255,.06);background:#0a0a0a}
+.dossier-copy{margin-top:14px;font-size:13px;color:var(--gray);line-height:1.7}
+#performance{background:var(--panel);position:relative}
+#performance::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:var(--grad)}
+.performance-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:44px}
+.performance-card{background:var(--card);padding:24px;position:relative;overflow:hidden;min-height:156px}
+.performance-card::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.performance-card:hover::after{transform:scaleX(1)}
+.performance-index{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--bgray);margin-bottom:12px}
+.performance-name{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:800;line-height:.95;text-transform:uppercase;color:var(--bone);margin-bottom:10px}
+.performance-copy{font-size:14px;color:var(--gray);line-height:1.7}
+#gallery{background:var(--blk)}
+.gallery-empty{margin-top:36px;padding:clamp(48px,8vw,80px) 24px;border:1px dashed var(--card);border-radius:6px;text-align:center;font-size:15px;color:var(--bgray);line-height:1.65;background:rgba(255,255,255,.02)}
+#booking{position:relative;overflow:hidden;text-align:center;padding:120px 48px}
+.booking-bg{position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(92,53,204,.16) 0%,transparent 70%)}
+.booking-content{position:relative;z-index:1}
+.booking-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(48px,8vw,100px);text-transform:uppercase;line-height:.9;margin-bottom:24px}
+.booking-title .accent{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.booking-sub{font-size:18px;color:var(--gray);margin-bottom:48px;letter-spacing:1px}
+.booking-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-book{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:4px;text-transform:uppercase;padding:16px 40px;background:var(--ht);color:var(--bone);text-decoration:none;transition:opacity .2s,transform .1s}
+.btn-book:hover{opacity:.85;transform:translateY(-2px)}
+.footer-nav{background:var(--blk);padding:32px 48px;padding-bottom:max(32px,env(safe-area-inset-bottom,0));padding-left:max(48px,env(safe-area-inset-left,0));padding-right:max(48px,env(safe-area-inset-right,0));display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--card)}
+.footer-nav a{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .2s}
+.footer-nav a:hover{color:var(--bone)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollAnim{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.5);opacity:.4}}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}
+@media(max-width:900px){
+  nav{padding:0 24px;padding-left:max(24px,env(safe-area-inset-left,0));padding-right:max(24px,env(safe-area-inset-right,0));padding-top:env(safe-area-inset-top,0);min-height:calc(56px + env(safe-area-inset-top,0))}
+  section{padding:70px max(24px,env(safe-area-inset-left,0)) 70px max(24px,env(safe-area-inset-right,0))}
+  #hero{min-height:100svh;min-height:100dvh;height:auto;padding-top:calc(56px + env(safe-area-inset-top,0))}
+  .hero-content{padding:0 max(24px,env(safe-area-inset-left,0)) max(48px,env(safe-area-inset-bottom,0)) max(24px,env(safe-area-inset-right,0))}
+  .hero-name{font-size:clamp(48px,17vw,118px);letter-spacing:-2px}
+  .hero-real{font-size:14px;letter-spacing:1px;line-height:1.5}
+  .hero-genres,.hero-subgenres{flex-direction:column;align-items:stretch}
+  .hero-scroll{display:none}
+  .about-grid,.performance-grid{grid-template-columns:1fr;gap:20px}
+  .detail-row{flex-direction:column;align-items:flex-start;gap:6px}
+  .footer-nav{flex-direction:column;gap:16px;text-align:center;padding-left:max(24px,env(safe-area-inset-left,0));padding-right:max(24px,env(safe-area-inset-right,0))}
+  #booking{padding:80px max(24px,env(safe-area-inset-left,0)) 80px max(24px,env(safe-area-inset-right,0))}
+  .cursor,.cursor-ring{display:none}
+}
+@media(max-width:640px){
+  nav{padding:0 16px;padding-left:max(16px,env(safe-area-inset-left,0));padding-right:max(16px,env(safe-area-inset-right,0));min-height:calc(52px + env(safe-area-inset-top,0))}
+  .nav-agency{display:none}
+  .nav-back{font-size:10px;letter-spacing:2px;gap:8px}
+  .nav-book{padding:6px 12px;font-size:10px;letter-spacing:2px}
+  section{padding:58px max(16px,env(safe-area-inset-left,0)) 58px max(16px,env(safe-area-inset-right,0))}
+  .hero-content{padding:0 max(16px,env(safe-area-inset-left,0)) max(32px,env(safe-area-inset-bottom,0)) max(16px,env(safe-area-inset-right,0))}
+  #hero{padding-top:calc(52px + env(safe-area-inset-top,0))}
+  .hero-name{font-size:clamp(40px,14.5vw,92px)}
+  .hero-watermark img{width:min(62vw,240px)}
+  .hero-copy{font-size:14px}
+}
+</style>
+</head>
+<body>
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+
+<nav>
+  <a href="/" class="nav-back" aria-label="Volver al roster">
+    <svg viewBox="0 0 24 24" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+    <span>Roster</span>
+  </a>
+  <div class="nav-agency">SUBGROUND <span>AGENCY</span></div>
+  <a class="nav-book" href="/#contact">Booking</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-photo">
+    <img src="/images/esee-photo.png?v=1" width="576" height="1024" decoding="async" alt="ESEE retrato oficial"/>
+  </div>
+  <div class="hero-watermark" aria-hidden="true">
+    <img src="/images/esee-logo-blanco.png?v=1" width="845" height="295" decoding="async" alt=""/>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Subground Agency</div>
+    <h1 class="hero-name">ESEE</h1>
+    <div class="hero-real">Sergio Botia Fernandez</div>
+    <div class="hero-genre-stack">
+      <div class="hero-genres">
+        <span class="hg hg-urban hg-genre-main">Urbano</span>
+      </div>
+      <div class="hero-subgenres">
+        <span class="hg hg-sub">Reggaeton</span>
+      </div>
+    </div>
+    <p class="hero-copy">DJ urbano murciano con una puesta en escena en crecimiento y foco claro en cabina. Reggaeton como subgenero principal y actitud orientada al directo.</p>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="stag reveal">Biografia</div>
+    <h2 class="stitle reveal">Sergio<br>Botia<br>Fernandez.</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="reveal"><strong>ESEE</strong> es el nombre artistico de Sergio Botia Fernandez, artista murciano nacido en 2006. Su vinculo con la musica viene de antes de la cabina, aunque en 2018 empieza a dar sus primeros pasos dentro del mundo DJ.</p>
+        <p class="reveal reveal-delay-1">Desde entonces ha ido desarrollando su presencia en formatos de musica urbana y fiesta, trabajando registros que pasan por el Reggaeton como eje principal, con paso tambien por Tech House y Latin Tech segun el contexto del evento.</p>
+        <p class="reveal reveal-delay-2">En su recorrido ya ha compartido cartel con artistas como <strong>Alex Martin</strong> o <strong>Jose de Las Heras</strong>, mientras sigue consolidando una proyeccion regional cada vez mas clara.</p>
+      </div>
+      <div class="about-side reveal">
+        <div class="about-details">
+          <div class="detail-row"><span class="detail-label">Nombre artistico</span><span class="detail-val">ESEE</span></div>
+          <div class="detail-row"><span class="detail-label">Nombre real</span><span class="detail-val">Sergio Botia Fernandez</span></div>
+          <div class="detail-row"><span class="detail-label">Nacimiento</span><span class="detail-val">2006</span></div>
+          <div class="detail-row"><span class="detail-label">Residencia</span><span class="detail-val">Murcia, Espana</span></div>
+          <div class="detail-row"><span class="detail-label">Genero</span><span class="detail-val">Urbano</span></div>
+          <div class="detail-row"><span class="detail-label">Subgenero</span><span class="detail-val">Reggaeton</span></div>
+          <div class="detail-row"><span class="detail-label">Management / Booking</span><span class="detail-val">Subground Agency</span></div>
+        </div>
+        <div class="dossier-card">
+          <div class="dossier-title">Dossier base</div>
+          <img class="dossier-preview" src="/images/esee-dossier-preview.png?v=1" width="288" height="1024" alt="Vista previa del dossier de ESEE" decoding="async"/>
+          <p class="dossier-copy">He dejado la pagina preparada usando la informacion visible en este dossier para que luego podamos completar copy, fechas, redes, rider y material de galeria.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="performance">
+  <div class="container">
+    <div class="stag reveal">Puesta en escena</div>
+    <h2 class="stitle reveal">Directo y presencia.</h2>
+    <div class="performance-grid">
+      <div class="performance-card reveal">
+        <div class="performance-index">01</div>
+        <div class="performance-name">Sunderland Festival</div>
+        <p class="performance-copy">Concierto de GUEVEDC dentro del universo Sunderland Festival, como referencia ya presente en su dossier.</p>
+      </div>
+      <div class="performance-card reveal reveal-delay-1">
+        <div class="performance-index">02</div>
+        <div class="performance-name">Luminata Disco Murcia</div>
+        <p class="performance-copy">Contexto de sala y publico club con enfoque en energia urbana y lectura rapida de la pista.</p>
+      </div>
+      <div class="performance-card reveal reveal-delay-2">
+        <div class="performance-index">03</div>
+        <div class="performance-name">Escenario Joven Cehegin</div>
+        <p class="performance-copy">Formato abierto y de evento local, reforzando su crecimiento dentro de la escena regional.</p>
+      </div>
+      <div class="performance-card reveal reveal-delay-3">
+        <div class="performance-index">04</div>
+        <div class="performance-name">Carpa Festera Calasparra</div>
+        <p class="performance-copy">Entorno de fiesta popular con vocacion de respuesta inmediata y puesta en escena directa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" style="padding-top:100px;padding-bottom:0">
+  <div class="container">
+    <div class="stag reveal">Fotografia y video</div>
+    <h2 class="stitle reveal" style="margin-bottom:0">En directo.</h2>
+    <div class="gallery-empty reveal">Material visual en actualizacion. Proximamente fotos y videos de cabina, eventos y presskit completo de ESEE.</div>
+  </div>
+</section>
+
+<section id="availability" class="availability-section" style="padding-top:80px">
+  <div class="container">
+    <div class="stag reveal">Disponibilidad</div>
+    <h2 class="stitle reveal">Calendario.</h2>
+    <p class="availability-intro reveal reveal-delay-1">Consulta si una fecha aparece libre, pendiente u ocupada.</p>
+    <div class="availability-shell reveal reveal-delay-2">
+      <div class="availability-calendar" data-artist="esee" data-artist-label="ESEE" data-booking-href="/#contact"></div>
+    </div>
+  </div>
+</section>
+
+<section id="booking">
+  <div class="booking-bg"></div>
+  <div class="booking-content">
+    <h2 class="booking-title">Quieres<br>a <span class="accent">ESEE</span><br>en tu sala?</h2>
+    <p class="booking-sub">Escribenos y organizamos el booking.</p>
+    <div class="booking-actions">
+      <a class="btn-book" href="/#contact">Contactar para booking</a>
+    </div>
+  </div>
+</section>
+
+<div class="footer-nav">
+  <a href="/">← Volver al roster</a>
+  <span style="font-family:'Barlow Condensed',sans-serif;font-size:11px;letter-spacing:3px;color:var(--bgray);">SUBGROUND AGENCY · subgroundagency.com</span>
+  <a href="/#contact">Booking →</a>
+</div>
+
+<script>
+const cur=document.getElementById('cur'),curR=document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'});
+(function anim(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(anim)})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.transform='translate(-50%,-50%) scale(2.5)';curR.style.opacity='0'});
+  el.addEventListener('mouseleave',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';curR.style.opacity='1'});
+});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

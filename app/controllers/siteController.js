@@ -13,3 +13,7 @@ exports.f3lyProfile = (req, res) => {
 exports.mediokiloProfile = (req, res) => {
   res.sendFile(path.join(rootDir, "mediokilo.html"));
 };
+
+exports.eseeProfile = (req, res) => {
+  res.sendFile(path.join(rootDir, "esee.html"));
+};

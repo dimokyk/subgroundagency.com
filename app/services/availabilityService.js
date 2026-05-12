@@ -1,6 +1,7 @@
 const https = require("https");
 
 const ARTIST_CALENDAR_ENV = {
+  esee: "ESEE_CALENDAR_ICS_URL",
   f3ly: "F3LY_CALENDAR_ICS_URL",
   mediokilo: "MEDIOKILO_CALENDAR_ICS_URL",
 };
