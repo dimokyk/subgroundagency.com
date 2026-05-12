@@ -31,11 +31,11 @@
 
   function escapeHtml(value) {
     return String(value)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#39;");
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
   }
 
   function getStatusClass(status) {
@@ -104,7 +104,6 @@
             <div class="availability-card-title">${escapeHtml(
               state.artistLabel
             )}</div>
-            <p class="availability-card-copy">Calendario visual sincronizado con Google Calendar.</p>
           </div>
           <div class="availability-legend">
             <span class="availability-pill is-free">Libre</span>
@@ -115,7 +114,6 @@
         <div class="availability-empty">
           <strong>${escapeHtml(title)}</strong>
           ${escapeHtml(message)}
-          <small>Cuando conectes el Google Calendar público del artista, se verá aquí automáticamente.</small>
         </div>
       </div>
     `;
@@ -243,7 +241,13 @@
     loadMonth(root, state, dateToMonth(new Date()));
   }
 
-  window.addEventListener("DOMContentLoaded", () => {
+  function initAllCalendars() {
     document.querySelectorAll(".availability-calendar").forEach(initCalendar);
-  });
+  }
+
+  if (document.readyState === "loading") {
+    window.addEventListener("DOMContentLoaded", initAllCalendars);
+  } else {
+    initAllCalendars();
+  }
 })();
