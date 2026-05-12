@@ -1,8 +1,8 @@
 const https = require("https");
 
 const ARTIST_CALENDAR_ENV = {
-  f3ly: "F3LY_CALENDAR_ID",
-  mediokilo: "MEDIOKILO_CALENDAR_ID",
+  f3ly: "F3LY_CALENDAR_ICS_URL",
+  mediokilo: "MEDIOKILO_CALENDAR_ICS_URL",
 };
 
 const STATUS_PRIORITY = {
@@ -105,14 +105,69 @@ function inferStatus(summary) {
   return "busy";
 }
 
-function getEventDateKey(boundary) {
-  if (!boundary) return null;
-  if (boundary.date) return boundary.date;
-  if (boundary.dateTime) return String(boundary.dateTime).slice(0, 10);
-  return null;
+function toDateKey(date) {
+  return `${date.getUTCFullYear()}-${pad(date.getUTCMonth() + 1)}-${pad(
+    date.getUTCDate()
+  )}`;
 }
 
-function fetchJson(url) {
+function parseDateOnlyValue(value) {
+  if (!/^\d{8}$/.test(value || "")) {
+    return null;
+  }
+
+  return `${value.slice(0, 4)}-${value.slice(4, 6)}-${value.slice(6, 8)}`;
+}
+
+function parseDateTimeValue(value) {
+  if (!/^\d{8}T\d{6}Z?$/.test(value || "")) {
+    return null;
+  }
+
+  const year = Number(value.slice(0, 4));
+  const month = Number(value.slice(4, 6)) - 1;
+  const day = Number(value.slice(6, 8));
+  const hours = Number(value.slice(9, 11));
+  const minutes = Number(value.slice(11, 13));
+  const seconds = Number(value.slice(13, 15));
+
+  if (value.endsWith("Z")) {
+    return toDateKey(new Date(Date.UTC(year, month, day, hours, minutes, seconds)));
+  }
+
+  return toDateKey(new Date(Date.UTC(year, month, day, hours, minutes, seconds)));
+}
+
+function parseIcsBoundary(propertyName, rawValue) {
+  const upperName = String(propertyName || "").toUpperCase();
+  const value = String(rawValue || "").trim();
+  const isDateOnly = upperName.includes("VALUE=DATE") || /^\d{8}$/.test(value);
+  const dateKey = isDateOnly ? parseDateOnlyValue(value) : parseDateTimeValue(value);
+
+  if (!dateKey) {
+    return null;
+  }
+
+  return {
+    date: dateKey,
+    isDateOnly,
+  };
+}
+
+function decodeIcsText(value) {
+  return String(value || "")
+    .replace(/\\n/gi, "\n")
+    .replace(/\\,/g, ",")
+    .replace(/\\;/g, ";")
+    .replace(/\\\\/g, "\\");
+}
+
+function normalizeIcsUrl(url) {
+  if (!url) return "";
+  return String(url).trim().replace(/^webcal:\/\//i, "https://");
+}
+
+function fetchText(url) {
   return new Promise((resolve, reject) => {
     https
       .get(url, (response) => {
@@ -124,57 +179,104 @@ function fetchJson(url) {
 
         response.on("end", () => {
           if (response.statusCode < 200 || response.statusCode >= 300) {
-            reject(
-              new Error(`Google Calendar responded with ${response.statusCode}`)
-            );
+            reject(new Error(`Google Calendar responded with ${response.statusCode}`));
             return;
           }
 
-          try {
-            resolve(JSON.parse(raw));
-          } catch (error) {
-            reject(error);
-          }
+          resolve(raw);
         });
       })
       .on("error", reject);
   });
 }
 
-async function fetchCalendarEvents(calendarId, apiKey, monthWindow) {
-  const requestUrl = new URL(
-    `https://www.googleapis.com/calendar/v3/calendars/${encodeURIComponent(
-      calendarId
-    )}/events`
-  );
+function parseIcsEvents(icsText) {
+  const lines = String(icsText || "")
+    .replace(/\r\n/g, "\n")
+    .replace(/\r/g, "\n")
+    .split("\n");
 
-  requestUrl.searchParams.set("singleEvents", "true");
-  requestUrl.searchParams.set("orderBy", "startTime");
-  requestUrl.searchParams.set("timeMin", monthWindow.start.toISOString());
-  requestUrl.searchParams.set("timeMax", monthWindow.end.toISOString());
-  requestUrl.searchParams.set("maxResults", "2500");
-  requestUrl.searchParams.set(
-    "fields",
-    "items(summary,start(date,dateTime),end(date,dateTime))"
-  );
-  requestUrl.searchParams.set("key", apiKey);
+  const unfolded = [];
+  for (const line of lines) {
+    if (!line) {
+      continue;
+    }
 
-  const payload = await fetchJson(requestUrl);
-  return Array.isArray(payload.items) ? payload.items : [];
+    if ((line.startsWith(" ") || line.startsWith("\t")) && unfolded.length > 0) {
+      unfolded[unfolded.length - 1] += line.slice(1);
+      continue;
+    }
+
+    unfolded.push(line);
+  }
+
+  const events = [];
+  let currentEvent = null;
+
+  for (const line of unfolded) {
+    if (line === "BEGIN:VEVENT") {
+      currentEvent = {};
+      continue;
+    }
+
+    if (line === "END:VEVENT") {
+      if (currentEvent) {
+        events.push(currentEvent);
+      }
+      currentEvent = null;
+      continue;
+    }
+
+    if (!currentEvent) {
+      continue;
+    }
+
+    const separatorIndex = line.indexOf(":");
+    if (separatorIndex === -1) {
+      continue;
+    }
+
+    const property = line.slice(0, separatorIndex);
+    const value = line.slice(separatorIndex + 1);
+    const upperProperty = property.toUpperCase();
+
+    if (upperProperty.startsWith("SUMMARY")) {
+      currentEvent.summary = decodeIcsText(value);
+    } else if (upperProperty.startsWith("DTSTART")) {
+      currentEvent.start = parseIcsBoundary(property, value);
+    } else if (upperProperty.startsWith("DTEND")) {
+      currentEvent.end = parseIcsBoundary(property, value);
+    } else if (upperProperty === "STATUS") {
+      currentEvent.eventStatus = String(value || "").trim().toUpperCase();
+    }
+  }
+
+  return events.filter(
+    (event) =>
+      event.start &&
+      event.end &&
+      event.eventStatus !== "CANCELLED" &&
+      event.eventStatus !== "CANCELED"
+  );
+}
+
+async function fetchCalendarEvents(icsUrl) {
+  const icsText = await fetchText(normalizeIcsUrl(icsUrl));
+  return parseIcsEvents(icsText);
 }
 
 function applyEventStatuses(events, monthWindow) {
   const statusByDate = new Map();
 
   for (const event of events) {
-    const startKey = getEventDateKey(event.start);
-    let endKey = getEventDateKey(event.end);
+    const startKey = event.start && event.start.date;
+    let endKey = event.end && event.end.date;
 
     if (!startKey || !endKey) {
       continue;
     }
 
-    if (event.end && event.end.date) {
+    if (event.end && event.end.isDateOnly) {
       endKey = addDays(endKey, -1);
     }
 
@@ -210,10 +312,9 @@ async function getArtistAvailability(artist, monthParam) {
   }
 
   const monthWindow = getMonthWindow(monthParam);
-  const apiKey = process.env.GOOGLE_CALENDAR_API_KEY;
-  const calendarId = process.env[calendarEnvName];
+  const icsUrl = process.env[calendarEnvName];
 
-  if (!apiKey || !calendarId) {
+  if (!icsUrl) {
     return {
       artist: artistKey,
       month: monthWindow.month,
@@ -223,7 +324,7 @@ async function getArtistAvailability(artist, monthParam) {
     };
   }
 
-  const events = await fetchCalendarEvents(calendarId, apiKey, monthWindow);
+  const events = await fetchCalendarEvents(icsUrl);
   const statusByDate = applyEventStatuses(events, monthWindow);
   const days = [];
 
