@@ -74,12 +74,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-grad-top{position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
 .hero-noise{position:absolute;inset:0;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
 
-.hero-content{position:relative;z-index:1;text-align:center;padding:0 24px;max-width:900px}
+.hero-layout{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 24px;max-width:900px;width:100%}
+.hero-content{position:relative;width:100%;text-align:center}
 .hero-tag{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:6px;text-transform:uppercase;color:var(--red);margin-bottom:32px;opacity:0;animation:fadeUp .8s .2s forwards}
 
-/* ── HERO LOGO (JPEG sin alfa: mix-blend-mode screen; animación sin transform para que el blend llegue al hero-bg) ─── */
-.hero-logo-svg{width:min(100%,200px);max-width:200px;margin:0 auto 24px;opacity:0;animation:heroLogoIn .85s .12s forwards;display:flex;justify-content:center;align-items:center;background:transparent}
-.hero-logo-svg img{width:100%;height:auto;display:block;mix-blend-mode:screen}
+/* ── HERO LOGO (JPEG sin alfa: img con mix-blend-mode screen sobre hero-bg; fuera de .hero-content para que el blend no quede atrapado por el stacking context) ─── */
+.hero-logo-svg{width:min(100%,200px);max-width:200px;margin:0 auto 24px;display:flex;justify-content:center;align-items:center;background:transparent}
+.hero-logo-svg img{width:100%;height:auto;display:block;mix-blend-mode:screen;-webkit-mix-blend-mode:screen;opacity:0;animation:heroLogoIn .85s .12s forwards}
 
 .hero-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(56px,10vw,120px);line-height:.9;letter-spacing:-1px;text-transform:uppercase;margin-bottom:8px;opacity:0;animation:fadeUp .8s .3s forwards}
 .hero-title .agency{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -321,7 +322,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
   .nav-wordmark span{font-size:10px}
   .nav-links a{font-size:14px}
   .nav-cta{font-size:13px;padding:10px 22px}
-  .hero-content{max-width:min(92vw,1040px)}
+  .hero-layout{max-width:min(92vw,1040px)}
   .hero-logo-svg{max-width:240px}
   .hero-title{font-size:clamp(58px,11vw,150px)}
   .hero-tagline{font-size:clamp(15px,2.2vw,22px)}
@@ -343,7 +344,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
 }
 @media(min-width:1920px){
   nav{padding:0 64px;height:76px}
-  .hero-content{max-width:min(88vw,1180px)}
+  .hero-layout{max-width:min(88vw,1180px)}
   .hero-logo-svg{max-width:280px}
   .hero-title{font-size:clamp(64px,11vw,180px)}
   .container{max-width:1480px}
@@ -423,7 +424,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
 <nav>
   <a class="nav-logo" href="#">
     <span class="nav-logo-knockout">
-    <img src="/images/subground-logo.jpg?v=10" width="819" height="1024" alt="Subground Agency" decoding="async"/>
+    <img src="/images/subground-logo.jpg?v=11" width="819" height="1024" alt="Subground Agency" decoding="async"/>
     </span>
     <div class="nav-wordmark">SUBGROUND<span>AGENCY</span></div>
   </a>
@@ -450,10 +451,11 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
     <div class="hero-bars" id="heroBars"></div>
     <div class="hero-noise"></div>
   </div>
-  <div class="hero-content">
+  <div class="hero-layout">
     <div class="hero-logo-svg">
-      <img src="/images/subground-logo.jpg?v=10" width="819" height="1024" alt="Subground Agency" decoding="async"/>
+      <img src="/images/subground-logo.jpg?v=11" width="819" height="1024" alt="Subground Agency" decoding="async"/>
     </div>
+    <div class="hero-content">
     <div class="hero-tag" data-es="Booking Agency · Spain" data-en="Booking Agency · Spain">Booking Agency · Spain</div>
     <h1 class="hero-title">SUBGROUND<br><span class="agency">AGENCY</span></h1>
     <div class="hero-divider"></div>
@@ -470,6 +472,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
     <div class="hero-cta">
       <a class="btn-primary" href="#contact" data-es="Contactar para booking" data-en="Get in touch">Contactar para booking</a>
       <a class="btn-secondary" href="#roster" data-es="Ver roster" data-en="See roster">Ver roster</a>
+    </div>
     </div>
   </div>
   <div class="hero-scroll">
@@ -791,7 +794,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
       <div class="footer-brand">
         <div class="footer-logo">
           <span class="footer-logo-knockout">
-          <img src="/images/subground-logo.jpg?v=10" width="819" height="1024" alt="Subground Agency" decoding="async"/>
+          <img src="/images/subground-logo.jpg?v=11" width="819" height="1024" alt="Subground Agency" decoding="async"/>
           </span>
           <div class="nav-wordmark">SUBGROUND<span>AGENCY</span></div>
         </div>
