@@ -9,8 +9,8 @@
 <link rel="shortcut icon" href="/favicon.ico?v=4"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/assets/availability-calendar.css?v=5"/>
-<script src="/assets/availability-calendar.js?v=5" defer></script>
+<link rel="stylesheet" href="/assets/availability-calendar.css?v=6"/>
+<script src="/assets/availability-calendar.js?v=6" defer></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -540,7 +540,7 @@ section{padding:100px 48px}
     <div class="stag reveal">Disponibilidad</div>
     <h2 class="stitle reveal">Calendario.</h2>
     <p class="availability-intro reveal reveal-delay-1">Consulta si una fecha aparece libre, pendiente u ocupada.</p>
-    <div class="availability-shell reveal reveal-delay-2 visible">
+    <div class="availability-shell">
       <div class="availability-calendar" data-artist="f3ly" data-artist-label="F3LY" data-booking-href="/#contact"></div>
     </div>
   </div>
@@ -667,7 +667,7 @@ document.querySelectorAll('a,button').forEach(el=>{
 // Reveal on scroll
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
-},{threshold:0.12});
+},{threshold:0.08,rootMargin:'0px 0px 12% 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
 // Animated counters

@@ -207,10 +207,23 @@
       )}`
     );
 
-    const payload = await response.json();
+    let payload = null;
+    try {
+      payload = await response.json();
+    } catch {
+      payload = null;
+    }
 
     if (!response.ok) {
-      throw new Error(payload.message || "No se pudo cargar la disponibilidad.");
+      const msg =
+        payload && typeof payload === "object" && payload.message
+          ? payload.message
+          : "No se pudo cargar la disponibilidad.";
+      throw new Error(msg);
+    }
+
+    if (!payload || typeof payload !== "object") {
+      throw new Error("No se pudo cargar la disponibilidad.");
     }
 
     return payload;
