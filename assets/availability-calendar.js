@@ -217,6 +217,28 @@
     return base ? `${base}${path}` : path;
   }
 
+  let availabilityBundleCache;
+
+  async function loadAvailabilityBundle() {
+    if (availabilityBundleCache !== undefined) {
+      return availabilityBundleCache;
+    }
+    try {
+      const response = await fetch("/assets/availability-data/bundle.json", {
+        cache: "no-store",
+      });
+      if (!response.ok) {
+        availabilityBundleCache = null;
+        return null;
+      }
+      availabilityBundleCache = await response.json();
+      return availabilityBundleCache;
+    } catch {
+      availabilityBundleCache = null;
+      return null;
+    }
+  }
+
   async function fetchMonth(artist, month) {
     const response = await fetch(availabilityUrl(artist, month));
 
@@ -227,19 +249,26 @@
       payload = null;
     }
 
-    if (!response.ok) {
-      const msg =
-        payload && typeof payload === "object" && payload.message
-          ? payload.message
-          : "No se pudo cargar la disponibilidad.";
-      throw new Error(msg);
+    if (response.ok && payload && typeof payload === "object" && !payload.error) {
+      return payload;
     }
 
-    if (!payload || typeof payload !== "object") {
-      throw new Error("No se pudo cargar la disponibilidad.");
+    const bundle = await loadAvailabilityBundle();
+    const artistKey = String(artist || "").trim().toLowerCase();
+    if (
+      bundle &&
+      bundle.artists &&
+      bundle.artists[artistKey] &&
+      bundle.artists[artistKey][month]
+    ) {
+      return bundle.artists[artistKey][month];
     }
 
-    return payload;
+    const msg =
+      payload && typeof payload === "object" && payload.message
+        ? payload.message
+        : "No se pudo cargar la disponibilidad.";
+    throw new Error(msg);
   }
 
   async function loadMonth(root, state, month) {
@@ -249,23 +278,19 @@
       const data = await fetchMonth(state.artist, month);
 
       if (!data.configured) {
-      renderCalendar(root, state, createDemoData(month), {
-        demoMessage:
-          "La API responde pero falta la URL del iCal en el servidor (variables ESEE_CALENDAR_ICS_URL, F3LY_CALENDAR_ICS_URL o MEDIOKILO_CALENDAR_ICS_URL en Vercel o en el .env de Node).",
-      });
-      return;
+        renderCalendar(root, state, createDemoData(month), {
+          demoMessage:
+            "Sin iCal para este artista en .env o en el último sync. Añade la variable ICS y ejecuta npm run sync:availability.",
+        });
+        return;
       }
 
       renderCalendar(root, state, data);
     } catch (error) {
-      const base = getAvailabilityApiBase();
-      const hint =
-        !base && (String(error.message || "").includes("No se pudo") || String(error.message || "").includes("404"))
-          ? " Este dominio no expone /api: despliega el proyecto en Vercel (carpeta api/ + variables ICS) o añade meta availability-api-origin con la URL de tu API."
-          : "";
       renderCalendar(root, state, createDemoData(month), {
         demoMessage:
-          (error.message || "No se pudo cargar la disponibilidad real en este momento.") + hint,
+          error.message ||
+          "No hay datos: ejecuta npm run sync:availability y sube bundle.json, o activa la API /api.",
       });
     }
   }
