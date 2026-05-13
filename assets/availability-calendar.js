@@ -200,12 +200,25 @@
     }
   }
 
+  function getAvailabilityApiBase() {
+    const meta = document.querySelector('meta[name="availability-api-origin"]');
+    const raw = meta && meta.content ? String(meta.content).trim() : "";
+    if (raw) {
+      return raw.replace(/\/+$/, "");
+    }
+    const body = document.body && document.body.getAttribute("data-availability-api-origin");
+    const rawBody = body ? String(body).trim() : "";
+    return rawBody ? rawBody.replace(/\/+$/, "") : "";
+  }
+
+  function availabilityUrl(artist, month) {
+    const base = getAvailabilityApiBase();
+    const path = `/api/availability/${encodeURIComponent(artist)}?month=${encodeURIComponent(month)}`;
+    return base ? `${base}${path}` : path;
+  }
+
   async function fetchMonth(artist, month) {
-    const response = await fetch(
-      `/api/availability/${encodeURIComponent(artist)}?month=${encodeURIComponent(
-        month
-      )}`
-    );
+    const response = await fetch(availabilityUrl(artist, month));
 
     let payload = null;
     try {
@@ -238,16 +251,21 @@
       if (!data.configured) {
       renderCalendar(root, state, createDemoData(month), {
         demoMessage:
-          "Vista previa del diseño. Cuando conectes Google Calendar, aquí aparecerán las fechas reales en libre, pendiente u ocupado.",
+          "La API responde pero falta la URL del iCal en el servidor (variables ESEE_CALENDAR_ICS_URL, F3LY_CALENDAR_ICS_URL o MEDIOKILO_CALENDAR_ICS_URL en Vercel o en el .env de Node).",
       });
       return;
       }
 
       renderCalendar(root, state, data);
     } catch (error) {
+      const base = getAvailabilityApiBase();
+      const hint =
+        !base && (String(error.message || "").includes("No se pudo") || String(error.message || "").includes("404"))
+          ? " Este dominio no expone /api: despliega el proyecto en Vercel (carpeta api/ + variables ICS) o añade meta availability-api-origin con la URL de tu API."
+          : "";
       renderCalendar(root, state, createDemoData(month), {
         demoMessage:
-          error.message || "No se pudo cargar la disponibilidad real en este momento.",
+          (error.message || "No se pudo cargar la disponibilidad real en este momento.") + hint,
       });
     }
   }
