@@ -1,5 +1,6 @@
 (function () {
   const WEEKDAYS = ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"];
+  const WEEKDAYS_SHORT = ["L", "M", "X", "J", "V", "S", "D"];
   const MONTH_FORMATTER = new Intl.DateTimeFormat("es-ES", {
     month: "long",
     year: "numeric",
@@ -42,6 +43,18 @@
     return `is-${status || "free"}`;
   }
 
+  function shortStatusAbbrev(status) {
+    switch (status) {
+      case "pending":
+        return "Pen";
+      case "busy":
+        return "Ocu";
+      case "free":
+      default:
+        return "Lib";
+    }
+  }
+
   function weekdayOffset(monthKey) {
     const firstDay = monthToDate(monthKey).getDay();
     return firstDay === 0 ? 6 : firstDay - 1;
@@ -59,13 +72,17 @@
     const dayCells = (data.days || [])
       .map((day) => {
         const safeLabel = escapeHtml(day.label || "Libre");
+        const safeShort = escapeHtml(shortStatusAbbrev(day.status));
         return `
           <div class="availability-day ${getStatusClass(day.status)}" aria-label="${escapeHtml(
             `${day.date}: ${safeLabel}`
           )}">
             <div class="availability-day-number">${day.day}</div>
             <div class="availability-day-meta">
-              <span class="availability-day-label">${safeLabel}</span>
+              <span class="availability-day-label">
+                <span class="availability-day-label-full">${safeLabel}</span>
+                <span class="availability-day-label-short" aria-hidden="true">${safeShort}</span>
+              </span>
             </div>
           </div>
         `;
@@ -120,8 +137,9 @@
   }
 
   function renderCalendar(root, state, data, options = {}) {
-    const weekdays = WEEKDAYS.map((day) => {
-      return `<div class="availability-weekday">${day}</div>`;
+    const weekdays = WEEKDAYS.map((day, index) => {
+      const short = WEEKDAYS_SHORT[index] || day.charAt(0);
+      return `<div class="availability-weekday"><span class="availability-weekday-full">${day}</span><span class="availability-weekday-short" aria-hidden="true">${short}</span></div>`;
     }).join("");
 
     const demoNote = options.demoMessage
