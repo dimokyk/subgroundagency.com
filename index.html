@@ -34,8 +34,8 @@ body:hover .cursor{opacity:1}
 
 /* ── NAV ────────────────────────────────────────────── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(13,13,12,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);transition:background .3s}
-.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none}
-.nav-logo svg{width:36px;height:36px}
+.nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit}
+.nav-logo img{width:36px;height:36px;object-fit:contain;display:block;flex-shrink:0}
 .nav-wordmark{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:3px;color:var(--bone);line-height:1}
 .nav-wordmark span{display:block;font-size:9px;font-weight:400;letter-spacing:6px;margin-top:1px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-links{display:flex;align-items:center;gap:36px}
@@ -244,7 +244,7 @@ footer{background:var(--blk);padding:64px 48px 32px;position:relative}
 footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:var(--grad)}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:60px}
 .footer-brand .footer-logo{display:flex;align-items:center;gap:14px;margin-bottom:20px}
-.footer-brand .footer-logo svg{width:40px;height:40px}
+.footer-brand .footer-logo img{width:40px;height:40px;object-fit:contain;display:block;flex-shrink:0}
 .footer-tagline{font-size:13px;color:var(--gray);margin-bottom:24px;max-width:280px;line-height:1.6}
 .footer-tagline strong{color:var(--bone)}
 .footer-genres{display:flex;flex-wrap:wrap;gap:6px}
@@ -287,7 +287,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
    En monitores grandes el contenido no debe quedar “en miniatura” en el centro. */
 @media(min-width:1440px){
   nav{padding:0 56px;height:72px}
-  .nav-logo svg{width:40px;height:40px}
+  .nav-logo img{width:40px;height:40px}
   .nav-wordmark{font-size:20px}
   .nav-wordmark span{font-size:10px}
   .nav-links a{font-size:14px}
@@ -393,28 +393,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
-    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#C0392B"/>
-          <stop offset="33.33%" stop-color="#C2185B"/>
-          <stop offset="66.66%" stop-color="#8E24AA"/>
-          <stop offset="100%" stop-color="#5C35CC"/>
-        </linearGradient>
-      </defs>
-      <path d="M 38 10 Q 24 10 20 20 Q 16 30 22 37 L 38 44 Q 44 47 44 54 Q 44 60 36 62 Q 28 64 20 58" stroke="#F1EFE8" stroke-width="6" stroke-linecap="round" fill="none"/>
-      <path d="M 46 42 Q 52 50 48 58 Q 44 66 36 68 Q 28 70 20 64" stroke="#F1EFE8" stroke-width="6" stroke-linecap="round" fill="none"/>
-      <rect x="8"  y="34" width="3" height="6"  rx="1.5" fill="url(#ng)" opacity="0.5"/>
-      <rect x="13" y="30" width="3" height="10" rx="1.5" fill="url(#ng)" opacity="0.8"/>
-      <rect x="18" y="26" width="3" height="14" rx="1.5" fill="url(#ng)"/>
-      <rect x="23" y="30" width="3" height="10" rx="1.5" fill="url(#ng)" opacity="0.8"/>
-      <rect x="28" y="34" width="3" height="6"  rx="1.5" fill="url(#ng)" opacity="0.5"/>
-      <rect x="34" y="34" width="3" height="6"  rx="1.5" fill="url(#ng)" opacity="0.5"/>
-      <rect x="39" y="30" width="3" height="10" rx="1.5" fill="url(#ng)" opacity="0.8"/>
-      <rect x="44" y="26" width="3" height="14" rx="1.5" fill="url(#ng)"/>
-      <rect x="49" y="30" width="3" height="10" rx="1.5" fill="url(#ng)" opacity="0.8"/>
-      <rect x="54" y="34" width="3" height="6"  rx="1.5" fill="url(#ng)" opacity="0.5"/>
-    </svg>
+    <img src="/images/subground-logo.png?v=7" width="819" height="1024" alt="Subground Agency" decoding="async"/>
     <div class="nav-wordmark">SUBGROUND<span>AGENCY</span></div>
   </a>
   <div class="nav-links">
@@ -442,7 +421,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
   </div>
   <div class="hero-content">
     <div class="hero-logo-svg">
-      <img src="/images/subground-logo.png?v=6" width="819" height="1024" alt="Subground Agency" decoding="async"/>
+      <img src="/images/subground-logo.png?v=7" width="819" height="1024" alt="Subground Agency" decoding="async"/>
     </div>
     <div class="hero-tag" data-es="Booking Agency · Spain" data-en="Booking Agency · Spain">Booking Agency · Spain</div>
     <h1 class="hero-title">SUBGROUND<br><span class="agency">AGENCY</span></h1>
@@ -780,16 +759,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-logo">
-          <svg width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="fg" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#C0392B"/><stop offset="33.33%" stop-color="#C2185B"/><stop offset="66.66%" stop-color="#8E24AA"/><stop offset="100%" stop-color="#5C35CC"/></linearGradient></defs>
-            <path d="M 38 10 Q 24 10 20 20 Q 16 30 22 37 L 38 44 Q 44 47 44 54 Q 44 60 36 62 Q 28 64 20 58" stroke="#F1EFE8" stroke-width="6" stroke-linecap="round" fill="none"/>
-            <path d="M 46 42 Q 52 50 48 58 Q 44 66 36 68 Q 28 70 20 64" stroke="#F1EFE8" stroke-width="6" stroke-linecap="round" fill="none"/>
-            <rect x="8"  y="34" width="3" height="6"  rx="1.5" fill="url(#fg)" opacity="0.5"/>
-            <rect x="13" y="30" width="3" height="10" rx="1.5" fill="url(#fg)" opacity="0.8"/>
-            <rect x="18" y="26" width="3" height="14" rx="1.5" fill="url(#fg)"/>
-            <rect x="23" y="30" width="3" height="10" rx="1.5" fill="url(#fg)" opacity="0.8"/>
-            <rect x="28" y="34" width="3" height="6"  rx="1.5" fill="url(#fg)" opacity="0.5"/>
-          </svg>
+          <img src="/images/subground-logo.png?v=7" width="819" height="1024" alt="Subground Agency" decoding="async"/>
           <div class="nav-wordmark">SUBGROUND<span>AGENCY</span></div>
         </div>
         <p class="footer-tagline" data-es="<strong>We don't book DJs.</strong><br>We build nights." data-en="<strong>We don't book DJs.</strong><br>We build nights."><strong>We don't book DJs.</strong><br>We build nights.</p>
