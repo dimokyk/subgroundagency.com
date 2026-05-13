@@ -228,14 +228,14 @@
       bookingHref: root.dataset.bookingHref || "/#contact",
     };
 
-    if (!state.artist) {
-      renderEmpty(root, state, "Configuración incompleta", "Falta indicar qué artista debe cargar este calendario.");
-      return;
-    }
-
     const revealContainer = root.closest(".availability-shell");
     if (revealContainer) {
       revealContainer.classList.add("visible");
+    }
+
+    if (!state.artist) {
+      renderEmpty(root, state, "Configuración incompleta", "Falta indicar qué artista debe cargar este calendario.");
+      return;
     }
 
     loadMonth(root, state, dateToMonth(new Date()));
