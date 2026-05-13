@@ -13,7 +13,7 @@
 <style>
 /* ── RESET ──────────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:hidden;scroll-padding-top:max(88px,env(safe-area-inset-top,0px))}
 body{background:#0D0D0C;color:#F1EFE8;font-family:'Barlow',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;cursor:none}
 
 /* ── CSS VARS ───────────────────────────────────────── */
@@ -193,9 +193,10 @@ section{padding:120px 48px}
 .dj-avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .dj-avatar.ring-urbano{border:2px solid var(--urb);box-sizing:border-box}
 .dj-avatar.ring-duo{border:3px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,conic-gradient(from -90deg,var(--mid),var(--pur),var(--mid)) border-box;border-radius:50%;background-origin:padding-box,border-box;background-clip:padding-box,border-box;box-sizing:border-box}
-.dj-card-head-link{display:flex;flex-direction:column;align-items:flex-start;text-decoration:none;color:inherit;width:100%;max-width:100%}
-.dj-card-head-link:hover .dj-name{color:var(--bone)}
-.dj-card-head-link:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:6px}
+.dj-card-body-link{display:flex;flex-direction:column;align-items:flex-start;text-decoration:none;color:inherit;width:100%;max-width:100%;flex:1;min-height:0}
+.dj-card-body-link:hover .dj-name{color:var(--bone)}
+.dj-card-body-link:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:6px}
+.dj-card-body-link .dj-tags{margin-top:18px}
 .dj-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
 .dj-name-split{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:.28em}.dj-name-split span{letter-spacing:.04em}
 .dj-genre{font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px}
@@ -208,7 +209,7 @@ section{padding:120px 48px}
 .dj-genre.urb{color:var(--urb)}
 .dj-city{font-size:11px;color:var(--bgray);letter-spacing:2px;margin-bottom:20px}
 .dj-bio{font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:0}
-.dj-card-foot{margin-top:auto;padding-top:24px;display:flex;flex-direction:column;gap:24px;width:100%}
+.dj-card-foot{margin-top:0;padding-top:20px;display:flex;flex-direction:column;gap:0;width:100%;flex-shrink:0}
 .dj-tags{display:flex;flex-wrap:wrap;gap:6px}
 .dj-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;background:var(--card);color:var(--bgray)}
 .dj-cta{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--red);text-decoration:none;margin-top:0;transition:all .2s;border-bottom:1px solid transparent;padding-bottom:2px;}
@@ -217,7 +218,7 @@ section{padding:120px 48px}
 .roster-note strong{color:var(--gray)}
 
 /* ── CONTACT ─────────────────────────────────────────── */
-#contact{position:relative;overflow:hidden}
+#contact{position:relative;overflow:hidden;scroll-margin-top:max(88px,env(safe-area-inset-top,0px))}
 #contact::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:var(--grad)}
 .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 .contact-tagline{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(36px,5vw,64px);text-transform:uppercase;line-height:.95;margin-bottom:24px}
@@ -230,7 +231,7 @@ section{padding:120px 48px}
 .contact-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--red)}
 .contact-val{font-family:'Barlow Condensed',sans-serif;font-size:18px;font-weight:600;color:var(--bone);letter-spacing:1px;text-decoration:none;transition:color .2s}
 .contact-val:hover{color:var(--mid)}
-.contact-form{background:var(--card);padding:48px;position:relative}
+.contact-form{background:var(--card);padding:48px;position:relative;scroll-margin-top:max(88px,env(safe-area-inset-top,0px))}
 .contact-form::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
 .form-group{margin-bottom:24px}
 .form-label{display:block;font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gray);margin-bottom:10px}
@@ -368,7 +369,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
 .btn-presskit svg{width:15px;height:15px;stroke:currentColor;fill:none;flex-shrink:0}
 .btn-profile{display:inline-flex;align-items:center;gap:8px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gray);text-decoration:none;margin-top:0;transition:all .2s;border-bottom:1px solid transparent;padding-bottom:2px;}
 .btn-profile:hover{color:var(--bone);border-color:var(--bone);}
-.dj-actions{display:flex;align-items:center;justify-content:space-between;margin-top:0;flex-wrap:wrap;gap:12px;}
+.dj-actions{display:flex;align-items:center;justify-content:space-between;margin-top:0;flex-wrap:wrap;gap:12px;position:relative;z-index:1}
 .presskit-box{background:var(--panel);border-radius:6px;padding:28px 32px;margin-top:32px;display:flex;align-items:center;justify-content:space-between;gap:24px;border:1px solid rgba(241,239,232,.12);flex-wrap:wrap}
 .presskit-box-text{display:flex;flex-direction:column;gap:8px;flex:1;min-width:min(100%,220px)}
 .presskit-box-label{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:4px;color:var(--red);text-transform:uppercase;}
@@ -635,31 +636,30 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
     <div class="roster-grid" id="rosterGrid">
       <!-- DJ A -->
       <div class="dj-card reveal" data-genres="urbano">
-        <a class="dj-card-head-link" href="f3ly.html" aria-label="Ver perfil completo de F3LY">
+        <a class="dj-card-body-link" href="f3ly.html" aria-label="Ver perfil completo de F3LY">
         <div class="dj-avatar ring-urbano">
           <img src="/images/f3ly-roster.png?v=2" width="400" height="400" alt="F3LY" decoding="async"/>
         </div>
         <div class="dj-name">F3LY</div>
-        </a>
         <div class="dj-genre urb" data-es="Urbano" data-en="Urban">Urbano</div>
         <div class="dj-city">Murcia · Spain</div>
         <p class="dj-bio" data-es="DJ y productor internacional. Conocido mundialmente por sus mashups y edits virales. Más de 116.000 seguidores en redes. Giras anuales por Italia y Latinoamérica." data-en="International DJ and producer. Known worldwide for his mashups and viral edits. Over 116,000 followers on social media. Annual tours in Italy and Latin America.">DJ y productor internacional. Conocido mundialmente por sus mashups y edits virales. Más de 116.000 seguidores en redes. Giras anuales por Italia y Latinoamérica.</p>
-        <div class="dj-card-foot">
         <div class="dj-tags"><span class="dj-tag">Urban</span><span class="dj-tag">Reggaeton</span><span class="dj-tag">Dembow</span></div>
+        </a>
+        <div class="dj-card-foot">
         <div class="dj-actions">
-          <a class="dj-cta" href="#contact" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
+          <a class="dj-cta" href="#contactForm" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
           <a class="btn-profile" href="f3ly.html" data-es="Ver perfil completo →" data-en="Full profile →">Ver perfil completo →</a>
         </div>
         </div>
       </div>
       <!-- MEDIO KILO -->
       <div class="dj-card reveal reveal-delay-1" data-genres="house techno">
-        <a class="dj-card-head-link" href="mediokilo.html" aria-label="Ver perfil completo de MEDIO KILO">
+        <a class="dj-card-body-link" href="mediokilo.html" aria-label="Ver perfil completo de MEDIO KILO">
         <div class="dj-avatar ring-duo">
           <img src="/images/mediokilo-roster.png?v=1" width="400" height="400" alt="MEDIO KILO" decoding="async"/>
         </div>
         <div class="dj-name dj-name-split"><span>MEDIO</span><span>KILO</span></div>
-        </a>
         <div class="dj-genres-row" aria-label="Género">
           <span class="dj-genre mid" data-es="Techno" data-en="Techno">Techno</span>
           <span class="dj-genres-sep" aria-hidden="true">·</span>
@@ -667,29 +667,30 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         </div>
         <div class="dj-city">Murcia · Spain</div>
         <p class="dj-bio" data-es="DJ y productor de mezclas. Melodic Techno como base. Sets construidos para hacer bailar." data-en="DJ and mix producer. Melodic Techno as the foundation. Sets built to fill the dancefloor.">DJ y productor de mezclas. Melodic Techno como base. Sets construidos para hacer bailar.</p>
-        <div class="dj-card-foot">
         <div class="dj-tags"><span class="dj-tag">Melodic Techno</span><span class="dj-tag">Tech House</span></div>
+        </a>
+        <div class="dj-card-foot">
         <div class="dj-actions">
-          <a class="dj-cta" href="#contact" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
+          <a class="dj-cta" href="#contactForm" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
           <a class="btn-profile" href="mediokilo.html" data-es="Ver perfil completo →" data-en="Full profile →">Ver perfil completo →</a>
         </div>
         </div>
       </div>
       <!-- ESEE -->
       <div class="dj-card reveal reveal-delay-2" data-genres="urbano">
-        <a class="dj-card-head-link" href="esee.html" aria-label="Ver perfil completo de ESEE DJ">
+        <a class="dj-card-body-link" href="esee.html" aria-label="Ver perfil completo de ESEE DJ">
         <div class="dj-avatar ring-urbano">
           <img src="/images/esee-roster.png?v=1" width="576" height="1024" alt="ESEE DJ" decoding="async" style="object-fit:contain;object-position:center top;background:#050505;"/>
         </div>
         <div class="dj-name">ESEE DJ</div>
-        </a>
         <div class="dj-genre urb" data-es="Urbano" data-en="Urban">Urbano</div>
         <div class="dj-city">Murcia · Spain</div>
         <p class="dj-bio" data-es="DJ urbano murciano. Reggaetón como subgénero principal y una puesta en escena que ya le ha llevado a eventos y salas de la escena regional." data-en="Urban DJ from Murcia. Reggaeton as his main subgenre and a stage presence already taking him to events and venues across the regional scene.">DJ urbano murciano. Reggaetón como subgénero principal y una puesta en escena que ya le ha llevado a eventos y salas de la escena regional.</p>
-        <div class="dj-card-foot">
         <div class="dj-tags"><span class="dj-tag">Urban</span><span class="dj-tag">Reggaeton</span></div>
+        </a>
+        <div class="dj-card-foot">
         <div class="dj-actions">
-          <a class="dj-cta" href="#contact" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
+          <a class="dj-cta" href="#contactForm" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
           <a class="btn-profile" href="esee.html" data-es="Ver perfil completo →" data-en="Full profile →">Ver perfil completo →</a>
         </div>
         </div>
