@@ -8,6 +8,8 @@ const repoRoot = path.join(__dirname, "..");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+// Repo-root /assets (static hosts publish repo root; public/ is not always at URL /)
+app.use("/assets", express.static(path.join(repoRoot, "assets")));
 app.use(express.static(path.join(repoRoot, "public")));
 app.use("/images", express.static(path.join(repoRoot, "images")));
 app.get("/favicon.ico", (req, res) => {
