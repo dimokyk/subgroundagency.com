@@ -1,6 +1,7 @@
 # Dependencies
 node_modules/
 .pydeps/
+.venv-logo/
 
 # Secrets and local env (keep .env.example in the repo)
 .env

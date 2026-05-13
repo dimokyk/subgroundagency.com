@@ -35,24 +35,8 @@ body:hover .cursor{opacity:1}
 /* ── NAV ────────────────────────────────────────────── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:rgba(13,13,12,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);transition:background .3s}
 .nav-logo{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit}
-.nav-logo-knockout{
-  display:flex;
-  width:36px;
-  height:36px;
-  flex-shrink:0;
-  align-items:center;
-  justify-content:center;
-  background:var(--blk);
-  border-radius:8px;
-  overflow:hidden;
-}
-.nav-logo-knockout img{
-  width:100%;
-  height:100%;
-  object-fit:contain;
-  mix-blend-mode:screen;
-  display:block;
-}
+.nav-logo-mark{display:block;width:36px;height:36px;flex-shrink:0}
+.nav-logo-mark img{width:100%;height:100%;object-fit:contain;display:block}
 .nav-wordmark{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;letter-spacing:3px;color:var(--bone);line-height:1}
 .nav-wordmark span{display:block;font-size:9px;font-weight:400;letter-spacing:6px;margin-top:1px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-links{display:flex;align-items:center;gap:36px}
@@ -78,9 +62,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hero-content{position:relative;width:100%;text-align:center}
 .hero-tag{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:600;letter-spacing:6px;text-transform:uppercase;color:var(--red);margin-bottom:32px;opacity:0;animation:fadeUp .8s .2s forwards}
 
-/* ── HERO LOGO (JPEG sin alfa: img con mix-blend-mode screen sobre hero-bg; fuera de .hero-content para que el blend no quede atrapado por el stacking context) ─── */
+/* ── HERO LOGO (PNG/WebP con transparencia; picture + fallback PNG) ─── */
 .hero-logo-svg{width:min(100%,200px);max-width:200px;margin:0 auto 24px;display:flex;justify-content:center;align-items:center;background:transparent}
-.hero-logo-svg img{width:100%;height:auto;display:block;mix-blend-mode:screen;-webkit-mix-blend-mode:screen;opacity:0;animation:heroLogoIn .85s .12s forwards}
+.hero-logo-svg picture{display:block;width:100%}
+.hero-logo-svg img{width:100%;height:auto;display:block;opacity:0;animation:heroLogoIn .85s .12s forwards}
 
 .hero-title{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(56px,10vw,120px);line-height:.9;letter-spacing:-1px;text-transform:uppercase;margin-bottom:8px;opacity:0;animation:fadeUp .8s .3s forwards}
 .hero-title .agency{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
@@ -262,18 +247,8 @@ footer{background:var(--blk);padding:64px 48px 32px;position:relative}
 footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:var(--grad)}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;margin-bottom:60px}
 .footer-brand .footer-logo{display:flex;align-items:center;gap:14px;margin-bottom:20px}
-.footer-logo-knockout{
-  display:flex;
-  width:40px;
-  height:40px;
-  flex-shrink:0;
-  align-items:center;
-  justify-content:center;
-  background:var(--blk);
-  border-radius:8px;
-  overflow:hidden;
-}
-.footer-logo-knockout img{width:100%;height:100%;object-fit:contain;display:block;mix-blend-mode:screen}
+.footer-logo-mark{display:block;width:40px;height:40px;flex-shrink:0}
+.footer-logo-mark img{width:100%;height:100%;object-fit:contain;display:block}
 .footer-tagline{font-size:13px;color:var(--gray);margin-bottom:24px;max-width:280px;line-height:1.6}
 .footer-tagline strong{color:var(--bone)}
 .footer-genres{display:flex;flex-wrap:wrap;gap:6px}
@@ -317,7 +292,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
    En monitores grandes el contenido no debe quedar “en miniatura” en el centro. */
 @media(min-width:1440px){
   nav{padding:0 56px;height:72px}
-  .nav-logo-knockout{width:40px;height:40px}
+  .nav-logo-mark{width:40px;height:40px}
   .nav-wordmark{font-size:20px}
   .nav-wordmark span{font-size:10px}
   .nav-links a{font-size:14px}
@@ -423,9 +398,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
-    <span class="nav-logo-knockout">
-    <img src="/images/subground-logo.jpg?v=11" width="819" height="1024" alt="Subground Agency" decoding="async"/>
-    </span>
+    <picture class="nav-logo-mark">
+      <source srcset="/images/subground-logo.webp?v=12" type="image/webp"/>
+      <img src="/images/subground-logo.png?v=12" width="819" height="1024" alt="Subground Agency" decoding="async"/>
+    </picture>
     <div class="nav-wordmark">SUBGROUND<span>AGENCY</span></div>
   </a>
   <div class="nav-links">
@@ -453,7 +429,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
   </div>
   <div class="hero-layout">
     <div class="hero-logo-svg">
-      <img src="/images/subground-logo.jpg?v=11" width="819" height="1024" alt="Subground Agency" decoding="async"/>
+      <picture>
+        <source srcset="/images/subground-logo.webp?v=12" type="image/webp"/>
+        <img src="/images/subground-logo.png?v=12" width="819" height="1024" alt="Subground Agency" decoding="async"/>
+      </picture>
     </div>
     <div class="hero-content">
     <div class="hero-tag" data-es="Booking Agency · Spain" data-en="Booking Agency · Spain">Booking Agency · Spain</div>
@@ -793,9 +772,10 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-logo">
-          <span class="footer-logo-knockout">
-          <img src="/images/subground-logo.jpg?v=11" width="819" height="1024" alt="Subground Agency" decoding="async"/>
-          </span>
+          <picture class="footer-logo-mark">
+            <source srcset="/images/subground-logo.webp?v=12" type="image/webp"/>
+            <img src="/images/subground-logo.png?v=12" width="819" height="1024" alt="Subground Agency" decoding="async"/>
+          </picture>
           <div class="nav-wordmark">SUBGROUND<span>AGENCY</span></div>
         </div>
         <p class="footer-tagline" data-es="<strong>We don't book DJs.</strong><br>We build nights." data-en="<strong>We don't book DJs.</strong><br>We build nights."><strong>We don't book DJs.</strong><br>We build nights.</p>
