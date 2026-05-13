@@ -190,6 +190,9 @@ section{padding:120px 48px}
 .dj-avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .dj-avatar.ring-urbano{border:2px solid var(--urb);box-sizing:border-box}
 .dj-avatar.ring-duo{border:3px solid transparent;background:linear-gradient(var(--card),var(--card)) padding-box,conic-gradient(from -90deg,var(--mid),var(--pur),var(--mid)) border-box;border-radius:50%;background-origin:padding-box,border-box;background-clip:padding-box,border-box;box-sizing:border-box}
+.dj-card-head-link{display:flex;flex-direction:column;align-items:flex-start;text-decoration:none;color:inherit;width:100%;max-width:100%}
+.dj-card-head-link:hover .dj-name{color:var(--bone)}
+.dj-card-head-link:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:6px}
 .dj-name{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:28px;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
 .dj-name-split{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:.28em}.dj-name-split span{letter-spacing:.04em}
 .dj-genre{font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:4px}
@@ -640,10 +643,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
     <div class="roster-grid" id="rosterGrid">
       <!-- DJ A -->
       <div class="dj-card reveal" data-genres="urbano">
+        <a class="dj-card-head-link" href="f3ly.html" aria-label="Ver perfil completo de F3LY">
         <div class="dj-avatar ring-urbano">
           <img src="/images/f3ly-roster.png?v=2" width="400" height="400" alt="F3LY" decoding="async"/>
         </div>
         <div class="dj-name">F3LY</div>
+        </a>
         <div class="dj-genre urb" data-es="Urbano" data-en="Urban">Urbano</div>
         <div class="dj-city">Murcia · Spain</div>
         <p class="dj-bio" data-es="DJ y productor internacional. Conocido mundialmente por sus mashups y edits virales. Más de 116.000 seguidores en redes. Giras anuales por Italia y Latinoamérica." data-en="International DJ and producer. Known worldwide for his mashups and viral edits. Over 116,000 followers on social media. Annual tours in Italy and Latin America.">DJ y productor internacional. Conocido mundialmente por sus mashups y edits virales. Más de 116.000 seguidores en redes. Giras anuales por Italia y Latinoamérica.</p>
@@ -657,10 +662,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
       </div>
       <!-- MEDIO KILO -->
       <div class="dj-card reveal reveal-delay-1" data-genres="house techno">
+        <a class="dj-card-head-link" href="mediokilo.html" aria-label="Ver perfil completo de MEDIO KILO">
         <div class="dj-avatar ring-duo">
           <img src="/images/mediokilo-roster.png?v=1" width="400" height="400" alt="MEDIO KILO" decoding="async"/>
         </div>
         <div class="dj-name dj-name-split"><span>MEDIO</span><span>KILO</span></div>
+        </a>
         <div class="dj-genres-row" aria-label="Género">
           <span class="dj-genre mid" data-es="Techno" data-en="Techno">Techno</span>
           <span class="dj-genres-sep" aria-hidden="true">·</span>
@@ -678,10 +685,12 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
       </div>
       <!-- ESEE -->
       <div class="dj-card reveal reveal-delay-2" data-genres="urbano">
+        <a class="dj-card-head-link" href="esee.html" aria-label="Ver perfil completo de ESEE">
         <div class="dj-avatar ring-urbano">
           <img src="/images/esee-roster.png?v=1" width="576" height="1024" alt="ESEE" decoding="async" style="object-fit:contain;object-position:center top;background:#050505;"/>
         </div>
         <div class="dj-name">ESEE</div>
+        </a>
         <div class="dj-genre urb" data-es="Urbano" data-en="Urban">Urbano</div>
         <div class="dj-city">Murcia · Spain</div>
         <p class="dj-bio" data-es="DJ urbano murciano. Reggaetón como subgénero principal y una puesta en escena que ya le ha llevado a eventos y salas de la escena regional." data-en="Urban DJ from Murcia. Reggaeton as his main subgenre and a stage presence already taking him to events and venues across the regional scene.">DJ urbano murciano. Reggaetón como subgénero principal y una puesta en escena que ya le ha llevado a eventos y salas de la escena regional.</p>
