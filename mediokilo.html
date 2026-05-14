@@ -47,7 +47,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
   .hero-photo img{object-fit:contain;object-position:center bottom}
 }
 .hero-watermark{position:absolute;inset:0;z-index:1;pointer-events:none;display:flex;justify-content:center;align-items:flex-start;padding-left:max(16px,env(safe-area-inset-left,0));padding-right:max(16px,env(safe-area-inset-right,0));padding-top:max(calc(44px + env(safe-area-inset-top,0)),min(34svh,360px));padding-bottom:0;opacity:.18}
-.hero-watermark img{width:min(58vw,300px);max-width:100%;height:auto;display:block;object-fit:contain;filter:opacity(.95)}
+.hero-watermark img{width:min(72vw,460px);max-width:100%;height:auto;display:block;object-fit:contain;filter:opacity(.95)}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,#0d0d0c 0%,rgba(13,13,12,.93) 32%,rgba(13,13,12,.72) 50%,rgba(13,13,12,.38) 70%,transparent 100%);z-index:2}
 .hero-grain{position:absolute;inset:0;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;z-index:3}
 .hero-content{position:relative;z-index:5;padding:0 48px 64px;width:100%;max-width:1200px;margin:0 auto;padding-bottom:max(64px,calc(24px + env(safe-area-inset-bottom,0)));isolation:isolate}
@@ -223,7 +223,7 @@ section{padding:100px 48px}
   .hero-content{padding:0 max(24px,env(safe-area-inset-left,0)) max(48px,env(safe-area-inset-bottom,0)) max(24px,env(safe-area-inset-right,0))}
   .hero-name{font-size:clamp(50px,17vw,118px);letter-spacing:-2px}
   .hero-watermark{padding-top:max(calc(42px + env(safe-area-inset-top,0)),min(30svh,320px))}
-  .hero-watermark img{width:min(56vw,300px)}
+  .hero-watermark img{width:min(68vw,400px)}
   .hero-real{font-size:14px;letter-spacing:1px;line-height:1.5}
   .hero-genre-stack{gap:10px}
   .hero-genres,.hero-subgenres{flex-direction:column;align-items:stretch;gap:10px}
@@ -256,7 +256,7 @@ section{padding:100px 48px}
   #hero{padding-top:calc(52px + env(safe-area-inset-top,0))}
   .hero-name{font-size:clamp(42px,14.5vw,98px)}
   .hero-watermark{padding-top:max(calc(36px + env(safe-area-inset-top,0)),min(24svh,240px))}
-  .hero-watermark img{width:min(52vw,220px)}
+  .hero-watermark img{width:min(64vw,320px)}
   .hero-stats{grid-template-columns:1fr;gap:20px;padding:18px 16px;border-radius:14px}
   .hstat-n{font-size:32px}
   .stats-grid{grid-template-columns:1fr}
@@ -313,7 +313,7 @@ section{padding:100px 48px}
   <div class="hero-photo">
     <img src="/images/mediokilo-photo.png?v=1" width="800" height="1200" decoding="async" alt="MEDIO KILO retrato oficial"/>
   </div>
-  <div class="hero-watermark" aria-hidden="true"><img src="/images/mediokilo-logo.png?v=1" width="800" height="400" decoding="async" alt=""/></div>
+  <div class="hero-watermark" aria-hidden="true"><img src="/images/mediokilo-logo.png?v=2" width="800" height="400" decoding="async" alt=""/></div>
   <div class="hero-overlay"></div>
   <div class="hero-grain"></div>
   <div class="hero-content">
