@@ -182,7 +182,7 @@ section{padding:120px 48px}
 .roster-filter[data-filter="urbano"].active{color:#5C35CC;border-color:rgba(92,53,204,.55);background:rgba(92,53,204,.1)}
 .roster-empty{width:100%;text-align:center;font-size:14px;color:var(--gray);padding:48px 24px;display:none;border:1px dashed var(--card);margin-bottom:8px}
 .roster-empty.is-visible{display:block}
-.roster-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;align-items:stretch}
+.roster-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;align-items:stretch}
 .dj-card{background:var(--panel);padding:40px 32px;position:relative;overflow:hidden;transition:transform .3s;display:flex;flex-direction:column;height:100%;min-height:0}
 .dj-card.dj-card-hidden{display:none!important}
 .dj-card:hover{transform:translateY(-4px)}
@@ -350,7 +350,8 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
   .hamburger{display:flex}
   section{padding:80px 24px}
   .about-grid,.contact-wrap,.footer-top,.services-header{grid-template-columns:1fr;gap:40px}
-  .services-grid,.roster-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .roster-grid{grid-template-columns:repeat(2,1fr)}
   .sound-grid{grid-template-columns:1fr;margin-top:32px}
   .roster-header{flex-direction:column;align-items:flex-start;gap:20px}
   .footer-bottom{flex-direction:column;gap:12px;text-align:center}
@@ -474,7 +475,7 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         <p class="reveal reveal-delay-1" data-es="Trabajamos con artistas emergentes y consolidados enfocados en pista, creando lineups que funcionan y experiencias que conectan con el público." data-en="We work with emerging and established floor-focused artists, building lineups that work and experiences that connect with the crowd.">Trabajamos con artistas emergentes y consolidados enfocados en pista, creando lineups que funcionan y experiencias que conectan con el público.</p>
         <p class="reveal reveal-delay-2" data-es="No hacemos listas al azar. Cada nombre que ponemos en un cartel tiene una razón: el sonido encaja, el momento es el correcto y el público lo va a sentir." data-en="We don't make random lists. Every name we put on a lineup has a reason: the sound fits, the moment is right, and the crowd will feel it.">No hacemos listas al azar. Cada nombre que ponemos en un cartel tiene una razón: el sonido encaja, el momento es el correcto y el público lo va a sentir.</p>
         <div class="about-stats reveal reveal-delay-3">
-          <div class="stat"><div class="stat-num red">3+</div><div class="stat-label" data-es="DJs en roster" data-en="DJs in roster">DJs en roster</div></div>
+          <div class="stat"><div class="stat-num red">4+</div><div class="stat-label" data-es="DJs en roster" data-en="DJs in roster">DJs en roster</div></div>
           <div class="stat"><div class="stat-num mid">4</div><div class="stat-label" data-es="Géneros" data-en="Genres">Géneros</div></div>
           <div class="stat"><div class="stat-num pur">ESP</div><div class="stat-label" data-es="Mercado principal" data-en="Primary market">Mercado principal</div></div>
           <div class="stat"><div class="stat-num red">∞</div><div class="stat-label" data-es="Noches construidas" data-en="Nights built">Noches construidas</div></div>
@@ -692,6 +693,25 @@ footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;ba
         <div class="dj-actions">
           <a class="dj-cta" href="#contactForm" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
           <a class="btn-profile" href="esee.html" data-es="Ver perfil completo →" data-en="Full profile →">Ver perfil completo →</a>
+        </div>
+        </div>
+      </div>
+      <!-- JULIKING -->
+      <div class="dj-card reveal reveal-delay-3" data-genres="urbano">
+        <a class="dj-card-body-link" href="juliking.html" aria-label="Ver perfil completo de JULIKING DJ">
+        <div class="dj-avatar ring-urbano">
+          <img src="/images/juliking-roster.png?v=1" width="400" height="400" alt="JULIKING DJ" decoding="async"/>
+        </div>
+        <div class="dj-name">JULIKING DJ</div>
+        <div class="dj-genre urb" data-es="Urbano" data-en="Urban">Urbano</div>
+        <div class="dj-city">Spain</div>
+        <p class="dj-bio" data-es="Reggaetón clásico y actual. Sesiones que conectan lo mejor de la vieja escuela con el sonido de hoy." data-en="Classic and modern Reggaeton. Sets that connect the best of the old school with today's sound.">Reggaetón clásico y actual. Sesiones que conectan lo mejor de la vieja escuela con el sonido de hoy.</p>
+        <div class="dj-tags"><span class="dj-tag">Reggaeton</span><span class="dj-tag">Reggaeton Antiguo</span></div>
+        </a>
+        <div class="dj-card-foot">
+        <div class="dj-actions">
+          <a class="dj-cta" href="#contactForm" data-es="Solicitar booking →" data-en="Request booking →">Solicitar booking →</a>
+          <a class="btn-profile" href="juliking.html" data-es="Ver perfil completo →" data-en="Full profile →">Ver perfil completo →</a>
         </div>
         </div>
       </div>

@@ -17,3 +17,7 @@ exports.mediokiloProfile = (req, res) => {
 exports.eseeProfile = (req, res) => {
   res.sendFile(path.join(rootDir, "esee.html"));
 };
+
+exports.julikingProfile = (req, res) => {
+  res.sendFile(path.join(rootDir, "juliking.html"));
+};

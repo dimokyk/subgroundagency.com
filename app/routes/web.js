@@ -11,6 +11,8 @@ router.get("/mediokilo.html", siteController.mediokiloProfile);
 router.get("/artists/mediokilo", siteController.mediokiloProfile);
 router.get("/esee.html", siteController.eseeProfile);
 router.get("/artists/esee", siteController.eseeProfile);
+router.get("/juliking.html", siteController.julikingProfile);
+router.get("/artists/juliking", siteController.julikingProfile);
 router.get(
   "/api/availability/:artist",
   availabilityController.artistAvailability
